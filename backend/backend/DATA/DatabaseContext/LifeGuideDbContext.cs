@@ -15,10 +15,6 @@ namespace LifeGuideProject.API.DATA.DatabaseContext
         {
 
         }
-        public LifeGuideDbContext() : base()
-        {
-
-        }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

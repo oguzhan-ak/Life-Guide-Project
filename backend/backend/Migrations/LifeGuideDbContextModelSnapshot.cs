@@ -27,10 +27,6 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnName("UserId")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("BirthDate");
-
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("CreatedTime");
@@ -47,6 +43,10 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("UserAge");
 
+                    b.Property<DateTime?>("UserBirthDate")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("UserBirthDate");
+
                     b.Property<string>("UserEmail")
                         .HasColumnType("text")
                         .HasColumnName("UserEmail");
@@ -58,6 +58,10 @@ namespace LifeGuideProject.API.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("text")
                         .HasColumnName("UserName");
+
+                    b.Property<string>("UserPassword")
+                        .HasColumnType("text")
+                        .HasColumnName("UserPassword");
 
                     b.Property<double?>("UserWeight")
                         .HasColumnType("double precision")

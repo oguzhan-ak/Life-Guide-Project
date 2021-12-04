@@ -17,8 +17,10 @@ namespace LifeGuideProject.API.DATA.Entities.User
         public string UserName { get; set; }
         [Column("UserEmail")]
         public string UserEmail { get; set; }
-        [Column("BirthDate")]
-        public DateTime? BirthDate { get; set; }
+        [Column("UserPassword")]
+        public string UserPassword { get; set; }
+        [Column("UserBirthDate")]
+        public DateTime? UserBirthDate { get; set; }
         [Column("UserAge")]
         public long? UserAge { get; set; }
         [Column("UserHeight")]

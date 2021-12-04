@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LifeGuideProject.API.Migrations
 {
-    public partial class First : Migration
+    public partial class _1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,8 @@ namespace LifeGuideProject.API.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserName = table.Column<string>(type: "text", nullable: true),
                     UserEmail = table.Column<string>(type: "text", nullable: true),
-                    BirthDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    UserPassword = table.Column<string>(type: "text", nullable: true),
+                    UserBirthDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     UserAge = table.Column<long>(type: "bigint", nullable: true),
                     UserHeight = table.Column<double>(type: "double precision", nullable: true),
                     UserWeight = table.Column<double>(type: "double precision", nullable: true),
