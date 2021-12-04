@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oguzhan.ak\\Desktop\\Bitirme Projesi\\backend\\backend\\backend.csproj": {}
+    "C:\\Users\\oguzhan.ak\\Desktop\\Life-Guide-Project\\backend\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oguzhan.ak\\Desktop\\Bitirme Projesi\\backend\\backend\\backend.csproj": {
+    "C:\\Users\\oguzhan.ak\\Desktop\\Life-Guide-Project\\backend\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oguzhan.ak\\Desktop\\Bitirme Projesi\\backend\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\oguzhan.ak\\Desktop\\Life-Guide-Project\\backend\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\oguzhan.ak\\Desktop\\Bitirme Projesi\\backend\\backend\\backend.csproj",
+        "projectPath": "C:\\Users\\oguzhan.ak\\Desktop\\Life-Guide-Project\\backend\\backend\\backend.csproj",
         "packagesPath": "C:\\Users\\oguzhan.ak\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oguzhan.ak\\Desktop\\Bitirme Projesi\\backend\\backend\\obj\\",
+        "outputPath": "C:\\Users\\oguzhan.ak\\Desktop\\Life-Guide-Project\\backend\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -45,6 +45,34 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "EntityFramework6.Npgsql": {
+              "target": "Package",
+              "version": "[6.4.3, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
