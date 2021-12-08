@@ -17,3 +17,5 @@ backend/backend/bin/Debug/net5.0/ref/LifeGuideProject.API.dll
 backend/backend/LifeGuideProject.API.csproj
 backend/backend/bin/Debug/net5.0/ref/LifeGuideProject.API.dll
 backend/backend/bin/Debug/net5.0/LifeGuideProject.API.pdb
+backend/.vs/backend/DesignTimeBuild/.dtbcache.v2
+backend/.vs/backend/v16/.suo
