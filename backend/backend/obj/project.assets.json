@@ -1036,25 +1036,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\oguzh\\.nuget\\packages\\": {}
+    "C:\\Users\\oguzhan.ak\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oguzh\\Desktop\\Life-Guide-Project\\backend\\backend\\LifeGuideProject.API.csproj",
+      "projectUniqueName": "C:\\Users\\oguzhan.ak\\Desktop\\Life-Guide-Project\\backend\\backend\\LifeGuideProject.API.csproj",
       "projectName": "LifeGuideProject.API",
-      "projectPath": "C:\\Users\\oguzh\\Desktop\\Life-Guide-Project\\backend\\backend\\LifeGuideProject.API.csproj",
-      "packagesPath": "C:\\Users\\oguzh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oguzh\\Desktop\\Life-Guide-Project\\backend\\backend\\obj\\",
+      "projectPath": "C:\\Users\\oguzhan.ak\\Desktop\\Life-Guide-Project\\backend\\backend\\LifeGuideProject.API.csproj",
+      "packagesPath": "C:\\Users\\oguzhan.ak\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\oguzhan.ak\\Desktop\\Life-Guide-Project\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\oguzh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\oguzhan.ak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -1117,7 +1123,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }
