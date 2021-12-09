@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -14,6 +15,10 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
 
+export function tokenGetter(){
+  return localStorage.getItem("jwt");
+}
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -22,7 +27,14 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    JwtModule.forRoot({
+      config : {
+        tokenGetter : tokenGetter,
+        allowedDomains : ["localhost:5001"],
+        disallowedRoutes : []
+      }
+    })
   ],
   declarations: [
     AppComponent,

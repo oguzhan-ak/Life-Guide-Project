@@ -34,3 +34,10 @@ C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\ref\LifeGuideProject.API.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.pdb
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.genruntimeconfig.cache
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Chart from 'chart.js';
+import { SharedService } from 'src/app/shared/shared.service';
 
 // core components
 import {
@@ -22,8 +25,12 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  ngOnInit() {
+  constructor(private router : Router, private http:HttpClient,private shared : SharedService) {}
 
+  ngOnInit() {
+    if(!this.shared.isUserAuthenticated()){
+      this.router.navigate(["login"])
+    }
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
       [0, 20, 5, 25, 10, 30, 15, 40, 40]
