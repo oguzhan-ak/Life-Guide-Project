@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       'UserEmail' : loginForm.value.UserEmail,
       'UserPassword' : loginForm.value.UserPassword
   };
-  this.shared.logIn(credentials,"auth/login")
+  this.shared.logIn(credentials,"Auth/Login")
       .subscribe(response=>{
         if(response == "Nok:Yanlış istek"){
           this.invalidLogin=true;

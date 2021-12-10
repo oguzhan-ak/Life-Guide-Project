@@ -18,7 +18,6 @@ C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.csproj.AssemblyReference.cache
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.AssemblyInfoInputs.cache
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.AssemblyInfo.cs
@@ -41,3 +40,5 @@ C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.csproj.AssemblyReference.cache

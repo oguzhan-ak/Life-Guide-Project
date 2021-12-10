@@ -7,8 +7,9 @@ namespace LifeGuideProject.API.ENTITY.ViewModels.UserViewModels
 {
     public class UserRegisterVM
     {
-        public string UserEmail { get; set; }
-        public string UserPassword { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         public string UserName { get; set; }
+        public string FullName { get; set; }
     }
 }

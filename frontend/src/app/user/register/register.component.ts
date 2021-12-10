@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
       'UserEmail' : registerForm.value.UserEmail,
       'UserPassword' : registerForm.value.UserPassword
   };
-  this.shared.signUp(credentials,"auth/register")
+  this.shared.signUp(credentials,"Auth/Register")
       .subscribe(response=>{
         if(response=="Nok:Same email"){
           this.registerErrorMessage= "Girdiğiniz e-mail daha önce kullanılmış.";
