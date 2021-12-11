@@ -1,11 +1,14 @@
 ﻿using LifeGuideProject.API.DATA.DatabaseContext;
 using LifeGuideProject.API.DTO;
+using LifeGuideProject.API.ENTITY;
 using LifeGuideProject.API.ENTITY.Entities;
 using LifeGuideProject.API.ENTITY.ViewModels.UserViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -24,14 +27,16 @@ namespace LifeGuideProject.API.Controllers
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<UserController> _logger;
-        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<UserController> logger)
-        {
+        private readonly JWTConfig _jWTConfig;
+        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<UserController> logger, IOptions<JWTConfig> jwtConfig)
+        { 
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _jWTConfig = jwtConfig.Value;
         }
 
-
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet, Route("Users")]
         public async Task<object> GetUsers()
         {
@@ -83,18 +88,17 @@ namespace LifeGuideProject.API.Controllers
         {
             try
             {
-                if(pUserLoginVM.Email =="")
+                if(ModelState.IsValid)
                 {
-                    return await Task.FromResult("E-maili boş girdiniz!");
-                }else if (pUserLoginVM.Password == "")
-                {
-                    return await Task.FromResult("Şifreyi boş girdiniz!");
-                }
-                var user = _userManager.Users.Where(x => x.Email.Equals(pUserLoginVM.Email)).FirstOrDefault();
-                var result = await _signInManager.PasswordSignInAsync(user.UserName, pUserLoginVM.Password, false, false);
-                if (result.Succeeded)
-                {
-                    return await Task.FromResult("Başarıyla giriş yaptınız!");
+                    var tempUser = _userManager.Users.Where(x => x.Email.Equals(pUserLoginVM.Email)).FirstOrDefault();
+                    var result = await _signInManager.PasswordSignInAsync(tempUser.UserName, pUserLoginVM.Password, false, false);
+                    if (result.Succeeded)
+                    {
+                        var appUser = await _userManager.FindByEmailAsync(pUserLoginVM.Email);
+                        var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName);
+                        user.Token = GenerateToken(appUser);
+                        return await Task.FromResult(user);
+                    }
                 }
                 return await Task.FromResult("Email veya şifreyi hatalı girdiniz!");
             }
@@ -102,6 +106,28 @@ namespace LifeGuideProject.API.Controllers
             {
                 return await Task.FromResult(ex.Message);
             }
+        }
+
+        private string GenerateToken(ApplicationUser user)
+        {
+            var jwtTokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_jWTConfig.Key);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new System.Security.Claims.ClaimsIdentity(new[]
+                {
+                    new System.Security.Claims.Claim(JwtRegisteredClaimNames.NameId, user.Id),
+                    new System.Security.Claims.Claim(JwtRegisteredClaimNames.Email, user.Email),
+                    new System.Security.Claims.Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                }),
+                Expires = DateTime.UtcNow.AddHours(12),
+                SigningCredentials= new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Audience= _jWTConfig.Audience,
+                Issuer= _jWTConfig.Issuer
+
+            };
+            var token = jwtTokenHandler.CreateToken(tokenDescriptor);
+            return jwtTokenHandler.WriteToken(token);
         }
 
     }

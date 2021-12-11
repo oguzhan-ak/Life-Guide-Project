@@ -1,4 +1,5 @@
 using LifeGuideProject.API.DATA.DatabaseContext;
+using LifeGuideProject.API.ENTITY;
 using LifeGuideProject.API.ENTITY.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +33,8 @@ namespace backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<JWTConfig>(Configuration.GetSection("JWTConfig"));
+
             // Db configurations
             var sqlConnectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<LifeGuideDbContext>(opt =>
@@ -39,6 +42,23 @@ namespace backend
                 opt.UseNpgsql(sqlConnectionString);
             });
             services.AddIdentity<ApplicationUser, IdentityRole>(opt => { }).AddEntityFrameworkStores<LifeGuideDbContext>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                var key = Encoding.ASCII.GetBytes(Configuration["JWTConfig:Key"]);
+                var issuer = Configuration["JWTConfig:Issuer"];
+                var audience = Configuration["JWTConfig:Audience"];
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuerSigningKey=true,
+                    IssuerSigningKey=new SymmetricSecurityKey(key),
+                    ValidateIssuer=true,
+                    ValidateAudience=true,
+                    RequireExpirationTime=true,
+                    ValidIssuer= issuer,
+                    ValidAudience= audience
+                };
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -66,7 +86,7 @@ namespace backend
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
