@@ -12,24 +12,14 @@ export class RegisterComponent implements OnInit {
   registerErrorMessage :string;
   
   register(registerForm){
-    const credentials = {
-      'UserName' : registerForm.value.UserName,
-      'UserEmail' : registerForm.value.UserEmail,
-      'UserPassword' : registerForm.value.UserPassword
-  };
-  this.shared.signUp(credentials,"Auth/Register")
-      .subscribe(response=>{
-        if(response=="Nok:Same email"){
-          this.registerErrorMessage= "Girdiğiniz e-mail daha önce kullanılmış.";
-          this.invalidRegister= true;
-        }else{
-          this.invalidRegister=false;
-          this.router.navigate(["/login"]);
-        }
-      },
-      error => {
-        this.invalidRegister=true;
-      }) 
+    let fullName= registerForm.value.FullName;
+    let email= registerForm.value.UserEmail;
+    let password= registerForm.value.UserPassword;
+    this.shared.Register(fullName,email,password).subscribe((data) =>{
+      console.log("response",data);
+    },error =>{
+      console.log("error",error);
+    });
   }
 
   constructor(private router : Router,private shared:SharedService) { }

@@ -2,7 +2,7 @@
   <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
       <a class="navbar-brand" routerLinkActive="active" [routerLink]="['/dashboard']">
-        <img src="assets/img/brand/argon-white.png" />
+        <h1>LifeGuide</h1>
       </a>
       <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
          aria-controls="sidenav-collapse-main">
@@ -27,22 +27,34 @@
         </div>
         <!-- Navbar items -->
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item" *ngIf="isUserLogin">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/users']">
+              <i class="ni ni-key-25"></i>
+              <span class="nav-link-inner--text">AllUsers</span>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/blog']">
               <i class="ni ni-planet"></i>
               <span class="nav-link-inner--text">About Serebral Palcy</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!isUserLogin">
             <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/register']">
               <i class="ni ni-circle-08"></i>
               <span class="nav-link-inner--text">Register</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!isUserLogin">
             <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/login']">
               <i class="ni ni-key-25"></i>
               <span class="nav-link-inner--text">Login</span>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="isUserLogin">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/login']" (click)="onLogOut()">
+              <i class="ni ni-key-25"></i>
+              <span class="nav-link-inner--text">Logout</span>
             </a>
           </li>
           <!-- <li class="nav-item">
@@ -62,11 +74,11 @@
     <div class="row align-items-center justify-content-xl-between">
       <div class="col-xl-6">
         <div class="copyright text-center text-xl-left text-muted">
-          &copy; {{ test | date: "yyyy" }} <a href="https://www.creative-tim.com?ref=ada-footer-auth-layout" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+          <!-- &copy; {{ test | date: "yyyy" }} <a href="https://www.creative-tim.com?ref=ada-footer-auth-layout" class="font-weight-bold ml-1" target="_blank">Creative Tim</a> -->
         </div>
       </div>
       <div class="col-xl-6">
-        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+        <!-- <ul class="nav nav-footer justify-content-center justify-content-xl-end">
           <li class="nav-item">
             <a href="https://www.creative-tim.com?ref=ada-footer-auth-layout" class="nav-link" target="_blank">Creative Tim</a>
           </li>
@@ -79,7 +91,7 @@
           <li class="nav-item">
             <a href="https://github.com/creativetimofficial/argon-dashboard-angular/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </div>

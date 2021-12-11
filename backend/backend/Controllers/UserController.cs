@@ -1,4 +1,5 @@
 ﻿using LifeGuideProject.API.DATA.DatabaseContext;
+using LifeGuideProject.API.DATA.Enums;
 using LifeGuideProject.API.DTO;
 using LifeGuideProject.API.ENTITY;
 using LifeGuideProject.API.ENTITY.Entities;
@@ -43,13 +44,14 @@ namespace LifeGuideProject.API.Controllers
             try
             {
                 var users = _userManager.Users.Select(x => new UserDTO(x.FullName,x.Email, x.UserName));
-                return await Task.FromResult(users);
+                return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", users));
+
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(ex.Message);
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex.Message, null));
             }
-            
+
         }
 
 
@@ -60,25 +62,25 @@ namespace LifeGuideProject.API.Controllers
             {
                 var newUser = new ApplicationUser()
                 {
-                    UserName = pUserRegisterVM.UserName,
+                    UserName = pUserRegisterVM.Email,
                     Email = pUserRegisterVM.Email,
                     FullName = pUserRegisterVM.FullName
                 };
                 var user = _userManager.Users.Where(x => x.Email.Equals(pUserRegisterVM.Email)).FirstOrDefault(); 
                 if(user != null)
                 {
-                    return await Task.FromResult("Bu email daha önce kullanılmış!");
+                    return await Task.FromResult(new ResponseModel(ResponseCode.Error,"Bu email daha önce kullanılmış!",null));
                 }
                 var result = await _userManager.CreateAsync(newUser, pUserRegisterVM.Password);
                 if (result.Succeeded)
                 {
-                    return await Task.FromResult("Başarıyla kayıt oldunuz!");
+                    return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla kayıt oldunuz!", null));
                 }
-                return await Task.FromResult(string.Join(",",result.Errors.Select(x => x.Description).ToArray()));
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, "", result.Errors.Select(x => x.Description).ToArray()));
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(ex.Message);
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex.Message, null));
             }
             
         }
@@ -97,14 +99,14 @@ namespace LifeGuideProject.API.Controllers
                         var appUser = await _userManager.FindByEmailAsync(pUserLoginVM.Email);
                         var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName);
                         user.Token = GenerateToken(appUser);
-                        return await Task.FromResult(user);
+                        return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", user));
                     }
                 }
-                return await Task.FromResult("Email veya şifreyi hatalı girdiniz!");
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Email veya şifreyi hatalı girdiniz!", null));
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(ex.Message);
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex.Message, null));
             }
         }
 

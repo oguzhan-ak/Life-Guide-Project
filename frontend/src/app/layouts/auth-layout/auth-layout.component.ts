@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Constants } from 'src/app/Helper/constants';
 
 @Component({
   selector: 'app-auth-layout',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
 export class AuthLayoutComponent implements OnInit, OnDestroy {
   test: Date = new Date();
   public isCollapsed = true;
+
+
 
   constructor(private router: Router) { }
 
@@ -27,5 +30,15 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     html.classList.remove("auth-layout");
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("bg-default");
+  }
+
+  onLogOut(){
+    localStorage.removeItem(Constants.USER_KEY);
+  }
+
+  get isUserLogin()
+  {
+    const user = localStorage.getItem(Constants.USER_KEY);
+    return user && user.length>0;
   }
 }
