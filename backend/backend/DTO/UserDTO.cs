@@ -7,16 +7,18 @@ namespace LifeGuideProject.API.DTO
 {
     public class UserDTO
     {
-        public UserDTO(string fullName, string email, string userName)
+        public UserDTO(string fullName, string email, string userName, string role)
         {
             FullName = fullName;
             Email = email;
             UserName = userName;
+            Role = role;
         }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
         public string Token { get; set; }
+        public string Role { get; set; }
         //public DateTime? UserBirthDate { get; set; }
         //public long? UserAge { get; set; }
         //public double? UserHeight { get; set; }

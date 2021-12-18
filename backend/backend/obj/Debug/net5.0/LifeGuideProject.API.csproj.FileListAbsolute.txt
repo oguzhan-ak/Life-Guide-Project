@@ -25,7 +25,6 @@ C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\staticwebassets\LifeGuideProject.API.StaticWebAssets.Manifest.cache
-C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\staticwebassets\LifeGuideProject.API.StaticWebAssets.xml
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\scopedcss\bundle\LifeGuideProject.API.styles.css
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.RazorTargetAssemblyInfo.cache
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.csproj.CopyComplete

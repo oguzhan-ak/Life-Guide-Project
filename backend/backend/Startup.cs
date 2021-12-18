@@ -44,7 +44,11 @@ namespace backend
             });
             services.AddIdentity<ApplicationUser, IdentityRole>(opt => { }).AddEntityFrameworkStores<LifeGuideDbContext>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
             {
                 var key = Encoding.ASCII.GetBytes(Configuration["JWTConfig:Key"]);
                 var issuer = Configuration["JWTConfig:Issuer"];
@@ -89,13 +93,6 @@ namespace backend
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "dotnetClaimAuthorization v1"));
             }
-
-            //app.UseSwagger();
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MY API");
-            //});
-
             app.UseHttpsRedirection();
             app.UseCors(_loginOrigin);
             app.UseRouting();

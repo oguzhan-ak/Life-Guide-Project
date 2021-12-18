@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { ResponseCode } from '../Enums/responseCode';
 import { Constants } from '../Helper/constants';
 import { ResponseModel } from '../Models/responseModel';
+import { Role } from '../Models/role';
 import { User } from '../Models/user';
 
 @Injectable({
@@ -23,11 +24,12 @@ export class SharedService {
     };
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/Login',body);
   }
-  public Register(fullname :string,email:string,password:string){
+  public Register(fullname :string,email:string,password:string,role:string){
     const body= {
       FullName:fullname,
       Email:email,
-      Password:password
+      Password:password,
+      Role : role
     };
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/Register',body);
   }
@@ -37,12 +39,12 @@ export class SharedService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${ userInfo?.token}`
     });
-    return this.http.get<ResponseModel>(this.apiUrl+'Auth/Users',{headers:headers}).pipe(map(res => {
+    return this.http.get<ResponseModel>(this.apiUrl+'Auth/GetUsers',{headers:headers}).pipe(map(res => {
       if(res.responseCode==ResponseCode.OK){
         let userList= new Array<User>();
         if(res.dateSet){
           res.dateSet.map((x:User) =>{
-            userList.push(new User(x.fullName,x.email,x.userName));
+            userList.push(new User(x.fullName,x.email,x.userName,x.role));
           });
         }
         return userList;
@@ -50,4 +52,21 @@ export class SharedService {
     }));
   }
   
+  public getRoles(){
+    let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY));
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${ userInfo?.token}`
+    });
+    return this.http.get<ResponseModel>(this.apiUrl+'Auth/GetRoles',{headers:headers}).pipe(map(res => {
+      if(res.responseCode==ResponseCode.OK){
+        let roleList= new Array<Role>();
+        if(res.dateSet){
+          res.dateSet.map((x:string) =>{
+            roleList.push(new Role(x));
+          });
+        }
+        return roleList;
+      }
+    }));
+  }
 }

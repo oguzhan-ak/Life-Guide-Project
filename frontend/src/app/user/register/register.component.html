@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
           <h1 class="text-white">Hoşgeldiniz!</h1>
-          <p class="text-lead text-light">Join us! Create your account and manage your process.</p>
+          <p class="text-lead text-light">Bize Katıl! Hesabını oluştur ve gelişimini takip et!</p>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
         </div> -->
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
-            <small>Sign up with credentials</small>
+            <small>Email ve şifre ile kayıt olun</small>
           </div>
           <form #registerForm= "ngForm" (ngSubmit)="register(registerForm)">
             <div class="form-group">
@@ -63,7 +63,11 @@
                 <input class="form-control" placeholder="Password" type="password" name="UserPassword" ngModel>
               </div>
             </div>
-            <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
+            <div class="custom-control custom-control-alternative custom-radio mb-3" *ngFor="let role of roles;let index=index">
+              <input name="role" class="custom-control-input" id="{{index}}" type="radio" [checked]="role.isSelected" (change)="onRoleChange(role.role)">
+              <label class="custom-control-label" for="{{index}}">{{role.role}}</label>
+            </div>
+            <div class="text-muted font-italic"><small>Şifre gücü: <span class="text-success font-weight-700">strong</span></small></div>
             <div class="row my-4">
               <div class="col-12">
                 <!-- <div class="custom-control custom-control-alternative custom-checkbox">
