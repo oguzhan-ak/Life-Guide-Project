@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e44105f0-4714-4d19-891e-08021070cd70": {
+      "ProjectGuid": "e44105f0-4714-4d19-891e-08021070cd70",
+      "DisplayName": "LifeGuideProject.API",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

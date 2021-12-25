@@ -144,7 +144,7 @@ namespace LifeGuideProject.API.Controllers
                         var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
                         var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role);
                         user.Token = GenerateToken(appUser, role);
-                        return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", user));
+                        return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla giriş yaptınız.", user));
                     }
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Email veya şifreyi hatalı girdiniz!", null));

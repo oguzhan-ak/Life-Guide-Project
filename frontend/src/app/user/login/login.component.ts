@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {  NgForm } from '@angular/forms';
 import {Router} from "@angular/router";
-import { catchError, retry } from 'rxjs';
 import { SharedService } from 'src/app/shared/shared.service';
 import { Constants } from 'src/app/Helper/constants';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,18 +15,30 @@ export class LoginComponent implements OnInit, OnDestroy {
   login(loginForm){
     let email= loginForm.value.UserEmail;
     let password= loginForm.value.UserPassword;
+    if(email == ""){
+      this.toastrService.error("Enter your email");
+    }
+    if(password == ""){
+      this.toastrService.error("Enter your password");
+    }
+    if(email =="" || password ==""){
+      return;
+    }
     this.shared.Login(email,password).subscribe((data : any) =>{
       if(data.responseCode ==1){
         localStorage.setItem(Constants.USER_KEY,JSON.stringify(data.dateSet));
+        this.toastrService.success(data.responseMessage);
         this.router.navigate(["users"]);
+      }else{
+        this.toastrService.error(data.responseMessage);
       }
-      console.log("response",data);
+      
     },error =>{
-      console.log("error",error);
+      this.toastrService.error(error);
     });
   }
 
-  constructor(private router : Router,private shared:SharedService) {}
+  constructor(private router : Router,private shared:SharedService,private toastrService : ToastrService) {}
 
   
 

@@ -15,6 +15,7 @@ import { MapsComponent } from './pages/maps/maps.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { Auth1GuardService } from './guard/guard1/auth1.service';
 import { Auth2GuardService } from './guard/guard2/auth2.service';
+import { BlogComponent } from './pages/blog/blog.component';
 
 const routes: Routes =[
   // Admin Layout
@@ -42,10 +43,6 @@ const routes: Routes =[
         path: 'users',
         component: UserListComponent,
         canActivate:[Auth1GuardService]
-      },
-      {
-        path: 'blog',
-        component: UserListComponent
       }
     ]
   }, 
@@ -80,6 +77,10 @@ const routes: Routes =[
         canActivate:[Auth1GuardService]
       }
     ]
+  },
+  {
+    path: 'blog',
+    component: BlogComponent
   }
 ];
 

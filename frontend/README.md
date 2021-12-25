@@ -173,7 +173,7 @@ argon-dashboard-angular
 │   ├── index.html
 │   ├── main.ts
 │   ├── polyfills.ts
-│   ├── styles.scss
+│   ├── styles.css
 │   ├── test.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.spec.json
