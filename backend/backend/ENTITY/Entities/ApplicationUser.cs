@@ -27,5 +27,7 @@ namespace LifeGuideProject.API.ENTITY.Entities
         public DateTime? UpdatedTime { get; set; }
         [Column("IsActive")]
         public bool IsActive { get; set; } = true;
+        [Column("IsFormDone")]
+        public bool IsFormDone { get; set; }
     }
 }

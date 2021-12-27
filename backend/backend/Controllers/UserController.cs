@@ -51,7 +51,7 @@ namespace LifeGuideProject.API.Controllers
                 foreach (var user in users)
                 {
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
-                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role));
+                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role,user.IsFormDone));
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", allUserDTO));
 
@@ -76,7 +76,7 @@ namespace LifeGuideProject.API.Controllers
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
                     if (role == "Patient" || role == "Doctor")
                     {
-                        allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role));
+                        allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone));
                     }
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", allUserDTO));
@@ -102,7 +102,8 @@ namespace LifeGuideProject.API.Controllers
                 {
                     UserName = pUserRegisterVM.Email,
                     Email = pUserRegisterVM.Email,
-                    FullName = pUserRegisterVM.FullName
+                    FullName = pUserRegisterVM.FullName,
+                    IsFormDone = false
                 };
                 var user = _userManager.Users.Where(x => x.Email.Equals(pUserRegisterVM.Email)).FirstOrDefault();
                 if (user != null)
@@ -142,7 +143,7 @@ namespace LifeGuideProject.API.Controllers
                     {
                         var appUser = await _userManager.FindByEmailAsync(pUserLoginVM.Email);
                         var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
-                        var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role);
+                        var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role,appUser.IsFormDone);
                         user.Token = GenerateToken(appUser, role);
                         return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla giriş yaptınız.", user));
                     }
