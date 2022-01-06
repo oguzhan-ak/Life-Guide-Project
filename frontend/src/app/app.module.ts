@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { BlogComponent } from './pages/blog/blog.component';
+import { BlogTextComponent } from './pages/blog/blog-text/blog-text.component';
 
 
 export function tokenGetter(){
@@ -43,7 +44,8 @@ export function tokenGetter(){
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    BlogComponent
+    BlogComponent,
+    BlogTextComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

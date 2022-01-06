@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-
 ul{
     list-style: none;
 }
@@ -22,6 +21,8 @@ header{
     top: 0px;
     width: 100%;
     z-index: 1000;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 60px;
 }
 
 .blogcontainer{
