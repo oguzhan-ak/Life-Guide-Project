@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {  Component, Input, OnInit, ViewEncapsulation,Attribute } from '@angular/core';
 
 @Component({
   selector: 'app-blog-text',
@@ -8,10 +8,10 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class BlogTextComponent implements OnInit {
 
-  constructor() { }
-  @Input() title:string;
+  constructor(@Attribute('name') public name: string) { }
+  @Input() titleName:string;
   @Input() text:string;
-  @Input() titleColor:string;
+  @Input() titleClass:string;
   @Input() id:string;
   ngOnInit(): void {
   }
