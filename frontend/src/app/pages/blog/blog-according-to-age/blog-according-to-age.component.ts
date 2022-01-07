@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-blog-text',
-  templateUrl: './blog-text.component.html',
-  styleUrls: ['./blog-text.component.scss']
+  selector: 'app-blog-according-to-age',
+  templateUrl: './blog-according-to-age.component.html',
+  styleUrls: ['./blog-according-to-age.component.scss']
 })
-export class BlogTextComponent implements OnInit {
+export class BlogAccordingToAgeComponent implements OnInit {
 
   constructor() { }
   @Input() titleName:string;
