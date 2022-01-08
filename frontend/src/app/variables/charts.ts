@@ -127,7 +127,7 @@ Chart.elements.Rectangle.prototype.draw = function() {
 
 var mode = 'light';//(themeMode) ? themeMode : 'light';
 var fonts = {
-  base: 'Open Sans'
+  base: 'Poppins'
 }
 
 // Colors

@@ -17,7 +17,7 @@ export class BlogComponent implements OnInit {
   }
   goToLink(tagID:string) {
     var element= document.getElementById(tagID);
-    var headerOffset = 55;
+    var headerOffset = 80;
     var elementPosition = element.getBoundingClientRect().top;
     var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
     window.scrollTo({

@@ -1,57 +1,4 @@
-/*!
 
-=========================================================
-* Argon Dashboard - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2018 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-:root
-{
-    --blue: #5e72e4;
-    --indigo: #5603ad;
-    --purple: #8965e0;
-    --pink: #f3a4b5;
-    --red: #f5365c;
-    --orange: #fb6340;
-    --yellow: #ffd600;
-    --green: #2dce89;
-    --teal: #11cdef;
-    --cyan: #2bffc6;
-    --white: #fff;
-    --gray: #8898aa;
-    --gray-dark: #32325d;
-    --light: #ced4da;
-    --lighter: #e9ecef;
-    --primary: #5e72e4;
-    --secondary: #f7fafc;
-    --success: #2dce89;
-    --info: #11cdef;
-    --warning: #fb6340;
-    --danger: #f5365c;
-    --light: #adb5bd;
-    --dark: #212529;
-    --default: #172b4d;
-    --white: #fff;
-    --neutral: #fff;
-    --darker: black;
-    --breakpoint-xs: 0;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --font-family-sans-serif: Open Sans, sans-serif;
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-}
 
 *,
 *::before,
@@ -62,7 +9,6 @@
 
 html
 {
-    font-family: sans-serif;
     line-height: 1.15;
 
     -webkit-text-size-adjust: 100%;
@@ -90,20 +36,6 @@ section
     display: block;
 }
 
-body
-{
-    font-family: Open Sans, sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-
-    margin: 0;
-
-    text-align: left;
-
-    color: #525f7f;
-    background-color: #f8f9fe;
-}
 
 [tabindex='-1']:focus
 {
@@ -263,7 +195,6 @@ code,
 kbd,
 samp
 {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     font-size: 1em;
 }
 
@@ -342,7 +273,6 @@ select,
 optgroup,
 textarea
 {
-    font-family: inherit;
     font-size: inherit;
     line-height: inherit;
 
@@ -493,7 +423,6 @@ h6,
 .h5,
 .h6
 {
-    font-family: inherit;
     font-weight: 600;
     line-height: 1.5;
 
@@ -7230,7 +7159,6 @@ button.close
 
 .tooltip
 {
-    font-family: Open Sans, sans-serif;
     font-size: .875rem;
     font-weight: 400;
     font-style: normal;
@@ -7377,7 +7305,6 @@ button.close
 
 .popover
 {
-    font-family: Open Sans, sans-serif;
     font-size: .875rem;
     font-weight: 400;
     font-style: normal;
@@ -14417,10 +14344,6 @@ button.bg-darker:focus
     }
 }
 
-.text-monospace
-{
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-}
 
 .text-justify
 {
@@ -16938,7 +16861,6 @@ a.btn-icon-only
 
 .btn-icon-clipboard
 {
-    font-family: inherit;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.25;
@@ -18089,7 +18011,6 @@ textarea[resize='horizontal']
 .has-success:after,
 .has-danger:after
 {
-    font-family: 'NucleoIcons';
     font-size: 9px;
     line-height: 19px;
 
@@ -19211,7 +19132,6 @@ textarea[resize='horizontal']
 }
 .navbar-vertical .navbar-nav .nav-link[data-toggle='collapse']:after
 {
-    font-family: 'Font Awesome 5 Free';
     font-weight: 700;
     font-style: normal;
     font-variant: normal;

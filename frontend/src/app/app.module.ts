@@ -15,12 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { BlogComponent } from './pages/blog/blog.component';
-import { BlogSerebralPalsiComponent } from './pages/blog/blog-serebral-palsi/blog-serebral-palsi.component';
-import { BlogAccordingToAgeComponent } from './pages/blog/blog-according-to-age/blog-according-to-age.component';
 import { BlogTextComponent } from './pages/blog/blog-text/blog-text.component';
-import { BlogOrtezlerComponent } from './pages/blog/blog-ortezler/blog-ortezler.component';
-import { BlogAileEgitimiComponent } from './pages/blog/blog-aile-egitimi/blog-aile-egitimi.component';
-
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -49,11 +44,7 @@ export function tokenGetter(){
     AdminLayoutComponent,
     AuthLayoutComponent,
     BlogComponent,
-    BlogSerebralPalsiComponent,
-    BlogAccordingToAgeComponent,
     BlogTextComponent,
-    BlogOrtezlerComponent,
-    BlogAileEgitimiComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
