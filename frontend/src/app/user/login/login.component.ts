@@ -28,7 +28,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       if(data.responseCode ==1){
         localStorage.setItem(Constants.USER_KEY,JSON.stringify(data.dateSet));
         this.toastrService.success(data.responseMessage);
-        this.router.navigate(["users"]);
+        if(data.dateSet.isFormDone==false){
+          this.router.navigate(["first-form"])
+        }else{
+          this.router.navigate(["dashboard"]);
+        }
       }else{
         this.toastrService.error(data.responseMessage);
       }

@@ -48,10 +48,10 @@
             <span>Support</span>
           </a>
           <div class="dropdown-divider"></div>
-          <!-- <a role="button" (click)="logout()" class="dropdown-item"> -->
+           <a role="button" routerLinkActive="active" [routerLink]="['/login']"  (click)="onLogOut()" class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
-          <!-- </a> -->
+           </a> 
         </div>
       </li>
     </ul>

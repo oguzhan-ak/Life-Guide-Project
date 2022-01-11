@@ -32,8 +32,9 @@ export class RegisterComponent implements OnInit {
     }
     this.shared.Register(fullName,email,password,this.roles.filter(x=> x.isSelected)[0].role).subscribe((data) =>{
       if(data.responseCode ==1){
-        this.router.navigate(["users"]);
         this.toastrService.success(data.responseMessage);
+        this.router.navigate(["first-form"])
+        
       }else{
         if(data.dateSet!=null){
           data.dateSet.forEach(element => {

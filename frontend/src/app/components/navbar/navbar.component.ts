@@ -3,6 +3,7 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
+import { Constants } from 'src/app/Helper/constants';
 
 @Component({
   selector: 'app-navbar',
@@ -32,6 +33,10 @@ export class NavbarComponent implements OnInit {
         }
     }
     return 'Dashboard';
+  }
+  
+  onLogOut(){
+    localStorage.removeItem(Constants.USER_KEY);
   }
 
 }
