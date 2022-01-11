@@ -16,10 +16,6 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { Auth1GuardService } from './guard/guard1/auth1.service';
 import { Auth2GuardService } from './guard/guard2/auth2.service';
 import { BlogComponent } from './pages/blog/blog.component';
-import { BlogSerebralPalsiComponent } from './pages/blog/blog-serebral-palsi/blog-serebral-palsi.component';
-import { BlogYaslaraGoreComponent } from './pages/blog/blog-yaslara-gore/blog-yaslara-gore.component';
-import { BlogOrtezlerComponent } from './pages/blog/blog-ortezler/blog-ortezler.component';
-import { BlogAileEgitimiComponent } from './pages/blog/blog-aile-egitimi/blog-aile-egitimi.component';
 
 const routes: Routes =[
   // Admin Layout
@@ -83,26 +79,8 @@ const routes: Routes =[
     ]
   },
   {
-    path: '',
-    component: BlogComponent,
-    children: [
-      {
-        path: 'serebral-palsi',
-        component:BlogSerebralPalsiComponent
-      },
-      {
-        path: 'yaslara-gore-sp',
-        component:BlogYaslaraGoreComponent
-      },
-      {
-        path: 'ortezler',
-        component:BlogOrtezlerComponent
-      },
-      {
-        path: 'aile-egitimi',
-        component:BlogAileEgitimiComponent
-      }
-    ]
+    path: 'blog',
+    component: BlogComponent
   }
 ];
 

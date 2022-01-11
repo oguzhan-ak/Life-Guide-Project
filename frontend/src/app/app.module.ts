@@ -16,10 +16,6 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogTextComponent } from './pages/blog/blog-text/blog-text.component';
-import { BlogSerebralPalsiComponent } from './pages/blog/blog-serebral-palsi/blog-serebral-palsi.component';
-import { BlogYaslaraGoreComponent } from './pages/blog/blog-yaslara-gore/blog-yaslara-gore.component';
-import { BlogOrtezlerComponent } from './pages/blog/blog-ortezler/blog-ortezler.component';
-import { BlogAileEgitimiComponent } from './pages/blog/blog-aile-egitimi/blog-aile-egitimi.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -48,11 +44,7 @@ export function tokenGetter(){
     AdminLayoutComponent,
     AuthLayoutComponent,
     BlogComponent,
-    BlogTextComponent,
-    BlogSerebralPalsiComponent,
-    BlogYaslaraGoreComponent,
-    BlogOrtezlerComponent,
-    BlogAileEgitimiComponent,
+    BlogTextComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
