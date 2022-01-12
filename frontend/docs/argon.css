@@ -7969,9 +7969,9 @@ button.bg-default:focus
     background-color: #0b1526 !important;
 }
 
-.bg-white
+.bg-navbar
 {
-    background-color: #fff !important;
+    background-color: #f7fafc !important;
 }
 
 a.bg-white:hover,
@@ -14900,11 +14900,6 @@ button.bg-cyan:hover,
 button.bg-cyan:focus
 {
     background-color: #00f7b5 !important;
-}
-
-.bg-white
-{
-    background-color: #fff !important;
 }
 
 a.bg-white:hover,
