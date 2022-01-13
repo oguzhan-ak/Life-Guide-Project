@@ -9,7 +9,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-search"></i></span>
           </div>
-          <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
+          <input class="form-control" placeholder="Ara" type="text" (focus)="focus = true"
           (blur)="focus = false">
         </div>
       </div>
@@ -29,28 +29,28 @@
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
           <div class=" dropdown-header noti-title">
-            <h6 style="text-align: center;" class="text-overflow m-0">Hoşgeldiniz!</h6>
+            <h6 class="text-overflow m-0">Hoşgeldiniz!</h6>
           </div>
           <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-single-02"></i>
-            <span>My profile</span>
+            <span>Profilim</span>
           </a>
           <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-settings-gear-65"></i>
-            <span>Settings</span>
+            <span>Ayarlar</span>
           </a>
           <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-calendar-grid-58"></i>
-            <span>Activity</span>
+            <span>Activiteleri</span>
           </a>
           <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-support-16"></i>
-            <span>Support</span>
+            <span>Destek</span>
           </a>
           <div class="dropdown-divider"></div>
            <a role="button" routerLinkActive="active" [routerLink]="['/login']"  (click)="onLogOut()" class="dropdown-item">
             <i class="ni ni-user-run"></i>
-            <span>Logout</span>
+            <span>Çıkış</span>
            </a> 
         </div>
       </li>

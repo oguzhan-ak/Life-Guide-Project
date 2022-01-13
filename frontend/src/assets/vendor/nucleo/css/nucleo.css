@@ -10326,7 +10326,16 @@ button.bg-darker:focus
 {
     margin-top: -8rem !important;
 }
-
+.mt--9,
+.my--9
+{
+    margin-top: -9rem !important;
+}
+.mt--10,
+.my--10
+{
+    margin-top: -10rem !important;
+}
 .mr--8,
 .mx--8
 {
@@ -10354,6 +10363,16 @@ button.bg-darker:focus
 .my--7
 {
     margin-top: -6rem !important;
+}
+.mt--11,
+.my--11
+{
+    margin-top: -11rem !important;
+}
+.mt--15,
+.my--15
+{
+    margin-top: -15rem !important;
 }
 .mt--23,
 .my--23

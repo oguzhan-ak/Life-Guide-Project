@@ -1,18 +1,18 @@
 
-<div class="header pb-20 pt-5 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+<div class="header pb-5 pt-5 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
   <!-- Header container -->
   <div class="container-fluid align-items-center">
     <div class="row">
-      <div class="col-lg-12 col-md-12">
+      <div class="col-lg-12 col-md-12 mt--8">
         <h1 style="text-align: center;" class="text-white">Merhaba Oğuzhan</h1>
         <p style="text-align: center;" class="text-white mt-0 mb-5">Gelişimini takip edebilmemiz için öncelikle 3 adımdan oluşan aşağıdaki formu eksiksiz ve doğru bir şekilde doldurman gerekiyor</p>
       </div>
     </div>
   </div>
 </div>
-<div class="container-fluid mt--23">
+<div class="container-fluid mt--15">
   <div class="row">
     <div style="margin-bottom: 120px;" class="col-lg-12 col-md-12">
       <div class="card bg-secondary shadow">
@@ -24,42 +24,50 @@
           </div>
         </div>
         <div class="card-body">
-          <form>
-            <h6 class="heading-small text-muted mb-4">User information</h6>
-            <div class="pl-lg-4">
+          <form (ngSubmit)="submit()">
+            <h6 *ngIf="step == 1" class="heading-small text-muted mb-4">Kullanıcı Bilgileri (Adım 1)</h6>
+            <div *ngIf="step == 1" class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Username</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                    <label class="form-control-label" for="ilk-kayit-ilk-ad">İlk Ad*</label>
+                    <input type="text" id="ilk-kayit-ilk-ad" class="form-control form-control-alternative" placeholder="İlk adınızı giriniz">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-email">Email address</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                    <label class="form-control-label" for="ilk-kayit-ikinci-ad">İkinci Ad</label>
+                    <input type="text" id="ilk-kayit-ikinci-ad" class="form-control form-control-alternative" placeholder="İkinci adınızı giriniz">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">First name</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                    <label class="form-control-label" for="ilk-kayit-soyad">Soyad*</label>
+                    <input type="text" id="ilk-kayit-soyad" class="form-control form-control-alternative" placeholder="Soyadı giriniz">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Last name</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                    <label class="form-control-label" for="ilk-kayit-dogum-tarihi">Doğum Tarihi*</label>
+                    <input type="date" id="ilk-kayit-dogum-tarihi" class="form-control form-control-alternative" placeholder="Doğum tarihini giriniz">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <label class="form-control-label">Cinsiyet*</label>
+                  <div class="custom-control custom-control-alternative custom-radio mb-3" *ngFor="let cinsiyet of cinsiyetler;let index=index">
+                    <input name="cinsiyet" class="custom-control-input" id="{{index}}" type="radio" [checked]="cinsiyet.isSelected" (change)="onCinsiyetChange(cinsiyet.cinsiyet)">
+                    <label class="custom-control-label" for="{{index}}">{{cinsiyet.cinsiyet}}</label>
                   </div>
                 </div>
               </div>
             </div>
-            <hr class="my-4" />
             <!-- Address -->
-            <h6 class="heading-small text-muted mb-4">Contact information</h6>
-            <div class="pl-lg-4">
+            <h6 *ngIf="step == 2" class="heading-small text-muted mb-4">İletişim Bilgileri (Adım 2)</h6>
+            <div *ngIf="step == 2" class="pl-lg-4">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -83,20 +91,34 @@
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-country">Postal code</label>
+                    <label class="form-control-label" for="input-postal-code">Postal code</label>
                     <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
                   </div>
                 </div>
               </div>
             </div>
-            <hr class="my-4" />
             <!-- Description -->
-            <h6 class="heading-small text-muted mb-4">About me</h6>
-            <div class="pl-lg-4">
+            <h6 *ngIf="step == 3" class="heading-small text-muted mb-4">Hakkımda (Adım 3)</h6>
+            <div *ngIf="step == 3" class="pl-lg-4">
               <div class="form-group">
                 <label>About Me</label>
-                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                <textarea name="hakkında" rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
               </div>
+            </div>
+            <!-- Buttons -->
+            <div id="first-form-buttons">
+              <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
+                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                <span class="btn-inner--text">Geri</span>
+              </button>
+              <button *ngIf="step != 3" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+                <span class="btn-inner--text">İleri</span>
+                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+              </button>
+              <button *ngIf="step == 3" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+                <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+                <span class="btn-inner--text">Gönder</span>
+              </button>
             </div>
           </form>
         </div>

@@ -15,22 +15,18 @@ export class RegisterComponent implements OnInit {
   public roles: Role[]=[]
 
   register(registerForm){
-    let fullName= registerForm.value.FullName;
     let email= registerForm.value.UserEmail;
     let password= registerForm.value.UserPassword;
-    if(fullName==""){
-      this.toastrService.error("Enter your full name.");
-    }
     if(email==""){
       this.toastrService.error("Enter your email.");
     }
     if(password==""){
       this.toastrService.error("Enter your password.");
     }
-    if(fullName == "" || email == "" || password ==""){
+    if(email == "" || password ==""){
       return;
     }
-    this.shared.Register(fullName,email,password,this.roles.filter(x=> x.isSelected)[0].role).subscribe((data) =>{
+    this.shared.Register(email,password,this.roles.filter(x=> x.isSelected)[0].role).subscribe((data) =>{
       if(data.responseCode ==1){
         this.toastrService.success(data.responseMessage);
         this.router.navigate(["first-form"])
@@ -52,13 +48,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  getRoles()
-  {
-    this.shared.getRoles().subscribe(roles => {
-      this.roles=roles;
-      this.roles[1].isSelected=true;
-    })
-  }
+  
 
   onRoleChange(role : string)
   {
@@ -75,7 +65,7 @@ export class RegisterComponent implements OnInit {
   constructor(private router : Router,private shared:SharedService, private toastrService: ToastrService) { }
 
   ngOnInit() {
-    this.getRoles();
+    
   }
 
 }

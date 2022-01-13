@@ -24,9 +24,8 @@ export class SharedService {
     };
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/Login',body);
   }
-  public Register(fullname :string,email:string,password:string,role:string){
+  public Register(email:string,password:string,role:string){
     const body= {
-      FullName:fullname,
       Email:email,
       Password:password,
       Role : role
@@ -44,7 +43,7 @@ export class SharedService {
         let userList= new Array<User>();
         if(res.dateSet){
           res.dateSet.map((x:User) =>{
-            userList.push(new User(x.fullName,x.email,x.userName,x.role));
+            userList.push(new User(x.email,x.userName,x.role));
           });
         }
         return userList;

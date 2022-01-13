@@ -102,7 +102,6 @@ namespace LifeGuideProject.API.Controllers
                 {
                     UserName = pUserRegisterVM.Email,
                     Email = pUserRegisterVM.Email,
-                    FullName = pUserRegisterVM.FullName,
                     IsFormDone = false
                 };
                 var user = _userManager.Users.Where(x => x.Email.Equals(pUserRegisterVM.Email)).FirstOrDefault();
