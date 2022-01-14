@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cinsiyet } from 'src/app/Models/cinsiyet';
+declare var $:any;
 
 @Component({
   selector: 'app-user-first-login-form',
