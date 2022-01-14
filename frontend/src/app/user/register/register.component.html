@@ -38,7 +38,7 @@
               <input name="role" class="custom-control-input" id="{{index}}" type="radio" [checked]="role.isSelected" (change)="onRoleChange(role.role)">
               <label class="custom-control-label" for="{{index}}">{{role.role}}</label>
             </div>
-            <div class="text-muted font-italic"><small>Şifre gücü: <span class="text-success font-weight-700">strong</span></small></div>
+            <div class="text-muted font-italic"><small>Şifre gücü: <span class="text-success font-weight-700">güçlü</span></small></div>
             <div class="row my-4">
               <div class="col-12">
                 <!-- <div class="custom-control custom-control-alternative custom-checkbox">
@@ -51,7 +51,7 @@
             </div>
             <div *ngIf="invalidRegister" class="alert alert-danger">{{registerErrorMessage}}</div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary mt-4" type="submit">Create account</button>
+              <button type="button" class="btn btn-primary mt-4" type="submit">Kayıt ol</button>
             </div>
           </form>
         </div>

@@ -26,7 +26,7 @@ export class UserFirstLoginFormComponent implements OnInit {
   }
 
   submit(){
-    if(this.step!=3){
+    if(this.step!=4){
       this.step= this.step+1;
     }
   }

@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 mt--8">
         <h1 style="text-align: center;" class="text-white">Merhaba Oğuzhan</h1>
-        <p style="text-align: center;" class="text-white mt-0 mb-5">Gelişimini takip edebilmemiz için öncelikle 3 adımdan oluşan aşağıdaki formu eksiksiz ve doğru bir şekilde doldurman gerekiyor</p>
+        <p style="text-align: center;" class="text-white mt-0 mb-5">Gelişimini takip edebilmemiz için öncelikle 4 adımdan oluşan aşağıdaki formu eksiksiz ve doğru bir şekilde doldurman gerekiyor</p>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                         </div>
-                        <input id="ilk-kayit-dogum-tarihi" class="form-control datepicker" placeholder="Select date" type="text">
+                        <input id="ilk-kayit-dogum-tarihi" class="form-control datepicker" placeholder="Tarih seçiniz" type="text">
                     </div>
                 </div>
                 </div>
@@ -64,7 +64,7 @@
                 <div class="col-lg-6">
                   <label class="form-control-label">Cinsiyet*</label>
                   <div class="custom-control custom-control-alternative custom-radio mb-3" *ngFor="let cinsiyet of cinsiyetler;let index=index">
-                    <input name="cinsiyet" class="custom-control-input" id="{{index}}" type="radio" [checked]="cinsiyet.isSelected" (change)="onCinsiyetChange(cinsiyet.cinsiyet)">
+                    <input name="ilk-kayit-cinsiyet" class="custom-control-input" id="{{index}}" type="radio" [checked]="cinsiyet.isSelected" (change)="onCinsiyetChange(cinsiyet.cinsiyet)">
                     <label class="custom-control-label" for="{{index}}">{{cinsiyet.cinsiyet}}</label>
                   </div>
                 </div>
@@ -76,28 +76,36 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-address">Address</label>
-                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                    <label class="form-control-label" for="ilk-kayit-adres">Adres*</label>
+                    <input id="ilk-kayit-adres" class="form-control form-control-alternative" placeholder="Ev adresinizi giriniz" type="text">
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-city">City</label>
-                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                    <label class="form-control-label" for="ilk-kayit-sehir">Şehir*</label>
+                    <input type="text" id="ilk-kayit-sehir" class="form-control form-control-alternative" placeholder="Şehri giriniz">
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-country">Country</label>
-                    <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                    <label class="form-control-label" for="ilk-kayit-ulke">Ülke*</label>
+                    <input type="text" id="ilk-kayit-ulke" class="form-control form-control-alternative" placeholder="Ülke giriniz">
                   </div>
                 </div>
-                <div class="col-lg-4">
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-postal-code">Postal code</label>
-                    <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                    <label class="form-control-label" for="ilk-kayit-posta-kodu">Posta Kodu*</label>
+                    <input type="number" id="ilk-kayit-posta-kodu" class="form-control form-control-alternative" placeholder="Posta kodunu giriniz">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="ilk-kayit-telefon">Telefon*</label>
+                    <input type="tel" id="ilk-kayit-telefon" class="form-control form-control-alternative" placeholder="Telefon giriniz">
                   </div>
                 </div>
               </div>
@@ -106,8 +114,16 @@
             <h6 *ngIf="step == 3" class="heading-small text-muted mb-4">Hakkımda (Adım 3)</h6>
             <div *ngIf="step == 3" class="pl-lg-4">
               <div class="form-group">
-                <label>About Me</label>
-                <textarea name="hakkında" rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                <label class="form-control-label" for="ilk-kayit-hakkimda">Hakkımda</label>
+                <textarea name="ilk-kayit-hakkimda" rows="4" class="form-control form-control-alternative" placeholder="Bize kendinizden bahsedin"></textarea>
+              </div>
+            </div>
+            <!-- Anket -->
+            <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">Anket (Adım 4)</h6>
+            <div *ngIf="step == 4" class="pl-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="ilk-kayit-hakkimda">Hakkımda</label>
+                <textarea name="ilk-kayit-hakkimda" rows="4" class="form-control form-control-alternative" placeholder="Bize kendinizden bahsedin"></textarea>
               </div>
             </div>
             <!-- Buttons -->
@@ -116,11 +132,11 @@
                 <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
                 <span class="btn-inner--text">Geri</span>
               </button>
-              <button *ngIf="step != 3" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+              <button *ngIf="step != 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
                 <span class="btn-inner--text">İleri</span>
                 <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
               </button>
-              <button *ngIf="step == 3" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+              <button *ngIf="step == 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
                 <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>

@@ -58,9 +58,13 @@ nav.bg-navbar{
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
   <script>
+    $(document).ready(function(){
+      $( "div.datepicker").css("background-color", "yellow");
+    });
     $('body').on('focus',".datepicker", function(){
       $(this).datepicker();
     });
+    
   </script>
 </body>
 </html>

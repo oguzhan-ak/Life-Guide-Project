@@ -7,7 +7,7 @@
 <!-- Page content -->
   <div class="justify-content-center">
     <h1 style="text-align: center;" class="text-white">Hoşgeldiniz!</h1>
-    <p style="text-align: center;" class="text-lead text-light">To manage your progress and account please login. </p>
+    <p style="text-align: center;" class="text-lead text-light">İlerlemenizi görmek için lütfen giriş yapın. </p>
 </div>
 <div class="container pb-5">
   <div class="row justify-content-center">
@@ -15,7 +15,7 @@
       <div class="card bg-secondary shadow border-0">
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
-            <small>Sign in with credentials</small>
+            <small>E-posta ve şifreniz ile giriş yapın</small>
           </div>
           <form #loginForm= "ngForm" (ngSubmit)="login(loginForm)">
             <div class="form-group mb-3">
@@ -23,7 +23,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" placeholder="Email" type="email" name="UserEmail" ngModel>
+                <input class="form-control" placeholder="E-Posta" type="email" name="UserEmail" ngModel>
               </div>
             </div>
             <div class="form-group">
@@ -31,7 +31,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password" name="UserPassword" ngModel>
+                <input class="form-control" placeholder="Şifre" type="password" name="UserPassword" ngModel>
               </div>
             </div>
             <!-- <div class="custom-control custom-control-alternative custom-checkbox">
@@ -42,18 +42,18 @@
             </div> -->
             <div *ngIf="invalidLogin" class="alert alert-danger">{{loginErrorMessage}}</div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4" type="submit">Sign in</button>
+              <button type="button" class="btn btn-primary my-4" type="submit">Giriş</button>
             </div>
           </form>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-6">
-          <a href="javascript:void(0)" class="text-light"><small>Forgot password?</small></a>
+          <a href="javascript:void(0)" class="text-light"><small>Şifremi unuttum ?</small></a>
         </div>
         <div class="col-6 text-right">
           <a class="text-light" routerLinkActive="active" [routerLink]="['/register']">
-            <span class="nav-link-inner--text"><small>Create new account</small></span>
+            <span class="nav-link-inner--text"><small>Kayıt ol !</small></span>
           </a>
         </div>
       </div>

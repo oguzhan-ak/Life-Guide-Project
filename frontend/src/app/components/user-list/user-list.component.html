@@ -5,8 +5,8 @@
     </div>
 </div>
 <div class="justify-content-center">
-  <h1 style="text-align: center;" class="text-white">User List</h1>
-  <p style="text-align: center;" class="text-lead text-light">See the users. </p>
+  <h1 style="text-align: center;" class="text-white">Kulanıcı Listesi</h1>
+  <p style="text-align: center;" class="text-lead text-light">Tüm kullanıcıları görün. </p>
 </div>
 <div class="container pb-5">
     <div class="row justify-content-center">
@@ -14,17 +14,15 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">FullName</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">UserName</th>
-                    <th scope="col">Role</th>
+                    <th scope="col">Ad-Soyad</th>
+                    <th scope="col">E-Posta</th>
+                    <th scope="col">Rol</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let user of userList">
                     <td>{{user.fullName}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{user.userName}}</td>
                     <td>{{user.role}}</td>
                   </tr>
                   
