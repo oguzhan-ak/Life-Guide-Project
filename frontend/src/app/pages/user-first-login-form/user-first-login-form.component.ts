@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cinsiyet } from 'src/app/Models/cinsiyet';
-declare var $:any;
+import { CozenKisi } from 'src/app/Models/cinsiyet copy';
 
 @Component({
   selector: 'app-user-first-login-form',
@@ -11,7 +11,8 @@ export class UserFirstLoginFormComponent implements OnInit {
 
   constructor() { }
 
-  step : any =1;
+  step : any = 1;
+  yas:number = 12;
   public cinsiyetler: Cinsiyet[]=[
     {
       cinsiyet:"Erkek",
@@ -19,6 +20,16 @@ export class UserFirstLoginFormComponent implements OnInit {
     },
     {
       cinsiyet:"Kadın",
+      isSelected:false
+    }
+  ]
+  public anket_cozenler: CozenKisi[]=[
+    {
+      cozen:"Çocuk",
+      isSelected:true
+    },
+    {
+      cozen:"Evebeyn",
       isSelected:false
     }
   ]
@@ -44,5 +55,22 @@ export class UserFirstLoginFormComponent implements OnInit {
         x.isSelected=false;
       }
     })
+  }
+  onCozenChange(cozen : string)
+  {
+    this.anket_cozenler.forEach(x=> {
+      if(x.cozen == cozen){
+        x.isSelected=true;
+      }else{
+        x.isSelected=false;
+      }
+    })
+  }
+  findCozenSelected():string{
+    if(this.anket_cozenler[0].isSelected==true){
+      return this.anket_cozenler[0].cozen
+    }else{
+      return this.anket_cozenler[1].cozen
+    }
   }
 }
