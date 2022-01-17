@@ -24,21 +24,21 @@
           </div>
         </div>
         <div class="card-body">
-          <form (ngSubmit)="submit()">
+          <form (ngSubmit)="submit()" [formGroup]="multiStep">
             <!-- Kullanıcı Bilgileri -->
             <h6 *ngIf="step == 1" class="heading-small text-muted mb-4">Kullanıcı Bilgileri (Adım 1)</h6>
-            <div *ngIf="step == 1" class="pl-lg-4">
+            <div *ngIf="step == 1" class="pl-lg-4" formGroupName="userDetails">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-ilk-ad">İlk Ad*</label>
-                    <input type="text" id="ilk-kayit-ilk-ad" class="form-control form-control-alternative" placeholder="İlk adınızı giriniz">
+                    <input type="text" id="ilk-kayit-ilk-ad" formControlName="firstName" class="form-control form-control-alternative" placeholder="İlk adınızı giriniz">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-ikinci-ad">İkinci Ad</label>
-                    <input type="text" id="ilk-kayit-ikinci-ad" class="form-control form-control-alternative" placeholder="İkinci adınızı giriniz">
+                    <input type="text" id="ilk-kayit-ikinci-ad" formControlName="secondName" class="form-control form-control-alternative" placeholder="İkinci adınızı giriniz">
                   </div>
                 </div>
               </div>
@@ -46,17 +46,17 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-soyad">Soyad*</label>
-                    <input type="text" id="ilk-kayit-soyad" class="form-control form-control-alternative" placeholder="Soyadı giriniz">
+                    <input type="text" id="ilk-kayit-soyad" formControlName="lastName" class="form-control form-control-alternative" placeholder="Soyadı giriniz">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <label class="form-control-label" for="ilk-kayit-dogum-tarihi">Doğum Tarihi*</label>
                   <div class="form-group">
-                    <div class="input-group">
+                    <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                         </div>
-                        <input id="ilk-kayit-dogum-tarihi" class="form-control datepicker" placeholder="Tarih seçiniz" type="text">
+                        <input class="form-control datepicker" formControlName="birthDate" placeholder="Tarih seçiniz" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text"/>
                     </div>
                 </div>
                 </div>
@@ -65,19 +65,19 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-kilo">Kilo(kg)*</label>
-                    <input type="text" id="ilk-kayit-kilo" class="form-control form-control-alternative" placeholder="Örnek : 76.5">
+                    <input type="text" id="ilk-kayit-kilo" formControlName="weight" class="form-control form-control-alternative" placeholder="Örnek : 76.5">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-boy">Boy(cm)*</label>
-                    <input type="text" id="ilk-kayit-boy" class="form-control form-control-alternative" placeholder="Örnek : 186">
+                    <input type="text" id="ilk-kayit-boy" formControlName="height" class="form-control form-control-alternative" placeholder="Örnek : 186">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <label class="form-control-label">Cinsiyet*</label>
                   <div class="custom-control custom-control-alternative custom-radio mb-3" *ngFor="let cinsiyet of cinsiyetler;let index=index">
-                    <input name="ilk-kayit-cinsiyet" class="custom-control-input" id="{{index}}" type="radio" [checked]="cinsiyet.isSelected" (change)="onCinsiyetChange(cinsiyet.cinsiyet)">
+                    <input name="gender" class="custom-control-input" id="{{index}}" formControlName="gender" type="radio" [checked]="cinsiyet.isSelected" [value]="cinsiyet.cinsiyet" (change)="onCinsiyetChange(cinsiyet.cinsiyet)">
                     <label class="custom-control-label" for="{{index}}">{{cinsiyet.cinsiyet}}</label>
                   </div>
                 </div>
@@ -85,12 +85,12 @@
             </div>
             <!-- Adres -->
             <h6 *ngIf="step == 2" class="heading-small text-muted mb-4">İletişim Bilgileri (Adım 2)</h6>
-            <div *ngIf="step == 2" class="pl-lg-4">
+            <div *ngIf="step == 2" class="pl-lg-4" formGroupName="contactDetails">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-adres">Adres*</label>
-                    <input id="ilk-kayit-adres" class="form-control form-control-alternative" placeholder="Ev adresinizi giriniz" type="text">
+                    <input id="ilk-kayit-adres" formControlName="address" class="form-control form-control-alternative" placeholder="Ev adresinizi giriniz" type="text">
                   </div>
                 </div>
               </div>
@@ -98,13 +98,13 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-sehir">Şehir*</label>
-                    <input type="text" id="ilk-kayit-sehir" class="form-control form-control-alternative" placeholder="Şehri giriniz">
+                    <input type="text" id="ilk-kayit-sehir" formControlName="city" class="form-control form-control-alternative" placeholder="Şehri giriniz">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-ulke">Ülke*</label>
-                    <input type="text" id="ilk-kayit-ulke" class="form-control form-control-alternative" placeholder="Ülke giriniz">
+                    <input type="text" id="ilk-kayit-ulke" formControlName="country" class="form-control form-control-alternative" placeholder="Ülke giriniz">
                   </div>
                 </div>
               </div>
@@ -112,43 +112,43 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-posta-kodu">Posta Kodu*</label>
-                    <input type="number" id="ilk-kayit-posta-kodu" class="form-control form-control-alternative" placeholder="Posta kodunu giriniz">
+                    <input type="number" id="ilk-kayit-posta-kodu" formControlName="postCode" class="form-control form-control-alternative" placeholder="Posta kodunu giriniz">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-telefon">Telefon*</label>
-                    <input type="tel" id="ilk-kayit-telefon" class="form-control form-control-alternative" placeholder="Telefon giriniz">
+                    <input type="tel" id="ilk-kayit-telefon" formControlName="telephone" class="form-control form-control-alternative" placeholder="Telefon giriniz">
                   </div>
                 </div>
               </div>
             </div>
             <!-- Hakkımda -->
             <h6 *ngIf="step == 3" class="heading-small text-muted mb-4">Hakkımda (Adım 3)</h6>
-            <div *ngIf="step == 3" class="pl-lg-4">
+            <div *ngIf="step == 3" class="pl-lg-4" formGroupName="aboutMe">
               <div class="form-group">
                 <label class="form-control-label" for="ilk-kayit-hakkimda">Hakkımda</label>
-                <textarea name="ilk-kayit-hakkimda" rows="4" class="form-control form-control-alternative" placeholder="Bize kendinizden bahsedin"></textarea>
+                <textarea name="ilk-kayit-hakkimda" formControlName="aboutMeText" rows="4" class="form-control form-control-alternative" placeholder="Bize kendinizden bahsedin"></textarea>
               </div>
             </div>
             <!-- Anket -->
             <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">Anket (Adım 4)</h6>
             <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">Lütfen aşağıdakileri okuyun ve çocuğunuzun hareket kabiliyetlerini en iyi temsil eden açıklamanın yanındaki kutuyu
               işaretleyin</h6>
-            <hr/>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18)" class="row">
+            <hr *ngIf="step == 4"/>
+            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18)" class="row" formGroupName="survey">
               <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-6">
                 <div>Anketi kim dolduruyor ?</div>
               </div>
               <div style="justify-content: center; align-items: center;" class="col-lg-6">
                 <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5" *ngFor="let cozen of anket_cozenler;let index=index">
-                  <input name="ilk_kayit_cozen" class="custom-control-input" id="{{index}}" [checked]="cozen.isSelected" type="radio" (change)="onCozenChange(cozen.cozen)">
+                  <input name="ilk_kayit_cozen" formControlName="solver" class="custom-control-input" id="{{index}}" [checked]="cozen.isSelected" type="radio" [value]="cozen.cozen" (change)="onCozenChange(cozen.cozen)">
                   <label class="custom-control-label" for="{{index}}"> {{cozen.cozen}}</label>
                 </div>
               </div>
             </div>
             <hr *ngIf="(step == 4) && (yas >= 12) && (yas < 18)"/>
-            <div *ngIf="(step == 4) && (yas >= 0) && (yas < 2)" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div *ngIf="(step == 4) && (yas >= 0) && (yas < 2)" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -158,11 +158,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" class="custom-control-input" id="ilk-kayit-soru-1-0" value="Evet" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" class="custom-control-input" id="ilk-kayit-soru-1-1" value="Hayır" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
                   </div>
                 </div>
@@ -177,11 +177,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
                   </div>
                 </div>
@@ -196,11 +196,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
                   </div>
                 </div>
@@ -215,11 +215,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
                   </div>
                 </div>
@@ -234,17 +234,17 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 2) && (yas < 4)" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div *ngIf="(step == 4) && (yas >= 2) && (yas < 4)" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -254,11 +254,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
                   </div>
                 </div>
@@ -273,11 +273,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
                   </div>
                 </div>
@@ -292,11 +292,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
                   </div>
                 </div>
@@ -311,11 +311,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
                   </div>
                 </div>
@@ -330,17 +330,17 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 4) && (yas < 6)" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div *ngIf="(step == 4) && (yas >= 4) && (yas < 6)" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -350,11 +350,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
                   </div>
                 </div>
@@ -369,11 +369,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
                   </div>
                 </div>
@@ -388,11 +388,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
                   </div>
                 </div>
@@ -407,11 +407,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
                   </div>
                 </div>
@@ -426,31 +426,31 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 6) && (yas < 12)" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div *ngIf="(step == 4) && (yas >= 6) && (yas < 12)" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
                 </div>
                 <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut duruşlarını kontrol etmekte zorlanır(ım) <b>ve</b> herhangi bir istemli hareketi kontrol etmekte zorlanır(ım) <b>ve</b> rahatça oturması için özel destekli bir sandalyeye ihtiyaç duyar(ım) <b>ve</b>  hareket etmek için başka bir kişi tarafından kaldırılmalı veya çekilmelidir/çekilmeliyim</label>
+                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut duruşlarını kontrol etmekte zorlanır <b>ve</b> herhangi bir istemli hareketi kontrol etmekte zorlanır <b>ve</b> rahatça oturması için özel destekli bir sandalyeye ihtiyaç duyar <b>ve</b>  hareket etmek için başka bir kişi tarafından kaldırılmalı veya çekilmelidir</label>
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
                   </div>
                 </div>
@@ -461,15 +461,15 @@
                   <div>2</div>
                 </div>
                 <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturabilir, ancak önemli destek olmadan ayakta duramaz veya yürüyemez/yürüyemem <b>ve</b> bu nedenle çoğunlukla evde, okulda ve toplumda tekerlekli sandalyeye güvenir/güvenirim <b>ve</b> genellikle kol ve el fonksiyonunu geliştirmek için ekstra vücut / gövde desteğine ihtiyaç duyar/duyarım <b>ve</b> akülü sandalye kullanarak kendi kendine hareket edebilir/edebilirim</label>
+                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturabilir, ancak önemli destek olmadan ayakta duramaz veya yürüyemez <b>ve</b> bu nedenle çoğunlukla evde, okulda ve toplumda tekerlekli sandalyeye güvenir <b>ve</b> genellikle kol ve el fonksiyonunu geliştirmek için ekstra vücut / gövde desteğine ihtiyaç duyar <b>ve</b> akülü sandalye kullanarak kendi kendine hareket edebilir</label>
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
                   </div>
                 </div>
@@ -480,15 +480,15 @@
                   <div>3</div>
                 </div>
                 <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başlarına ayakta durabilir/durabilirim ve sadece bir yürüyüş yardımcısı kullanarak yürüyebilir/yürüyebilirim (örneğin bir yürüteç, tekerlekli yürüteç, koltuk değneği, kanadiyen vs.) <b>ve</b>  merdivenlere tırmanmayı ya da düz olmayan yüzeylerde yürümeyi zor bulur/bulurum <b>ve</b> uzun mesafelerde veya kalabalık içinde gezerken tekerlekli sandalye kullanabilir/kullanabilirim </label>
+                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başlarına ayakta durabilir ve sadece bir yürüyüş yardımcısı kullanarak yürüyebilir (örneğin bir yürüteç, tekerlekli yürüteç, koltuk değneği, kanadiyen vs.) <b>ve</b>  merdivenlere tırmanmayı ya da düz olmayan yüzeylerde yürümeyi zor bulur <b>ve</b> uzun mesafelerde veya kalabalık içinde gezerken tekerlekli sandalye kullanabilir </label>
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
                   </div>
                 </div>
@@ -499,15 +499,15 @@
                   <div>4</div>
                 </div>
                 <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüme yardımcıları kullanmadan kendi başına yürüyebilir/yürüyebilirim, ancak merdivenlerden yukarı çıkarken veya aşağı inerken tırabzandan tutmalıdır/tutmalıyım <b>ve</b> genellikle düz olmayan yüzeylerde, eğimli yerlerde veya kalabalıkta yürümeyi zor bulur/bulurum</label>
+                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüme yardımcıları kullanmadan kendi başına yürüyebilir, ancak merdivenlerden yukarı çıkarken veya aşağı inerken tırabzandan tutmalıdır <b>ve</b> genellikle düz olmayan yüzeylerde, eğimli yerlerde veya kalabalıkta yürümeyi zor bulur</label>
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
                   </div>
                 </div>
@@ -518,21 +518,21 @@
                   <div>5</div>
                 </div>
                 <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüyüş yardımcılarını kullanmadan kendi başına yürüyebilir/yürüyebilirim ve tırabzan tutmaya gerek kalmadan merdivenlerden yukarı çıkabilir/çıkabilirim veya aşağı inebilir/inebilirim <b>ve</b> nereye gitmek isterse yürür/yürürüm (düzensiz yüzeyler, eğimler veya kalabalıklar dahil) <b>ve</b> hızı, dengesi ve koordinasyonu biraz sınırlı olmasına rağmen koşabilir/koşabilirim ve atlayabilir/atlayabilirim</label>
+                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüyüş yardımcılarını kullanmadan kendi başına yürüyebilir ve tırabzan tutmaya gerek kalmadan merdivenlerden yukarı çıkabilir veya aşağı inebilir <b>ve</b> nereye gitmek isterse yürür (düzensiz yüzeyler, eğimler veya kalabalıklar dahil) <b>ve</b> hızı, dengesi ve koordinasyonu biraz sınırlı olmasına rağmen koşabilir ve atlayabilir</label>
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Çocuk')" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Çocuk')" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -542,11 +542,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
                   </div>
                 </div>
@@ -561,11 +561,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
                   </div>
                 </div>
@@ -580,11 +580,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
                   </div>
                 </div>
@@ -599,11 +599,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
+                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
                   </div>
                 </div>
@@ -618,17 +618,17 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Evebeyn')" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Evebeyn')" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -638,11 +638,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
+                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
                   </div>
                 </div>
@@ -657,11 +657,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
+                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
                   </div>
                 </div>
@@ -676,11 +676,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
+                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
                   </div>
                 </div>
@@ -695,11 +695,11 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-4" formControlName="thirdQuestion" value="Evet" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
+                    <input name="ilk-kayit-soru-4" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
                   </div>
                 </div>
@@ -714,17 +714,17 @@
                 </div>
                 <div style="justify-content: center; align-items: center;" class="col-lg-3">
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
                   </div>
                   <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
+                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
                     <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
                   </div>
                 </div>
               </div>
             </div>
-            <hr/>
+            <hr *ngIf="step == 4"/>
             <!-- Buttons -->
             <div id="first-form-buttons">
               <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
@@ -739,6 +739,11 @@
                 <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>
+              <pre>
+                {{multiStep.value.userDetails | json}}
+                {{yas}}
+              </pre>
+              
             </div>
           </form>
         </div>

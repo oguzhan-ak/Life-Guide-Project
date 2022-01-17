@@ -674,6 +674,9 @@
           startYear = viewDate.clone().subtract(5, 'y'),
           endYear = viewDate.clone().add(6, 'y'),
           html = '';
+        console.log(maxDate)
+        console.log(endYear)
+        console.log(startYear)
 
         yearsViewHeader.eq(0).find('span').attr('title', options.tooltips.prevDecade);
         yearsViewHeader.eq(1).attr('title', options.tooltips.selectDecade);
