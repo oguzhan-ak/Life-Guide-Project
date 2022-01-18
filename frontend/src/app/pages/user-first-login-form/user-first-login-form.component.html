@@ -24,21 +24,24 @@
           </div>
         </div>
         <div class="card-body">
-          <form (ngSubmit)="submit()" [formGroup]="multiStep">
+          <form (ngSubmit)="submit()" [formGroup]="multiStep1" *ngIf="step == 1">
             <!-- Kullanıcı Bilgileri -->
             <h6 *ngIf="step == 1" class="heading-small text-muted mb-4">Kullanıcı Bilgileri (Adım 1)</h6>
-            <div *ngIf="step == 1" class="pl-lg-4" formGroupName="userDetails">
+            <div *ngIf="step == 1" class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-ilk-ad">İlk Ad*</label>
-                    <input type="text" id="ilk-kayit-ilk-ad" formControlName="firstName" class="form-control form-control-alternative" placeholder="İlk adınızı giriniz">
+                    <label class="form-control-label">İlk Ad*</label>
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" formControlName="firstName" class="form-control" placeholder="İlk adınızı giriniz" [ngClass]="{ 'is-invalid': submitted1 && f1.firstName.errors }">
+                    <div *ngIf="submitted1 && f1.firstName.errors" class="invalid-feedback">
+                      <div *ngIf="f1.firstName.errors.required">İlk adınızı lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-ikinci-ad">İkinci Ad</label>
-                    <input type="text" id="ilk-kayit-ikinci-ad" formControlName="secondName" class="form-control form-control-alternative" placeholder="İkinci adınızı giriniz">
+                    <input type="text" id="ilk-kayit-ikinci-ad" formControlName="secondName" class="form-control" placeholder="İkinci adınızı giriniz">
                   </div>
                 </div>
               </div>
@@ -46,32 +49,44 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-soyad">Soyad*</label>
-                    <input type="text" id="ilk-kayit-soyad" formControlName="lastName" class="form-control form-control-alternative" placeholder="Soyadı giriniz">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-soyad" formControlName="lastName" class="form-control" placeholder="Soyadı giriniz" [ngClass]="{ 'is-invalid': submitted1 && f1.lastName.errors }">
+                    <div *ngIf="submitted1 && f1.lastName.errors" class="invalid-feedback">
+                      <div *ngIf="f1.lastName.errors.required">Soyadınızı lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <label class="form-control-label" for="ilk-kayit-dogum-tarihi">Doğum Tarihi*</label>
                   <div class="form-group">
-                    <div class="input-group input-group-alternative">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                        </div>
-                        <input class="form-control datepicker" formControlName="birthDate" placeholder="Tarih seçiniz" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text"/>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                      </div>
+                      <input style="border-bottom-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" class="form-control datepicker" formControlName="birthDate" placeholder="Tarih seçiniz" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text" [ngClass]="{ 'is-invalid': submitted1 && f1.birthDate.errors }"/>
+                      <div *ngIf="submitted1 && f1.birthDate.errors" class="invalid-feedback">
+                        <div *ngIf="f1.birthDate.errors.required">Doğum tarihinizi lütfen seçiniz</div>
+                      </div>
                     </div>
-                </div>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-kilo">Kilo(kg)*</label>
-                    <input type="text" id="ilk-kayit-kilo" formControlName="weight" class="form-control form-control-alternative" placeholder="Örnek : 76.5">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-kilo" formControlName="weight" class="form-control" placeholder="Örnek : 76.5" [ngClass]="{ 'is-invalid': submitted1 && f1.weight.errors }">
+                    <div *ngIf="submitted1 && f1.weight.errors" class="invalid-feedback">
+                      <div *ngIf="f1.weight.errors.required">Kilonuzu lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-boy">Boy(cm)*</label>
-                    <input type="text" id="ilk-kayit-boy" formControlName="height" class="form-control form-control-alternative" placeholder="Örnek : 186">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-boy" formControlName="height" class="form-control" placeholder="Örnek : 186" [ngClass]="{ 'is-invalid': submitted1 && f1.height.errors }">
+                    <div *ngIf="submitted1 && f1.height.errors" class="invalid-feedback">
+                      <div *ngIf="f1.height.errors.required">Boyunuzu lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-4">
@@ -83,28 +98,54 @@
                 </div>
               </div>
             </div>
+            <!-- Buttons -->
+            <div id="first-form-buttons">
+              <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
+                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                <span class="btn-inner--text">Geri</span>
+              </button>
+              <button *ngIf="step != 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+                <span class="btn-inner--text">İleri</span>
+                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+              </button>
+              <button *ngIf="step == 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+                <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+                <span class="btn-inner--text">Gönder</span>
+              </button>
+            </div>
+          </form>
+          <form (ngSubmit)="submit()" [formGroup]="multiStep2" *ngIf="step == 2">
             <!-- Adres -->
             <h6 *ngIf="step == 2" class="heading-small text-muted mb-4">İletişim Bilgileri (Adım 2)</h6>
-            <div *ngIf="step == 2" class="pl-lg-4" formGroupName="contactDetails">
+            <div *ngIf="step == 2" class="pl-lg-4">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-adres">Adres*</label>
-                    <input id="ilk-kayit-adres" formControlName="address" class="form-control form-control-alternative" placeholder="Ev adresinizi giriniz" type="text">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;"  formControlName="address" class="form-control" placeholder="Ev adresinizi giriniz" type="text" [ngClass]="{ 'is-invalid': submitted2 && f2.address.errors }">
+                    <div *ngIf="submitted2 && f2.address.errors" class="invalid-feedback">
+                      <div *ngIf="f2.address.errors.required">Adresi lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-sehir">Şehir*</label>
-                    <input type="text" id="ilk-kayit-sehir" formControlName="city" class="form-control form-control-alternative" placeholder="Şehri giriniz">
+                    <label class="form-control-label" for="ilk-kayit-ulke">Ülke*</label>
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" formControlName="country" class="form-control" placeholder="Ülke giriniz" [ngClass]="{ 'is-invalid': submitted2 && f2.country.errors }">
+                    <div *ngIf="submitted2 && f2.country.errors" class="invalid-feedback">
+                      <div *ngIf="f2.country.errors.required">Ülkeyi lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-ulke">Ülke*</label>
-                    <input type="text" id="ilk-kayit-ulke" formControlName="country" class="form-control form-control-alternative" placeholder="Ülke giriniz">
+                    <label class="form-control-label" for="ilk-kayit-sehir">Şehir*</label>
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" formControlName="city" class="form-control" placeholder="Şehri giriniz" [ngClass]="{ 'is-invalid': submitted2 && f2.city.errors }">
+                    <div *ngIf="submitted2 && f2.city.errors" class="invalid-feedback">
+                      <div *ngIf="f2.city.errors.required">Şehri lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -112,31 +153,81 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-posta-kodu">Posta Kodu*</label>
-                    <input type="number" id="ilk-kayit-posta-kodu" formControlName="postCode" class="form-control form-control-alternative" placeholder="Posta kodunu giriniz">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="number" formControlName="postCode" class="form-control" placeholder="Posta kodunu giriniz" [ngClass]="{ 'is-invalid': submitted2 && f2.postCode.errors }">
+                    <div *ngIf="submitted2 && f2.postCode.errors" class="invalid-feedback">
+                      <div *ngIf="f2.postCode.errors.required">Posta kodunu lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-telefon">Telefon*</label>
-                    <input type="tel" id="ilk-kayit-telefon" formControlName="telephone" class="form-control form-control-alternative" placeholder="Telefon giriniz">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="tel" formControlName="telephone" class="form-control" placeholder="Telefon giriniz" [ngClass]="{ 'is-invalid': submitted2 && f2.telephone.errors }">
+                    <div *ngIf="submitted2 && f2.telephone.errors" class="invalid-feedback">
+                      <div *ngIf="f2.telephone.errors.required">Telefonu lütfen giriniz</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- Buttons -->
+            <div id="first-form-buttons">
+              <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
+                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                <span class="btn-inner--text">Geri</span>
+              </button>
+              <button *ngIf="step != 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+                <span class="btn-inner--text">İleri</span>
+                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+              </button>
+              <button *ngIf="step == 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+                <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+                <span class="btn-inner--text">Gönder</span>
+              </button>
+              <pre>
+                {{multiStep1.get('firstName').value}}
+                {{multiStep1.get('birthDate').value}}
+                {{yas}}
+              </pre>
+            </div>
+          </form>
+          <form (ngSubmit)="submit()" [formGroup]="multiStep3" *ngIf="step == 3">
             <!-- Hakkımda -->
             <h6 *ngIf="step == 3" class="heading-small text-muted mb-4">Hakkımda (Adım 3)</h6>
-            <div *ngIf="step == 3" class="pl-lg-4" formGroupName="aboutMe">
+            <div *ngIf="step == 3" class="pl-lg-4">
               <div class="form-group">
                 <label class="form-control-label" for="ilk-kayit-hakkimda">Hakkımda</label>
-                <textarea name="ilk-kayit-hakkimda" formControlName="aboutMeText" rows="4" class="form-control form-control-alternative" placeholder="Bize kendinizden bahsedin"></textarea>
+                <textarea style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" name="ilk-kayit-hakkimda" formControlName="aboutMeText" rows="4" class="form-control" placeholder="Bize kendinizden bahsedin"></textarea>
               </div>
             </div>
+            <!-- Buttons -->
+            <div id="first-form-buttons">
+              <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
+                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                <span class="btn-inner--text">Geri</span>
+              </button>
+              <button *ngIf="step != 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+                <span class="btn-inner--text">İleri</span>
+                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+              </button>
+              <button *ngIf="step == 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+                <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+                <span class="btn-inner--text">Gönder</span>
+              </button>
+              <pre>
+                {{multiStep1.get('firstName').value}}
+                {{multiStep1.get('birthDate').value}}
+                {{yas}}
+              </pre>
+            </div>
+          </form>
+          <form (ngSubmit)="submit()" [formGroup]="multiStep4" *ngIf="step == 4">
             <!-- Anket -->
             <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">Anket (Adım 4)</h6>
             <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">Lütfen aşağıdakileri okuyun ve çocuğunuzun hareket kabiliyetlerini en iyi temsil eden açıklamanın yanındaki kutuyu
               işaretleyin</h6>
             <hr *ngIf="step == 4"/>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18)" class="row" formGroupName="survey">
+            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18)" class="row">
               <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-6">
                 <div>Anketi kim dolduruyor ?</div>
               </div>
@@ -148,7 +239,7 @@
               </div>
             </div>
             <hr *ngIf="(step == 4) && (yas >= 12) && (yas < 18)"/>
-            <div *ngIf="(step == 4) && (yas >= 0) && (yas < 2)" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
+            <div *ngIf="(step == 4) && (yas >= 0) && (yas < 2)" class="pl-lg-4 pb-lg-4 pr-lg-4">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -244,7 +335,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 2) && (yas < 4)" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
+            <div *ngIf="(step == 4) && (yas >= 2) && (yas < 4)" class="pl-lg-4 pb-lg-4 pr-lg-4">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -340,7 +431,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 4) && (yas < 6)" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
+            <div *ngIf="(step == 4) && (yas >= 4) && (yas < 6)" class="pl-lg-4 pb-lg-4 pr-lg-4">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -436,7 +527,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 6) && (yas < 12)" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
+            <div *ngIf="(step == 4) && (yas >= 6) && (yas < 12)" class="pl-lg-4 pb-lg-4 pr-lg-4">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -532,7 +623,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Çocuk')" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
+            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Çocuk')" class="pl-lg-4 pb-lg-4 pr-lg-4">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -628,7 +719,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Evebeyn')" class="pl-lg-4 pb-lg-4 pr-lg-4" formGroupName="survey">
+            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Evebeyn')" class="pl-lg-4 pb-lg-4 pr-lg-4">
               <div class="row">
                 <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
                   <div>1</div>
@@ -740,7 +831,8 @@
                 <span class="btn-inner--text">Gönder</span>
               </button>
               <pre>
-                {{multiStep.value.userDetails | json}}
+                {{multiStep1.get('firstName').value}}
+                {{multiStep1.get('birthDate').value}}
                 {{yas}}
               </pre>
               
