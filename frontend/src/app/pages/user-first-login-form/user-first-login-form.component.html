@@ -64,7 +64,9 @@
                       </div>
                       <input style="border-bottom-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" class="form-control datepicker" formControlName="birthDate" placeholder="Tarih seçiniz" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text" [ngClass]="{ 'is-invalid': submitted1 && f1.birthDate.errors }"/>
                       <div *ngIf="submitted1 && f1.birthDate.errors" class="invalid-feedback">
-                        <div *ngIf="f1.birthDate.errors.required">Doğum tarihinizi lütfen seçiniz</div>
+                        <div *ngIf="f1.birthDate.errors.required || multiStep1.get('birthDate').untouched || multiStep1.get('birthDate').value==''">Doğum tarihinizi lütfen seçiniz</div>
+                        <div *ngIf="f1.birthDate.errors.checkDateFormat && multiStep1.get('birthDate').dirty">Doğum tarihinizi YYYY-MM-DD formatında giriniz</div>
+                        <div *ngIf="f1.birthDate.errors.checkDateBigger && multiStep1.get('birthDate').dirty">Seçtiğiniz tarih ileriki bir tarih olamaz</div>
                       </div>
                     </div>
                   </div>
@@ -77,15 +79,18 @@
                     <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-kilo" formControlName="weight" class="form-control" placeholder="Örnek : 76.5" [ngClass]="{ 'is-invalid': submitted1 && f1.weight.errors }">
                     <div *ngIf="submitted1 && f1.weight.errors" class="invalid-feedback">
                       <div *ngIf="f1.weight.errors.required">Kilonuzu lütfen giriniz</div>
+                      <div *ngIf="f1.weight.errors.pattern">Kilonuzu 56.6 veya 56 formatında giriniz</div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-boy">Boy(cm)*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-boy" formControlName="height" class="form-control" placeholder="Örnek : 186" [ngClass]="{ 'is-invalid': submitted1 && f1.height.errors }">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" maxlength="3" id="ilk-kayit-boy" formControlName="height" class="form-control" placeholder="Örnek : 186" [ngClass]="{ 'is-invalid': submitted1 && f1.height.errors }">
                     <div *ngIf="submitted1 && f1.height.errors" class="invalid-feedback">
                       <div *ngIf="f1.height.errors.required">Boyunuzu lütfen giriniz</div>
+                      <div *ngIf="f1.height.errors.pattern">Boyunuzu cm formatında sayıyla giriniz</div>
+                      <div *ngIf="f1.height.errors.maxlength">En fazla 3 haneli sayı girebilirsiniz</div>
                     </div>
                   </div>
                 </div>
@@ -153,19 +158,24 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-posta-kodu">Posta Kodu*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="number" formControlName="postCode" class="form-control" placeholder="Posta kodunu giriniz" [ngClass]="{ 'is-invalid': submitted2 && f2.postCode.errors }">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" pattern="\d*" formControlName="postCode" class="form-control" placeholder="Posta kodunu giriniz 06540" maxlength="5" minlength="5" [ngClass]="{ 'is-invalid': submitted2 && f2.postCode.errors }">
                     <div *ngIf="submitted2 && f2.postCode.errors" class="invalid-feedback">
                       <div *ngIf="f2.postCode.errors.required">Posta kodunu lütfen giriniz</div>
+                      <div *ngIf="f2.postCode.errors.maxlength || f2.postCode.errors.minlength">Posta kodu 5 haneli olmalıdır</div>
+                      <div *ngIf="f2.postCode.errors.pattern">Posta kodu sadece sayılardan oluşmalıdır</div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-telefon">Telefon*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="tel" formControlName="telephone" class="form-control" placeholder="Telefon giriniz" [ngClass]="{ 'is-invalid': submitted2 && f2.telephone.errors }">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="tel" formControlName="telephone" class="form-control" placeholder="Telefon giriniz 0555 555 55 55" maxlength="11" [ngClass]="{ 'is-invalid': submitted2 && f2.telephone.errors }">
                     <div *ngIf="submitted2 && f2.telephone.errors" class="invalid-feedback">
                       <div *ngIf="f2.telephone.errors.required">Telefonu lütfen giriniz</div>
+                      <div *ngIf="f2.telephone.errors.pattern">Telefonu şu formatta giriniz : 05555555555</div>
+                      <div *ngIf="f2.telephone.errors.maxlength">Telefon numarası 11 haneyi aşamaz</div>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -184,11 +194,6 @@
                 <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>
-              <pre>
-                {{multiStep1.get('firstName').value}}
-                {{multiStep1.get('birthDate').value}}
-                {{yas}}
-              </pre>
             </div>
           </form>
           <form (ngSubmit)="submit()" [formGroup]="multiStep3" *ngIf="step == 3">
@@ -214,11 +219,6 @@
                 <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>
-              <pre>
-                {{multiStep1.get('firstName').value}}
-                {{multiStep1.get('birthDate').value}}
-                {{yas}}
-              </pre>
             </div>
           </form>
           <form (ngSubmit)="submit()" [formGroup]="multiStep4" *ngIf="step == 4">
@@ -830,12 +830,6 @@
                 <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>
-              <pre>
-                {{multiStep1.get('firstName').value}}
-                {{multiStep1.get('birthDate').value}}
-                {{yas}}
-              </pre>
-              
             </div>
           </form>
         </div>

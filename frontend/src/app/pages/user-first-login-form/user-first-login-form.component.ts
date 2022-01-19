@@ -3,7 +3,10 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Cinsiyet } from 'src/app/Models/cinsiyet';
 import { CozenKisi } from 'src/app/Models/cinsiyet copy';
 import { DatePipe } from '@angular/common';
+import { SharedService } from 'src/app/shared/shared.service';
+import { ToastrService } from 'ngx-toastr';
 import Validation from 'src/app/utils/validation';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-first-login-form',
   templateUrl: './user-first-login-form.component.html',
@@ -12,7 +15,7 @@ import Validation from 'src/app/utils/validation';
 })
 export class UserFirstLoginFormComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private shared:SharedService,private toastrService : ToastrService,private router : Router) { }
 
   currentDate : string = new Date().toLocaleDateString();
   submitted1=false;
@@ -23,23 +26,23 @@ export class UserFirstLoginFormComponent implements OnInit {
   yas:number;
   multiStep1= this.formBuilder.group({
       firstName : ['',Validators.required],
-      secondName : ['',Validators.required],
+      secondName : [''],
       lastName : ['',Validators.required],
-      birthDate : [Date,Validators.required],
-      weight : ['',Validators.required],
-      height : ['',Validators.required],
+      birthDate : ['',Validators.required],
+      weight : ['',[Validators.required,Validators.pattern("^([1-9][0-9]*)[.]?([0-9]*)$")]],
+      height : ['',[Validators.required,Validators.pattern("^(([1-9][0-9]{2})|([1-9][0-9]{1})|([1-9]))$"), Validators.maxLength(3)]],
       gender : ['Erkek']
     },
     {
-      validators: [Validation.checkDate('birthDate')]
+      validators: [Validation.checkDate('birthDate'),Validation.checkDateBigger('birthDate')]
     }
-    )
+  )
   multiStep2= this.formBuilder.group({
     address : ['',Validators.required],
     city : ['',Validators.required],
     country : ['',Validators.required],
-    postCode : ['',Validators.required],
-    telephone : ['',Validators.required]
+    postCode : ['',[Validators.required, Validators.maxLength(5),Validators.minLength(5)]],
+    telephone : ['',[Validators.required, Validators.pattern("^[0][0-9]{10}$"), Validators.maxLength(11)]]
   })
   multiStep3= this.formBuilder.group({
     aboutMeText: ['']
@@ -99,7 +102,6 @@ export class UserFirstLoginFormComponent implements OnInit {
       if(this.step==1){
         this.submitted1=true;
         if (this.multiStep1.invalid) {
-          console.log("1. de hatalar var")
           return;
         }else{
           this.yas=this.calculateAge();
@@ -108,7 +110,6 @@ export class UserFirstLoginFormComponent implements OnInit {
       }else if(this.step==2){
         this.submitted2=true;
         if (this.multiStep2.invalid) {
-          console.log("2. de hatalar var")
           return;
         }else{
           this.step= this.step+1;
@@ -116,7 +117,6 @@ export class UserFirstLoginFormComponent implements OnInit {
       }else if(this.step==3){
         this.submitted3=true;
         if (this.multiStep3.invalid) {
-          console.log("3. de hatalar var")
           return;
         }else{
           this.step= this.step+1;
@@ -127,7 +127,16 @@ export class UserFirstLoginFormComponent implements OnInit {
       if (this.multiStep4.invalid) {
         return;
       }else{
-        console.log(JSON.stringify(this.multiStep4.value, null, 2));
+        this.shared.FirstForm(this.multiStep1,this.multiStep2,this.multiStep3,this.multiStep4).subscribe((data : any) =>{
+          if(data.responseCode ==1){
+            this.toastrService.success(data.responseMessage);
+            this.router.navigate(["dashboard"]);
+          }else{
+            this.toastrService.error(data.responseMessage);
+          }
+        },error =>{
+          this.toastrService.error(error);
+        });
       }
     }
   }

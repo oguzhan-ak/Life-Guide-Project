@@ -13,7 +13,7 @@ import { User } from '../Models/user';
 })
 export class SharedService {
    
-  constructor( private http:HttpClient, private jwtHelper : JwtHelperService) { }
+  constructor( private http:HttpClient) { }
    
   private readonly apiUrl : string = "http://localhost:5001/api/";
   
@@ -32,7 +32,36 @@ export class SharedService {
     };
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/Register',body);
   }
-
+  public FirstForm(part1:any,part2:any,part3:any,part4:any){
+    const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+    const date=  part1.get('birthDate').value;
+    console.log(typeof(date.year))
+    const body= {
+      firstName:part1.get('firstName').value,
+      secondName:part1.get('secondName').value,
+      lastName : part1.get('lastName').value,
+      birthDateYear : part1.get('birthDate').value.year.toString(),
+      birthDateMonth : part1.get('birthDate').value.month.toString(),
+      birthDateDay : part1.get('birthDate').value.day.toString(),
+      weight : part1.get('weight').value,
+      height : part1.get('height').value,
+      gender : part1.get('gender').value,
+      address : part2.get('address').value,
+      city : part2.get('city').value,
+      country : part2.get('country').value,
+      postCode : part2.get('postCode').value,
+      telephone : part2.get('telephone').value,
+      aboutMeText : part3.get('aboutMeText').value,
+      solver : part4.get('solver').value,
+      firstQuestion : part4.get('firstQuestion').value,
+      secondQuestion : part4.get('secondQuestion').value,
+      thirdQuestion : part4.get('thirdQuestion').value,
+      fourthQuestion : part4.get('fourthQuestion').value,
+      fifthQuestion : part4.get('fifthQuestion').value,
+      userEmail : user.email
+    };
+    return this.http.post<ResponseModel>(this.apiUrl+'Auth/FirstForm',body);
+  }
   public getAllUser(){
     let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY));
     const headers = new HttpHeaders({

@@ -1,47 +1,57 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export default class Validation {
-  static match(controlName: string, checkControlName: string): ValidatorFn {
-    return (controls: AbstractControl) => {
-      const control = controls.get(controlName);
-      const checkControl = controls.get(checkControlName);
-      if (checkControl.errors && !checkControl.errors.matching) {
-        console.log("hata yok")
-        return null;
-      }
-
-      if (control.value !== checkControl.value) {
-        console.log("hata var")
-        controls.get(checkControlName).setErrors({ matching: true });
-        return { matching: true };
-      } else {
-        console.log("hata yok")
-        return null;
-      }
-    };
-  }
   static checkDate(date: string): ValidatorFn {
     return (controls: AbstractControl) => {
       const givendateInput=controls.get(date);
       const givenDate = givendateInput.value;
       if(typeof givenDate == 'object'){
-          console.log("obje")
-          controls.get(date).setErrors({ checkDateFormat: true });
-          return { checkDateFormat: true };
-          
+        return null;  
       }else{
-        console.log('baska')
-         return null;
+        controls.get(date).setErrors({ checkDateFormat: true });
+        return { checkDateFormat: true };
       }
-          
-    
-    //   if (control.value !== checkControl.value) {
-    //     controls.get(checkControlName).setErrors({ matching: true });
-    //     return { matching: true };
-    //   } else {
-    //     return null;
-    //   }
-    return null;
+    };
+  }
+  static checkDateBigger(date: string): ValidatorFn {
+    return (controls: AbstractControl) => {
+      let currentDateObject={
+        "day" : "",
+        "month" : "",
+        "year" : ""
+      }
+      const givendateInput=controls.get(date);
+      const givenDate = givendateInput.value;
+      if(typeof givenDate == 'object'){
+        let currentDate:Date = new Date();
+        currentDateObject.year= currentDate.getFullYear().toString()
+        currentDateObject.month= (currentDate.getMonth()+1).toString()
+        currentDateObject.day= currentDate.getDate().toString()
+        if(givenDate.year > currentDateObject.year){
+          controls.get(date).setErrors({ checkDateBigger: true });
+          return { checkDateBigger: true };
+        }else if(givenDate.year == currentDateObject.year){
+          if(givenDate.month > currentDateObject.month){
+            controls.get(date).setErrors({ checkDateBigger: true });
+            return { checkDateBigger: true };
+          }else if(givenDate.month == currentDateObject.month){
+            if(givenDate.day > currentDateObject.day){
+              controls.get(date).setErrors({ checkDateBigger: true });
+              return { checkDateBigger: true };
+            }else if(givenDate.day == currentDateObject.day){
+              return null;
+            }else{
+              return null
+            }
+          }else{
+            return null
+          }
+        }else{
+          return null
+        }
+      }else{
+        return null;
+      }
     };
   }
 }

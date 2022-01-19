@@ -222,5 +222,16 @@ namespace LifeGuideProject.API.Controllers
                 return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex.Message, null));
             }
         }
+
+        [HttpPost, Route("FirstForm")]
+        public ResponseModel FirstForm(UserFirstFormVM pUserFirstFormVM)
+        {
+            ///// bu fonksiyonu async yapmak zorundayız. 
+            /// önce ayrı bir veri tabanına bu vm i eklicez
+            /// daha sonra usermanager daki method ile kullanıcının isFormDone kısmını güncellicez.
+            return new ResponseModel(ResponseCode.OK, "sdfsdf", null);
+
+        }
+
     }
 }
