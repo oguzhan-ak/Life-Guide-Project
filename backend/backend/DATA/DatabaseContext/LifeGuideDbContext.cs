@@ -17,8 +17,11 @@ namespace LifeGuideProject.API.DATA.DatabaseContext
         {
 
         }
+        public LifeGuideDbContext()
+        {
 
-
+        }
+        public DbSet<FirstForm> firstForms { get; set; }
 
         
     }

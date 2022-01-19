@@ -30,6 +30,7 @@ namespace LifeGuideProject.API.Controllers
         private RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<UserController> _logger;
         private readonly JWTConfig _jWTConfig;
+        LifeGuideDbContext db;
         public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<UserController> logger, IOptions<JWTConfig> jwtConfig
                               , RoleManager<IdentityRole> roleManager)
         {
@@ -38,6 +39,7 @@ namespace LifeGuideProject.API.Controllers
             _logger = logger;
             _jWTConfig = jwtConfig.Value;
             _roleManager = roleManager;
+            db = new LifeGuideDbContext();
         }
 
         [Authorize(Roles ="Admin")]
@@ -224,12 +226,43 @@ namespace LifeGuideProject.API.Controllers
         }
 
         [HttpPost, Route("FirstForm")]
-        public ResponseModel FirstForm(UserFirstFormVM pUserFirstFormVM)
+        public async Task<object> FirstForm(UserFirstFormVM pUserFirstFormVM)
         {
-            ///// bu fonksiyonu async yapmak zorundayız. 
-            /// önce ayrı bir veri tabanına bu vm i eklicez
-            /// daha sonra usermanager daki method ile kullanıcının isFormDone kısmını güncellicez.
-            return new ResponseModel(ResponseCode.OK, "sdfsdf", null);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var user = _userManager.Users.Where(x => x.Email.Equals(pUserFirstFormVM.userEmail)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Lütfen tekrar deneyiniz!", null));
+                    }
+                    user.IsFormDone = true;
+                    var userResult = await _userManager.UpdateAsync(user);
+                    UserDTO returnUser=null;
+                    if (userResult.Succeeded)
+                    {
+                        var appUser = await _userManager.FindByEmailAsync(pUserFirstFormVM.userEmail);
+                        var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
+                        returnUser = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone,"");
+                    }
+                    var firstForm = new FirstForm(pUserFirstFormVM.firstName, pUserFirstFormVM.secondName, pUserFirstFormVM.lastName, pUserFirstFormVM.birthDateYear, pUserFirstFormVM.birthDateMonth
+                        , pUserFirstFormVM.birthDateDay, pUserFirstFormVM.weight, pUserFirstFormVM.height, pUserFirstFormVM.gender, pUserFirstFormVM.address, pUserFirstFormVM.city
+                        , pUserFirstFormVM.country, pUserFirstFormVM.postCode, pUserFirstFormVM.telephone, pUserFirstFormVM.aboutMeText, pUserFirstFormVM.solver, pUserFirstFormVM.firstQuestion
+                        , pUserFirstFormVM.secondQuestion, pUserFirstFormVM.thirdQuestion, pUserFirstFormVM.fourthQuestion, pUserFirstFormVM.fifthQuestion, pUserFirstFormVM.userEmail);
+                    var Formresult = db.firstForms.Add(firstForm);
+                    db.SaveChanges();
+                    if (Formresult != null)
+                    {
+                        return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla formu doldurdunuz.", returnUser));
+                    }
+                }
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Formu işlerken bir hata ile karşılaşıldı!", null));
+            }
+            catch (Exception ex)
+            {
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex.Message, null));
+            }
 
         }
 

@@ -10,15 +10,6 @@ namespace LifeGuideProject.API.ENTITY.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-
-        [Column("UserBirthDate")]
-        public DateTime? UserBirthDate { get; set; }
-        [Column("UserAge")]
-        public long? UserAge { get; set; }
-        [Column("UserHeight")]
-        public double? UserHeight { get; set; }
-        [Column("UserWeight")]
-        public double? UserWeight { get; set; }
         [Column("FullName")]
         public string FullName { get; set; }
         [Column("CreatedTime")]
