@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Cinsiyet } from 'src/app/Models/cinsiyet';
-import { CozenKisi } from 'src/app/Models/cinsiyet copy';
+import { CozenKisi } from 'src/app/Models/cozenkisi';
 import { DatePipe } from '@angular/common';
 import { SharedService } from 'src/app/shared/shared.service';
 import { ToastrService } from 'ngx-toastr';

@@ -12,12 +12,12 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { TablesComponent } from './pages/tables/tables.component';
 import { IconsComponent } from './pages/icons/icons.component';
 import { MapsComponent } from './pages/maps/maps.component';
-import { UserListComponent } from './components/user-list/user-list.component';
 import { Auth1GuardService } from './guard/guard1/auth1.service';
 import { Auth2GuardService } from './guard/guard2/auth2.service';
 import { BlogComponent } from './pages/blog/blog.component';
 import { UserFirstLoginFormComponent } from './pages/user-first-login-form/user-first-login-form.component';
 import { FirstFormGuardGuard } from './guard/firstFormGuard/first-form-guard.guard';
+import { UserListComponent } from './component/user-list/user-list.component';
 
 const routes: Routes =[
   // Admin Layout
