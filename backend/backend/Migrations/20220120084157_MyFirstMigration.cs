@@ -4,10 +4,13 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LifeGuideProject.API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class MyFirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "public");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -27,14 +30,11 @@ namespace LifeGuideProject.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
-                    UserBirthDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    UserAge = table.Column<long>(type: "bigint", nullable: true),
-                    UserHeight = table.Column<double>(type: "double precision", nullable: true),
-                    UserWeight = table.Column<double>(type: "double precision", nullable: true),
                     FullName = table.Column<string>(type: "text", nullable: true),
                     CreatedTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     UpdatedTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    IsFormDone = table.Column<bool>(type: "boolean", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -53,6 +53,41 @@ namespace LifeGuideProject.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FirstForm",
+                schema: "public",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    firstName = table.Column<string>(type: "text", nullable: true),
+                    secondName = table.Column<string>(type: "text", nullable: true),
+                    lastName = table.Column<string>(type: "text", nullable: true),
+                    birthDateYear = table.Column<int>(type: "integer", nullable: false),
+                    birthDateMonth = table.Column<int>(type: "integer", nullable: false),
+                    birthDateDay = table.Column<int>(type: "integer", nullable: false),
+                    weight = table.Column<double>(type: "double precision", nullable: false),
+                    height = table.Column<int>(type: "integer", nullable: false),
+                    gender = table.Column<string>(type: "text", nullable: true),
+                    address = table.Column<string>(type: "text", nullable: true),
+                    city = table.Column<string>(type: "text", nullable: true),
+                    country = table.Column<string>(type: "text", nullable: true),
+                    postCode = table.Column<string>(type: "text", nullable: true),
+                    telephone = table.Column<string>(type: "text", nullable: true),
+                    aboutMeText = table.Column<string>(type: "text", nullable: true),
+                    solver = table.Column<string>(type: "text", nullable: true),
+                    firstQuestion = table.Column<string>(type: "text", nullable: true),
+                    secondQuestion = table.Column<string>(type: "text", nullable: true),
+                    thirdQuestion = table.Column<string>(type: "text", nullable: true),
+                    fourthQuestion = table.Column<string>(type: "text", nullable: true),
+                    fifthQuestion = table.Column<string>(type: "text", nullable: true),
+                    userEmail = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FirstForm", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -215,6 +250,10 @@ namespace LifeGuideProject.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "FirstForm",
+                schema: "public");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

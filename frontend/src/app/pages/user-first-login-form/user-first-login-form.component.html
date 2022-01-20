@@ -76,10 +76,10 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="ilk-kayit-kilo">Kilo(kg)*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-kilo" formControlName="weight" class="form-control" placeholder="Örnek : 76.5" [ngClass]="{ 'is-invalid': submitted1 && f1.weight.errors }">
+                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-kilo" formControlName="weight" class="form-control" placeholder="Örnek : 76,5" [ngClass]="{ 'is-invalid': submitted1 && f1.weight.errors }">
                     <div *ngIf="submitted1 && f1.weight.errors" class="invalid-feedback">
                       <div *ngIf="f1.weight.errors.required">Kilonuzu lütfen giriniz</div>
-                      <div *ngIf="f1.weight.errors.pattern">Kilonuzu 56.6 veya 56 formatında giriniz</div>
+                      <div *ngIf="f1.weight.errors.pattern">Kilonuzu 56,6 veya 56 formatında giriniz</div>
                     </div>
                   </div>
                 </div>

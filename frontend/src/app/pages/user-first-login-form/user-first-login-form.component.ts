@@ -7,6 +7,8 @@ import { SharedService } from 'src/app/shared/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import Validation from 'src/app/utils/validation';
 import { Router } from '@angular/router';
+import { Constants } from 'src/app/Helper/constants';
+import { User } from 'src/app/Models/user';
 @Component({
   selector: 'app-user-first-login-form',
   templateUrl: './user-first-login-form.component.html',
@@ -29,7 +31,7 @@ export class UserFirstLoginFormComponent implements OnInit {
       secondName : [''],
       lastName : ['',Validators.required],
       birthDate : ['',Validators.required],
-      weight : ['',[Validators.required,Validators.pattern("^([1-9][0-9]*)[.]?([0-9]*)$")]],
+      weight : ['',[Validators.required,Validators.pattern("^([1-9][0-9]*)[,]?([0-9]*)$")]],
       height : ['',[Validators.required,Validators.pattern("^(([1-9][0-9]{2})|([1-9][0-9]{1})|([1-9]))$"), Validators.maxLength(3)]],
       gender : ['Erkek']
     },
@@ -130,6 +132,9 @@ export class UserFirstLoginFormComponent implements OnInit {
         this.shared.FirstForm(this.multiStep1,this.multiStep2,this.multiStep3,this.multiStep4).subscribe((data : any) =>{
           if(data.responseCode ==1){
             this.toastrService.success(data.responseMessage);
+            const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+            user.isFormDone=true;
+            localStorage.setItem(Constants.USER_KEY,JSON.stringify(user));
             this.router.navigate(["dashboard"]);
           }else{
             this.toastrService.error(data.responseMessage);

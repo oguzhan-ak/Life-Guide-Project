@@ -26,11 +26,10 @@ export class RegisterComponent implements OnInit {
     if(email == "" || password ==""){
       return;
     }
-    this.shared.Register(email,password,this.roles.filter(x=> x.isSelected)[0].role).subscribe((data) =>{
+    this.shared.Register(email,password,"Admin").subscribe((data) =>{  ///,this.roles.filter(x=> x.isSelected)[0].role parametrede bu vardı
       if(data.responseCode ==1){
         this.toastrService.success(data.responseMessage);
         this.router.navigate(["first-form"])
-        
       }else{
         if(data.dateSet!=null){
           data.dateSet.forEach(element => {

@@ -50,6 +50,10 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("IsActive");
 
+                    b.Property<bool>("IsFormDone")
+                        .HasColumnType("boolean")
+                        .HasColumnName("IsFormDone");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
@@ -83,25 +87,9 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("UpdatedTime");
 
-                    b.Property<long?>("UserAge")
-                        .HasColumnType("bigint")
-                        .HasColumnName("UserAge");
-
-                    b.Property<DateTime?>("UserBirthDate")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("UserBirthDate");
-
-                    b.Property<double?>("UserHeight")
-                        .HasColumnType("double precision")
-                        .HasColumnName("UserHeight");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
-
-                    b.Property<double?>("UserWeight")
-                        .HasColumnType("double precision")
-                        .HasColumnName("UserWeight");
 
                     b.HasKey("Id");
 
@@ -113,6 +101,84 @@ namespace LifeGuideProject.API.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("LifeGuideProject.API.ENTITY.Entities.FirstForm", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("aboutMeText")
+                        .HasColumnType("text");
+
+                    b.Property<string>("address")
+                        .HasColumnType("text");
+
+                    b.Property<int>("birthDateDay")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("birthDateMonth")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("birthDateYear")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("city")
+                        .HasColumnType("text");
+
+                    b.Property<string>("country")
+                        .HasColumnType("text");
+
+                    b.Property<string>("fifthQuestion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("firstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("firstQuestion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("fourthQuestion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("gender")
+                        .HasColumnType("text");
+
+                    b.Property<int>("height")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("postCode")
+                        .HasColumnType("text");
+
+                    b.Property<string>("secondName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("secondQuestion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("solver")
+                        .HasColumnType("text");
+
+                    b.Property<string>("telephone")
+                        .HasColumnType("text");
+
+                    b.Property<string>("thirdQuestion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("userEmail")
+                        .HasColumnType("text");
+
+                    b.Property<double>("weight")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("id");
+
+                    b.ToTable("FirstForm", "public");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

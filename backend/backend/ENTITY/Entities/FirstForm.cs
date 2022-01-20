@@ -32,6 +32,9 @@ namespace LifeGuideProject.API.ENTITY.Entities
             this.fifthQuestion = fifthQuestion;
             this.userEmail = userEmail;
         }
+        public FirstForm()
+        {
+        }
 
         [Key]
         public int id { get; set; }

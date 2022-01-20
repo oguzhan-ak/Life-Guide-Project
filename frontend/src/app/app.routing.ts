@@ -17,6 +17,7 @@ import { Auth1GuardService } from './guard/guard1/auth1.service';
 import { Auth2GuardService } from './guard/guard2/auth2.service';
 import { BlogComponent } from './pages/blog/blog.component';
 import { UserFirstLoginFormComponent } from './pages/user-first-login-form/user-first-login-form.component';
+import { FirstFormGuardGuard } from './guard/firstFormGuard/first-form-guard.guard';
 
 const routes: Routes =[
   // Admin Layout
@@ -80,7 +81,7 @@ const routes: Routes =[
       {
         path: 'first-form',
         component:UserFirstLoginFormComponent,
-        canActivate:[Auth1GuardService]
+        canActivate:[FirstFormGuardGuard]
       }
     ]
   },

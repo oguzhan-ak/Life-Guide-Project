@@ -32,14 +32,14 @@ namespace LifeGuideProject.API.Controllers
         private readonly JWTConfig _jWTConfig;
         LifeGuideDbContext db;
         public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<UserController> logger, IOptions<JWTConfig> jwtConfig
-                              , RoleManager<IdentityRole> roleManager)
+                              , RoleManager<IdentityRole> roleManager, LifeGuideDbContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _jWTConfig = jwtConfig.Value;
             _roleManager = roleManager;
-            db = new LifeGuideDbContext();
+            this.db = db;
         }
 
         [Authorize(Roles ="Admin")]

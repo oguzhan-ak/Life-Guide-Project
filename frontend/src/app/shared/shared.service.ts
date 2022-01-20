@@ -32,10 +32,45 @@ export class SharedService {
     };
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/Register',body);
   }
+  
+  public getAllUser(){
+    let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY));
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${ userInfo?.token}`
+    });
+    return this.http.get<ResponseModel>(this.apiUrl+'Auth/GetUsers',{headers:headers}).pipe(map(res => {
+      if(res.responseCode==ResponseCode.OK){
+        let userList= new Array<User>();
+        if(res.dateSet){
+          res.dateSet.map((x:User) =>{
+            userList.push(new User(x.email,x.userName,x.role,x.isFormDone,""));
+          });
+        }
+        return userList;
+      }
+    }));
+  }
+  
+  public getRoles(){
+    let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY));
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${ userInfo?.token}`
+    });
+    return this.http.get<ResponseModel>(this.apiUrl+'Auth/GetRoles',{headers:headers}).pipe(map(res => {
+      if(res.responseCode==ResponseCode.OK){
+        let roleList= new Array<Role>();
+        if(res.dateSet){
+          res.dateSet.map((x:string) =>{
+            roleList.push(new Role(x));
+          });
+        }
+        return roleList;
+      }
+    }));
+  }
   public FirstForm(part1:any,part2:any,part3:any,part4:any){
     const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
     const date=  part1.get('birthDate').value;
-    console.log(typeof(date.year))
     const body= {
       firstName:part1.get('firstName').value,
       secondName:part1.get('secondName').value,
@@ -61,40 +96,5 @@ export class SharedService {
       userEmail : user.email
     };
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/FirstForm',body);
-  }
-  public getAllUser(){
-    let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY));
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${ userInfo?.token}`
-    });
-    return this.http.get<ResponseModel>(this.apiUrl+'Auth/GetUsers',{headers:headers}).pipe(map(res => {
-      if(res.responseCode==ResponseCode.OK){
-        let userList= new Array<User>();
-        if(res.dateSet){
-          res.dateSet.map((x:User) =>{
-            userList.push(new User(x.email,x.userName,x.role));
-          });
-        }
-        return userList;
-      }
-    }));
-  }
-  
-  public getRoles(){
-    let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY));
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${ userInfo?.token}`
-    });
-    return this.http.get<ResponseModel>(this.apiUrl+'Auth/GetRoles',{headers:headers}).pipe(map(res => {
-      if(res.responseCode==ResponseCode.OK){
-        let roleList= new Array<Role>();
-        if(res.dateSet){
-          res.dateSet.map((x:string) =>{
-            roleList.push(new Role(x));
-          });
-        }
-        return roleList;
-      }
-    }));
   }
 }
