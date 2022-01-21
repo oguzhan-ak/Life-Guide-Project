@@ -319,8 +319,7 @@ export const chartExample2 = {
           ticks: {
             callback: function(value) {
               if (!(value % 10)) {
-                //return '$' + value + 'k'
-                return value;
+                return '$' + value + 'k'
               }
             }
           }
@@ -348,7 +347,7 @@ export const chartExample2 = {
       {
         label: "Sales",
         data: [25, 20, 30, 22, 17, 29],
-        maxBarThickness: 10
+        maxBarThickness: 15
       }
     ]
   }

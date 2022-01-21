@@ -17,6 +17,15 @@
     <!-- User -->
     <ul class="navbar-nav align-items-center d-none d-md-flex">
       <li class="nav-item" ngbDropdown placement="bottom-right">
+        <a class="nav-link nav-link-icon" role="button" ngbDropdownToggle>
+          <i style="width: 16px; height: 16px;" class="ni ni-bell-55"></i>
+        </a>
+        <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+          <a class="dropdown-item" href="javascript:void(0)"><span>Mesajlarım</span><i style="float: right;margin-right: 0px !important;" class="bi bi-envelope"></i></a>
+          <a class="dropdown-item" href="javascript:void(0)"><span>Hatırlatmalarım</span><i style="float: right;margin-right: 0px !important;" class="bi bi-calendar-event"></i></a>
+        </div>
+      </li>
+      <li class="nav-item" ngbDropdown placement="bottom-right">
         <a class="nav-link pr-0" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
@@ -39,9 +48,9 @@
             <i class="ni ni-settings-gear-65"></i>
             <span>Ayarlar</span>
           </a>
-          <a routerLinkActive="active" [routerLink]="['/first-form']" class="dropdown-item">
+          <a routerLinkActive="active" [routerLink]="['/exercises']" class="dropdown-item">
             <i class="ni ni-calendar-grid-58"></i>
-            <span>Aktiviteler</span>
+            <span>Egzersizlerim</span>
           </a>
           <a routerLinkActive="active" [routerLink]="['/first-form']" class="dropdown-item">
             <i class="ni ni-support-16"></i>

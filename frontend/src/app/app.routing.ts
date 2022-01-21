@@ -18,6 +18,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { UserFirstLoginFormComponent } from './pages/user-first-login-form/user-first-login-form.component';
 import { FirstFormGuardGuard } from './guard/firstFormGuard/first-form-guard.guard';
 import { UserListComponent } from './component/user-list/user-list.component';
+import { ExerciseComponent } from './pages/exercise/exercise.component';
 
 const routes: Routes =[
   // Admin Layout
@@ -76,6 +77,11 @@ const routes: Routes =[
       {
         path: 'maps',
         component:MapsComponent,
+        canActivate:[Auth1GuardService]
+      },
+      {
+        path: 'exercises',
+        component:ExerciseComponent,
         canActivate:[Auth1GuardService]
       },
       {

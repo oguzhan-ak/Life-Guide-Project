@@ -12,7 +12,7 @@ import { User } from '../Models/user';
   providedIn: 'root'
 })
 export class SharedService {
-   
+  
   constructor( private http:HttpClient) { }
    
   private readonly apiUrl : string = "http://localhost:5001/api/";

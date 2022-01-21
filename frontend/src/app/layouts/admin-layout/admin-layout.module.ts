@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StatCardComponent } from 'src/app/component/stat-card/stat-card.component';
 import { VideoCardComponent } from 'src/app/component/video-card/video-card.component';
 import { UserListComponent } from 'src/app/component/user-list/user-list.component';
+import { ExerciseComponent } from 'src/app/pages/exercise/exercise.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -33,7 +34,8 @@ import { UserListComponent } from 'src/app/component/user-list/user-list.compone
     MapsComponent,
     StatCardComponent,
     VideoCardComponent,
-    UserListComponent
+    UserListComponent,
+    ExerciseComponent
   ]
 })
 

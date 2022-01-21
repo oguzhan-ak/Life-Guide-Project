@@ -8,12 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class StatCardComponent implements OnInit {
 
   constructor() { }
-  @Input() title:string;
+  @Input() titleName:string;
   @Input() ratio:string;
   @Input() dateType:string;
   @Input() value:string;
   @Input() icon:string;
   @Input() color:string;
+  @Input() iconBackground:string
   ngOnInit(): void {
   }
 

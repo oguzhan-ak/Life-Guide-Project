@@ -1,1 +1,17 @@
-<p>video-card works!</p>
+<div class="card card-stats mb-4 mt-4">
+    <div style="height: 490px;" class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5 style="text-align: center;" class="card-title text-uppercase text-muted mb-0">{{videoTitle}}</h5>
+        </div>
+      </div>
+      <div class="mt-3 mb-0">
+        <iframe style="width:-webkit-fill-available;height:370px;" id="ytplayer" type="text/html"
+            src="https://www.youtube.com/embed/M7lc1UVf-VE?modestbranding=1&start=1"
+            frameborder="0" allowfullscreen>
+        </iframe>
+        <button style="float: left;cursor: pointer;" type="button" class="btn btn-success"><i class="fa fa-thumbs-up" style="font-size:24px"></i>&emsp;{{likeCount}}</button>
+        <button style="float: right;cursor: pointer;" type="button" class="btn btn-danger">{{dislikeCount}}&emsp;<i class="fa fa-thumbs-down" style="font-size:24px"></i></button>
+      </div>
+    </div>
+  </div>

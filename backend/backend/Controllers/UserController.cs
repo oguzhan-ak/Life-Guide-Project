@@ -250,8 +250,17 @@ namespace LifeGuideProject.API.Controllers
                         , pUserFirstFormVM.birthDateDay, pUserFirstFormVM.weight, pUserFirstFormVM.height, pUserFirstFormVM.gender, pUserFirstFormVM.address, pUserFirstFormVM.city
                         , pUserFirstFormVM.country, pUserFirstFormVM.postCode, pUserFirstFormVM.telephone, pUserFirstFormVM.aboutMeText, pUserFirstFormVM.solver, pUserFirstFormVM.firstQuestion
                         , pUserFirstFormVM.secondQuestion, pUserFirstFormVM.thirdQuestion, pUserFirstFormVM.fourthQuestion, pUserFirstFormVM.fifthQuestion, pUserFirstFormVM.userEmail);
-                    var Formresult = db.firstForms.Add(firstForm);
-                    db.SaveChanges();
+                    var Formresult = new Object();
+                    try
+                    {
+                        Formresult = db.firstForms.Add(firstForm);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex1)
+                    {
+                        return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex1.Message, null));
+                    }
+                    
                     if (Formresult != null)
                     {
                         return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla formu doldurdunuz.", returnUser));
@@ -259,9 +268,9 @@ namespace LifeGuideProject.API.Controllers
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Formu işlerken bir hata ile karşılaşıldı!", null));
             }
-            catch (Exception ex)
+            catch (Exception ex2)
             {
-                return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex.Message, null));
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex2.Message, null));
             }
 
         }

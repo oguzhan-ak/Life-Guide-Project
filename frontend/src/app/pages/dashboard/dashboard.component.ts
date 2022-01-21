@@ -18,12 +18,13 @@ import {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  public title:string;
+  public titleName:string;
   public ratio:string;
   public dateType:string;
   public value:string;
   public icon:string;
   public color:string;
+  public iconBackground:string
 
   public datasets: any;
   public data: any;

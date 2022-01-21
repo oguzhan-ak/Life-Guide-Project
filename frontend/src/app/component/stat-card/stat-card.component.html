@@ -2,17 +2,18 @@
     <div class="card-body">
       <div class="row">
         <div class="col">
-          <h5 class="card-title text-uppercase text-muted mb-0">{{title}}</h5>
+          <h5 class="card-title text-uppercase text-muted mb-0">{{titleName}}</h5>
           <span class="h2 font-weight-bold mb-0">{{value}}</span>
         </div>
         <div class="col-auto">
-          <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-            <i class="fas fa-chart-bar"></i>
+          <div [class]="iconBackground" class="icon icon-shape text-white rounded-circle shadow">
+            <i [class]="icon"></i>
           </div>
         </div>
       </div>
       <p class="mt-3 mb-0 text-muted text-sm">
-        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{ratio}} %</span>
+        <span *ngIf="color=='green'" class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{ratio}} %</span>
+        <span *ngIf="color=='red'" class="text-warning mr-2"><i class="fa fa-arrow-down"></i> {{ratio}} %</span>
         <span class="text-nowrap">{{dateType}}</span>
       </p>
     </div>
