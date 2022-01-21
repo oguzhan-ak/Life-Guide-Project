@@ -261,10 +261,7 @@ namespace LifeGuideProject.API.Controllers
                         return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex1.Message, null));
                     }
                     
-                    if (Formresult != null)
-                    {
-                        return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla formu doldurdunuz.", returnUser));
-                    }
+                    return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla formu doldurdunuz.", returnUser));
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Formu işlerken bir hata ile karşılaşıldı!", null));
             }
