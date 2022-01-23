@@ -7,11 +7,32 @@
       </div>
       <div class="mt-3 mb-0">
         <iframe style="width:-webkit-fill-available;height:370px;" id="ytplayer" type="text/html"
-            src="https://www.youtube.com/embed/M7lc1UVf-VE?modestbranding=1&start=1"
+            [src]="videoLink"
             frameborder="0" allowfullscreen>
         </iframe>
-        <button style="float: left;cursor: pointer;" type="button" class="btn btn-success"><i class="fa fa-thumbs-up" style="font-size:24px"></i>&emsp;{{likeCount}}</button>
-        <button style="float: right;cursor: pointer;" type="button" class="btn btn-danger">{{dislikeCount}}&emsp;<i class="fa fa-thumbs-down" style="font-size:24px"></i></button>
+        <div class="row mr-4 ml-4">
+          <div class="col-2" style="display: flex;justify-content: center;">
+            <button (click)="begen()" style="cursor: pointer;" type="button" class="btn btn-secondary m-1">
+              <i *ngIf="liked=='true'" class="fa fa-thumbs-up" style="font-size:24px;color:green"></i>
+              <i *ngIf="liked=='false'" class="fa fa-thumbs-up" style="font-size:24px;"></i>
+              <small *ngIf="liked=='true'" style="color: green;">&emsp;{{likeCount}}</small>
+              <small *ngIf="liked=='false'" style="color: black;">&emsp;{{likeCount}}</small>
+            </button>
+          </div>
+          <div class="col-8" style="display: flex;justify-content: center;">
+            <button (click)="setState(state)" *ngIf="state == 'izlendi'" style="cursor: pointer; width: inherit;" type="button" class="btn btn-info m-1">Egzersize Devam Et</button>
+            <button (click)="setState(state)" *ngIf="state == 'yeni'" style="cursor: pointer; width: inherit;" type="button" class="btn btn-warning m-1">Egzerisizi Tamamla</button>
+          </div>
+          <div class="col-2" style="display: flex;justify-content: center;">
+            <button (click)="begenme()" style="cursor: pointer;" type="button" class="btn btn-secondary m-1">
+              <small *ngIf="disliked=='true'" style="color: red;">{{dislikeCount}}&emsp;</small>
+              <small *ngIf="disliked=='false'" style="color: black;">{{dislikeCount}}&emsp;</small>
+              <i *ngIf="disliked=='true'" class="fa fa-thumbs-down" style="font-size:24px;color:red;"></i>
+              <i *ngIf="disliked=='false'" class="fa fa-thumbs-down" style="font-size:24px;"></i>
+            </button>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
