@@ -19,7 +19,7 @@ namespace LifeGuideProject.API.DATA.DatabaseContext
         }
         public DbSet<FirstForm> firstForms { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseNpgsql("Host=localhost;port=5432;Database=LifeGuideDatabase;UserName=postgres;Password=Ozireis1999;");
+            => options.UseNpgsql("Host=localhost;port=5432;Database=LifeGuideDatabase;UserName=postgres;Password=postgres;");
 
     }
 }
