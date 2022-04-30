@@ -3,15 +3,17 @@ using System;
 using LifeGuideProject.API.DATA.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LifeGuideProject.API.Migrations
 {
     [DbContext(typeof(LifeGuideDbContext))]
-    partial class LifeGuideDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220430132015_03")]
+    partial class _03
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
