@@ -8,7 +8,6 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
-import { UserProfileComponent } from '../../user/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StatCardComponent } from 'src/app/component/stat-card/stat-card.component';
@@ -24,11 +23,11 @@ import { ExerciseComponent } from 'src/app/pages/exercise/exercise.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ReactiveFormsModule
   ],
   declarations: [
     DashboardComponent,
-    UserProfileComponent,
     TablesComponent,
     IconsComponent,
     MapsComponent,

@@ -4,7 +4,6 @@ using LifeGuideProject.API.DTO;
 using LifeGuideProject.API.ENTITY;
 using LifeGuideProject.API.ENTITY.Entities;
 using LifeGuideProject.API.ENTITY.ViewModels.UserViewModels;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +41,7 @@ namespace LifeGuideProject.API.Controllers
             this.db = db;
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet, Route("GetUsers")]
         public async Task<object> GetUsers()
         {
@@ -53,7 +52,7 @@ namespace LifeGuideProject.API.Controllers
                 foreach (var user in users)
                 {
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
-                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role,user.IsFormDone));
+                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone));
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", allUserDTO));
 
@@ -64,8 +63,24 @@ namespace LifeGuideProject.API.Controllers
             }
 
         }
+        [HttpPost, Route("GetUser")]
+        public async Task<object> GetUser(UserEmailInputDto userEmailInputDto)
+        {
+            try
+            {
+                var model = db.firstForms.Where(x => x.userEmail == userEmailInputDto.userEmail).OrderByDescending(x => x.createdTime).FirstOrDefault();
 
-        [Authorize(Roles ="Patient")]
+                return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", model));
+
+            }
+            catch (Exception ex)
+            {
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex.Message, null));
+            }
+
+        }
+
+        [Authorize(Roles = "Patient")]
         [HttpGet, Route("GetUserList")]
         public async Task<object> GetUserList()
         {
@@ -135,7 +150,7 @@ namespace LifeGuideProject.API.Controllers
                 if (ModelState.IsValid)
                 {
                     var tempUser = _userManager.Users.Where(x => x.Email.Equals(pUserLoginVM.Email)).FirstOrDefault();
-                    if(tempUser == null)
+                    if (tempUser == null)
                     {
                         return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Email veya şifreyi hatalı girdiniz!", null));
                     }
@@ -144,7 +159,7 @@ namespace LifeGuideProject.API.Controllers
                     {
                         var appUser = await _userManager.FindByEmailAsync(pUserLoginVM.Email);
                         var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
-                        var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role,appUser.IsFormDone);
+                        var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone);
                         user.Token = GenerateToken(appUser, role);
                         return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla giriş yaptınız.", user));
                     }
@@ -181,23 +196,23 @@ namespace LifeGuideProject.API.Controllers
             return jwtTokenHandler.WriteToken(token);
         }
 
-        [Authorize(Roles ="Admin")]
-        [HttpPost,Route("AddRole")]
+        [Authorize(Roles = "Admin")]
+        [HttpPost, Route("AddRole")]
         public async Task<object> AddRole(UserAddRoleVM pUserAddRoleVM)
         {
             try
             {
-                if(pUserAddRoleVM==null || pUserAddRoleVM.Role == "")
+                if (pUserAddRoleVM == null || pUserAddRoleVM.Role == "")
                 {
                     return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Parametreler eksik!", null));
                 }
-                if(await _roleManager.RoleExistsAsync(pUserAddRoleVM.Role))
+                if (await _roleManager.RoleExistsAsync(pUserAddRoleVM.Role))
                 {
                     return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Rol zaten var!", null));
                 }
 
                 var role = new IdentityRole();
-                role.Name= pUserAddRoleVM.Role;
+                role.Name = pUserAddRoleVM.Role;
                 var result = await _roleManager.CreateAsync(role);
                 if (result.Succeeded)
                 {
@@ -211,13 +226,13 @@ namespace LifeGuideProject.API.Controllers
             }
         }
 
-        [HttpGet,Route("GetRoles")]
+        [HttpGet, Route("GetRoles")]
         public async Task<object> GetRoles()
         {
             try
             {
                 var roles = _roleManager.Roles.Select(x => x.Name).ToList();
-                return await Task.FromResult(new ResponseModel(ResponseCode.OK,"",roles));
+                return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", roles));
             }
             catch (Exception ex)
             {
@@ -239,17 +254,17 @@ namespace LifeGuideProject.API.Controllers
                     }
                     user.IsFormDone = true;
                     var userResult = await _userManager.UpdateAsync(user);
-                    UserDTO returnUser=null;
+                    UserDTO returnUser = null;
                     if (userResult.Succeeded)
                     {
                         var appUser = await _userManager.FindByEmailAsync(pUserFirstFormVM.userEmail);
                         var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
-                        returnUser = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone,"");
+                        returnUser = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, "");
                     }
                     var firstForm = new FirstForm(pUserFirstFormVM.firstName, pUserFirstFormVM.secondName, pUserFirstFormVM.lastName, pUserFirstFormVM.birthDateYear, pUserFirstFormVM.birthDateMonth
                         , pUserFirstFormVM.birthDateDay, pUserFirstFormVM.weight, pUserFirstFormVM.height, pUserFirstFormVM.gender, pUserFirstFormVM.address, pUserFirstFormVM.city
                         , pUserFirstFormVM.country, pUserFirstFormVM.postCode, pUserFirstFormVM.telephone, pUserFirstFormVM.aboutMeText, pUserFirstFormVM.solver, pUserFirstFormVM.firstQuestion
-                        , pUserFirstFormVM.secondQuestion, pUserFirstFormVM.thirdQuestion, pUserFirstFormVM.fourthQuestion, pUserFirstFormVM.fifthQuestion, pUserFirstFormVM.userEmail);
+                        , pUserFirstFormVM.secondQuestion, pUserFirstFormVM.thirdQuestion, pUserFirstFormVM.fourthQuestion, pUserFirstFormVM.fifthQuestion, pUserFirstFormVM.userEmail, DateTime.Now);
                     var Formresult = new Object();
                     try
                     {
@@ -260,10 +275,62 @@ namespace LifeGuideProject.API.Controllers
                     {
                         return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex1.Message, null));
                     }
-                    
+
                     return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla formu doldurdunuz.", returnUser));
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Formu işlerken bir hata ile karşılaşıldı!", null));
+            }
+            catch (Exception ex2)
+            {
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex2.Message, null));
+            }
+
+        }
+
+        [HttpPost, Route("UpdateUser")]
+        public async Task<object> UpdateUser(UserFirstFormVM pUserFirstFormVM)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var user = _userManager.Users.Where(x => x.Email.Equals(pUserFirstFormVM.userEmail)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Lütfen tekrar deneyiniz!", null));
+                    }
+                    var firstForm = new FirstForm(pUserFirstFormVM.firstName, pUserFirstFormVM.secondName, pUserFirstFormVM.lastName, pUserFirstFormVM.birthDateYear, pUserFirstFormVM.birthDateMonth
+                        , pUserFirstFormVM.birthDateDay, pUserFirstFormVM.weight, pUserFirstFormVM.height, pUserFirstFormVM.gender, pUserFirstFormVM.address, pUserFirstFormVM.city
+                        , pUserFirstFormVM.country, pUserFirstFormVM.postCode, pUserFirstFormVM.telephone, pUserFirstFormVM.aboutMeText, pUserFirstFormVM.solver, pUserFirstFormVM.firstQuestion
+                        , pUserFirstFormVM.secondQuestion, pUserFirstFormVM.thirdQuestion, pUserFirstFormVM.fourthQuestion, pUserFirstFormVM.fifthQuestion, pUserFirstFormVM.userEmail, DateTime.Now);
+                    var Formresult = new Object();
+                    try
+                    {
+                        var id = pUserFirstFormVM.id;
+                        var form = db.firstForms.Find(id);
+                        form.firstName = pUserFirstFormVM.firstName;
+                        form.secondName = pUserFirstFormVM.secondName;
+                        form.lastName = pUserFirstFormVM.lastName;
+                        form.postCode = pUserFirstFormVM.postCode;
+                        form.telephone = pUserFirstFormVM.telephone;
+                        form.aboutMeText = pUserFirstFormVM.aboutMeText;
+                        form.address = pUserFirstFormVM.address;
+                        form.city = pUserFirstFormVM.city;
+                        form.country = pUserFirstFormVM.country;
+                        form.weight = Convert.ToDouble(pUserFirstFormVM.weight);
+                        form.height = Convert.ToInt32(pUserFirstFormVM.height);
+                        form.createdTime = DateTime.Now;
+
+                        Formresult = db.SaveChanges();
+                    }
+                    catch (Exception ex1)
+                    {
+                        return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex1.Message, null));
+                    }
+
+                    return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla bilgilerinizi güncellediniz.", null));
+                }
+                return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Bilgilerinizi güncellerken bir hata ile karşılaşıldı!", null));
             }
             catch (Exception ex2)
             {

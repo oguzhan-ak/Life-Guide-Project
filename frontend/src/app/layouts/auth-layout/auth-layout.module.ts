@@ -10,7 +10,9 @@ import { RegisterComponent } from '../../user/register/register.component';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
   ],
   declarations: [
     LoginComponent,

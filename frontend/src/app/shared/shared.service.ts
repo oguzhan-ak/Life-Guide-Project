@@ -7,6 +7,7 @@ import { Constants } from '../Helper/constants';
 import { ResponseModel } from '../Models/responseModel';
 import { Role } from '../Models/role';
 import { User } from '../Models/user';
+import { UserEmailInputDto } from '../Models/userEmailInputDto';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,10 @@ export class SharedService {
       }
     }));
   }
+  public getUser(email:any){
+    var inputModel = new UserEmailInputDto(email);
+    return this.http.post<ResponseModel>(this.apiUrl +'Auth/GetUser',inputModel);
+  }
   public FirstForm(part1:any,part2:any,part3:any,part4:any){
     const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
     const date=  part1.get('birthDate').value;
@@ -95,6 +100,39 @@ export class SharedService {
       fifthQuestion : part4.get('fifthQuestion').value,
       userEmail : user.email
     };
+    console.log("first formda : "+ JSON.stringify(body))
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/FirstForm',body);
+  }
+  public updateUser(form:any, userInfos: any){
+    const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+    console.log("update userda user infos" + JSON.stringify(userInfos));
+    const body= {
+      firstName:form.get('firstName').value,
+      secondName:form.get('secondName').value,
+      lastName : form.get('lastName').value,
+      birthDateYear : userInfos.birthDateYear.toString(),
+      birthDateMonth : userInfos.birthDateMonth.toString(),
+      birthDateDay : userInfos.birthDateDay.toString(),
+      weight : form.get('weight').value.toString(),
+      height : form.get('height').value.toString(),
+      gender : userInfos.gender,
+      address : form.get('address').value,
+      city : form.get('city').value,
+      country : form.get('country').value,
+      postCode : form.get('postCode').value,
+      telephone : form.get('telephone').value,
+      aboutMeText : form.get('aboutMeText').value,
+      solver : form.get('solver').value,
+      firstQuestion : userInfos.firstQuestion,
+      secondQuestion : userInfos.secondQuestion,
+      thirdQuestion : userInfos.thirdQuestion,
+      fourthQuestion : userInfos.fourthQuestion,
+      fifthQuestion : userInfos.fifthQuestion,
+      userEmail : user.email,
+      id : userInfos.id
+    };
+    
+    console.log("update userda" + JSON.stringify(body))
+    return this.http.post<ResponseModel>(this.apiUrl+'Auth/UpdateUser',body);
   }
 }

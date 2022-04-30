@@ -14,7 +14,7 @@ export class VideoCardComponent implements OnInit {
   @Input() likeCount:string;
   @Input() dislikeCount:string;
   @Input() videoLink:string;
-  @Input() state:string
+  @Input() state:string 
   @Input() liked:string
   @Input() disliked:string
   ngOnInit(): void {

@@ -1,72 +1,181 @@
-
-<div class="header pb-5 pt-5 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+<div
+  class="header pb-5 pt-5 d-flex align-items-center"
+  style="
+    min-height: 600px;
+    background-image: url(assets/img/theme/profile-cover.jpg);
+    background-size: cover;
+    background-position: center top;
+  "
+>
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
   <!-- Header container -->
   <div class="container-fluid align-items-center">
     <div class="row">
       <div class="col-lg-12 col-md-12 mt--8">
-        <h1 style="text-align: center;" class="text-white">Merhaba Oğuzhan</h1>
-        <p style="text-align: center;" class="text-white mt-0 mb-5">Gelişimini takip edebilmemiz için öncelikle 4 adımdan oluşan aşağıdaki formu eksiksiz ve doğru bir şekilde doldurman gerekiyor</p>
+        <h1 style="text-align: center" class="text-white">Merhaba Oğuzhan</h1>
+        <p style="text-align: center" class="text-white mt-0 mb-5">
+          Gelişimini takip edebilmemiz için öncelikle 4 adımdan oluşan aşağıdaki
+          formu eksiksiz ve doğru bir şekilde doldurman gerekiyor
+        </p>
       </div>
     </div>
   </div>
 </div>
 <div class="container-fluid mt--15">
   <div class="row">
-    <div style="margin-bottom: 120px;" class="col-lg-12 col-md-12">
+    <div style="margin-bottom: 120px" class="col-lg-12 col-md-12">
       <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
             <div class="col-12">
-              <h3 style="text-align: center;" class="mb-0">Gelişim Kayıt Formu</h3>
+              <h3 style="text-align: center" class="mb-0">
+                Gelişim Kayıt Formu
+              </h3>
             </div>
           </div>
         </div>
         <div class="card-body">
-          <form (ngSubmit)="submit()" [formGroup]="multiStep1" *ngIf="step == 1">
+          <form
+            (ngSubmit)="submit()"
+            [formGroup]="multiStep1"
+            *ngIf="step == 1"
+          >
             <!-- Kullanıcı Bilgileri -->
-            <h6 *ngIf="step == 1" class="heading-small text-muted mb-4">Kullanıcı Bilgileri (Adım 1)</h6>
+            <h6 *ngIf="step == 1" class="heading-small text-muted mb-4">
+              Kullanıcı Bilgileri (Adım 1)
+            </h6>
             <div *ngIf="step == 1" class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label">İlk Ad*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" formControlName="firstName" class="form-control" placeholder="İlk adınızı giriniz" [ngClass]="{ 'is-invalid': submitted1 && f1.firstName.errors }">
-                    <div *ngIf="submitted1 && f1.firstName.errors" class="invalid-feedback">
-                      <div *ngIf="f1.firstName.errors.required">İlk adınızı lütfen giriniz</div>
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      type="text"
+                      formControlName="firstName"
+                      class="form-control"
+                      placeholder="İlk adınızı giriniz"
+                      [ngClass]="{
+                        'is-invalid': submitted1 && f1.firstName.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted1 && f1.firstName.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f1.firstName.errors.required">
+                        İlk adınızı lütfen giriniz
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-ikinci-ad">İkinci Ad</label>
-                    <input type="text" id="ilk-kayit-ikinci-ad" formControlName="secondName" class="form-control" placeholder="İkinci adınızı giriniz">
+                    <label class="form-control-label" for="ilk-kayit-ikinci-ad"
+                      >İkinci Ad</label
+                    >
+                    <input
+                      type="text"
+                      id="ilk-kayit-ikinci-ad"
+                      formControlName="secondName"
+                      class="form-control"
+                      placeholder="İkinci adınızı giriniz"
+                    />
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-soyad">Soyad*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-soyad" formControlName="lastName" class="form-control" placeholder="Soyadı giriniz" [ngClass]="{ 'is-invalid': submitted1 && f1.lastName.errors }">
-                    <div *ngIf="submitted1 && f1.lastName.errors" class="invalid-feedback">
-                      <div *ngIf="f1.lastName.errors.required">Soyadınızı lütfen giriniz</div>
+                    <label class="form-control-label" for="ilk-kayit-soyad"
+                      >Soyad*</label
+                    >
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      type="text"
+                      id="ilk-kayit-soyad"
+                      formControlName="lastName"
+                      class="form-control"
+                      placeholder="Soyadı giriniz"
+                      [ngClass]="{
+                        'is-invalid': submitted1 && f1.lastName.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted1 && f1.lastName.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f1.lastName.errors.required">
+                        Soyadınızı lütfen giriniz
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
-                  <label class="form-control-label" for="ilk-kayit-dogum-tarihi">Doğum Tarihi*</label>
+                  <label class="form-control-label" for="ilk-kayit-dogum-tarihi"
+                    >Doğum Tarihi*</label
+                  >
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        <span class="input-group-text"
+                          ><i class="ni ni-calendar-grid-58"></i
+                        ></span>
                       </div>
-                      <input style="border-bottom-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" class="form-control datepicker" formControlName="birthDate" placeholder="Tarih seçiniz" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text" [ngClass]="{ 'is-invalid': submitted1 && f1.birthDate.errors }"/>
-                      <div *ngIf="submitted1 && f1.birthDate.errors" class="invalid-feedback">
-                        <div *ngIf="f1.birthDate.errors.required || multiStep1.get('birthDate').untouched || multiStep1.get('birthDate').value==''">Doğum tarihinizi lütfen seçiniz</div>
-                        <div *ngIf="f1.birthDate.errors.checkDateFormat && multiStep1.get('birthDate').dirty">Doğum tarihinizi YYYY-MM-DD formatında giriniz</div>
-                        <div *ngIf="f1.birthDate.errors.checkDateBigger && multiStep1.get('birthDate').dirty">Seçtiğiniz tarih ileriki bir tarih olamaz</div>
+                      <input
+                        style="
+                          border-bottom-color: rgb(202 209 215) !important;
+                          border-top-color: rgb(202 209 215) !important ;
+                        "
+                        class="form-control datepicker"
+                        formControlName="birthDate"
+                        placeholder="Tarih seçiniz"
+                        name="dp"
+                        [(ngModel)]="model"
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                        (click)="d.toggle()"
+                        type="text"
+                        [ngClass]="{
+                          'is-invalid': submitted1 && f1.birthDate.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted1 && f1.birthDate.errors"
+                        class="invalid-feedback"
+                      >
+                        <div
+                          *ngIf="
+                            f1.birthDate.errors.required ||
+                            multiStep1.get('birthDate').untouched ||
+                            multiStep1.get('birthDate').value == ''
+                          "
+                        >
+                          Doğum tarihinizi lütfen seçiniz
+                        </div>
+                        <div
+                          *ngIf="
+                            f1.birthDate.errors.checkDateFormat &&
+                            multiStep1.get('birthDate').dirty
+                          "
+                        >
+                          Doğum tarihinizi YYYY-MM-DD formatında giriniz
+                        </div>
+                        <div
+                          *ngIf="
+                            f1.birthDate.errors.checkDateBigger &&
+                            multiStep1.get('birthDate').dirty
+                          "
+                        >
+                          Seçtiğiniz tarih ileriki bir tarih olamaz
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -75,61 +184,166 @@
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-kilo">Kilo(kg)*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" id="ilk-kayit-kilo" formControlName="weight" class="form-control" placeholder="Örnek : 76,5" [ngClass]="{ 'is-invalid': submitted1 && f1.weight.errors }">
-                    <div *ngIf="submitted1 && f1.weight.errors" class="invalid-feedback">
-                      <div *ngIf="f1.weight.errors.required">Kilonuzu lütfen giriniz</div>
-                      <div *ngIf="f1.weight.errors.pattern">Kilonuzu 56,6 veya 56 formatında giriniz</div>
+                    <label class="form-control-label" for="ilk-kayit-kilo"
+                      >Kilo(kg)*</label
+                    >
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      type="text"
+                      id="ilk-kayit-kilo"
+                      formControlName="weight"
+                      class="form-control"
+                      placeholder="Örnek : 76,5"
+                      [ngClass]="{
+                        'is-invalid': submitted1 && f1.weight.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted1 && f1.weight.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f1.weight.errors.required">
+                        Kilonuzu lütfen giriniz
+                      </div>
+                      <div *ngIf="f1.weight.errors.pattern">
+                        Kilonuzu 56,6 veya 56 formatında giriniz
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-boy">Boy(cm)*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" maxlength="3" id="ilk-kayit-boy" formControlName="height" class="form-control" placeholder="Örnek : 186" [ngClass]="{ 'is-invalid': submitted1 && f1.height.errors }">
-                    <div *ngIf="submitted1 && f1.height.errors" class="invalid-feedback">
-                      <div *ngIf="f1.height.errors.required">Boyunuzu lütfen giriniz</div>
-                      <div *ngIf="f1.height.errors.pattern">Boyunuzu cm formatında sayıyla giriniz</div>
-                      <div *ngIf="f1.height.errors.maxlength">En fazla 3 haneli sayı girebilirsiniz</div>
+                    <label class="form-control-label" for="ilk-kayit-boy"
+                      >Boy(cm)*</label
+                    >
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      type="text"
+                      maxlength="3"
+                      id="ilk-kayit-boy"
+                      formControlName="height"
+                      class="form-control"
+                      placeholder="Örnek : 186"
+                      [ngClass]="{
+                        'is-invalid': submitted1 && f1.height.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted1 && f1.height.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f1.height.errors.required">
+                        Boyunuzu lütfen giriniz
+                      </div>
+                      <div *ngIf="f1.height.errors.pattern">
+                        Boyunuzu cm formatında sayıyla giriniz
+                      </div>
+                      <div *ngIf="f1.height.errors.maxlength">
+                        En fazla 3 haneli sayı girebilirsiniz
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <label class="form-control-label">Cinsiyet*</label>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3" *ngFor="let cinsiyet of cinsiyetler;let index=index">
-                    <input name="gender" class="custom-control-input" id="{{index}}" formControlName="gender" type="radio" [checked]="cinsiyet.isSelected" [value]="cinsiyet.cinsiyet" (change)="onCinsiyetChange(cinsiyet.cinsiyet)">
-                    <label class="custom-control-label" for="{{index}}">{{cinsiyet.cinsiyet}}</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3"
+                    *ngFor="let cinsiyet of cinsiyetler; let index = index"
+                  >
+                    <input
+                      name="gender"
+                      class="custom-control-input"
+                      id="{{ index }}"
+                      formControlName="gender"
+                      type="radio"
+                      [checked]="cinsiyet.isSelected"
+                      [value]="cinsiyet.cinsiyet"
+                      (change)="onCinsiyetChange(cinsiyet.cinsiyet)"
+                    />
+                    <label class="custom-control-label" for="{{ index }}">{{
+                      cinsiyet.cinsiyet
+                    }}</label>
                   </div>
                 </div>
               </div>
             </div>
             <!-- Buttons -->
             <div id="first-form-buttons">
-              <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
-                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+              <button
+                *ngIf="step != 1"
+                class="btn btn-icon btn-3 btn-primary float-left"
+                type="button"
+                (click)="geri()"
+              >
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bold-left"></i
+                ></span>
                 <span class="btn-inner--text">Geri</span>
               </button>
-              <button *ngIf="step != 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+              <button
+                *ngIf="step != 4"
+                class="btn btn-icon btn-3 btn-primary float-right"
+                type="submit"
+              >
                 <span class="btn-inner--text">İleri</span>
-                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bold-right"></i
+                ></span>
               </button>
-              <button *ngIf="step == 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
-                <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+              <button
+                *ngIf="step == 4"
+                class="btn btn-icon btn-3 btn-primary float-right"
+                type="submit"
+              >
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bag-17"></i
+                ></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>
             </div>
           </form>
-          <form (ngSubmit)="submit()" [formGroup]="multiStep2" *ngIf="step == 2">
+          <form
+            (ngSubmit)="submit()"
+            [formGroup]="multiStep2"
+            *ngIf="step == 2"
+          >
             <!-- Adres -->
-            <h6 *ngIf="step == 2" class="heading-small text-muted mb-4">İletişim Bilgileri (Adım 2)</h6>
+            <h6 *ngIf="step == 2" class="heading-small text-muted mb-4">
+              İletişim Bilgileri (Adım 2)
+            </h6>
             <div *ngIf="step == 2" class="pl-lg-4">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-adres">Adres*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;"  formControlName="address" class="form-control" placeholder="Ev adresinizi giriniz" type="text" [ngClass]="{ 'is-invalid': submitted2 && f2.address.errors }">
-                    <div *ngIf="submitted2 && f2.address.errors" class="invalid-feedback">
-                      <div *ngIf="f2.address.errors.required">Adresi lütfen giriniz</div>
+                    <label class="form-control-label" for="ilk-kayit-adres"
+                      >Adres*</label
+                    >
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      formControlName="address"
+                      class="form-control"
+                      placeholder="Ev adresinizi giriniz"
+                      type="text"
+                      [ngClass]="{
+                        'is-invalid': submitted2 && f2.address.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted2 && f2.address.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f2.address.errors.required">
+                        Adresi lütfen giriniz
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -137,19 +351,55 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-ulke">Ülke*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" formControlName="country" class="form-control" placeholder="Ülke giriniz" [ngClass]="{ 'is-invalid': submitted2 && f2.country.errors }">
-                    <div *ngIf="submitted2 && f2.country.errors" class="invalid-feedback">
-                      <div *ngIf="f2.country.errors.required">Ülkeyi lütfen giriniz</div>
+                    <label class="form-control-label" for="ilk-kayit-ulke"
+                      >Ülke*</label
+                    >
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      type="text"
+                      formControlName="country"
+                      class="form-control"
+                      placeholder="Ülke giriniz"
+                      [ngClass]="{
+                        'is-invalid': submitted2 && f2.country.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted2 && f2.country.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f2.country.errors.required">
+                        Ülkeyi lütfen giriniz
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-sehir">Şehir*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" formControlName="city" class="form-control" placeholder="Şehri giriniz" [ngClass]="{ 'is-invalid': submitted2 && f2.city.errors }">
-                    <div *ngIf="submitted2 && f2.city.errors" class="invalid-feedback">
-                      <div *ngIf="f2.city.errors.required">Şehri lütfen giriniz</div>
+                    <label class="form-control-label" for="ilk-kayit-sehir"
+                      >Şehir*</label
+                    >
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      type="text"
+                      formControlName="city"
+                      class="form-control"
+                      placeholder="Şehri giriniz"
+                      [ngClass]="{ 'is-invalid': submitted2 && f2.city.errors }"
+                    />
+                    <div
+                      *ngIf="submitted2 && f2.city.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f2.city.errors.required">
+                        Şehri lütfen giriniz
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -157,677 +407,2170 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-posta-kodu">Posta Kodu*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="text" pattern="\d*" formControlName="postCode" class="form-control" placeholder="Posta kodunu giriniz 06540" maxlength="5" minlength="5" [ngClass]="{ 'is-invalid': submitted2 && f2.postCode.errors }">
-                    <div *ngIf="submitted2 && f2.postCode.errors" class="invalid-feedback">
-                      <div *ngIf="f2.postCode.errors.required">Posta kodunu lütfen giriniz</div>
-                      <div *ngIf="f2.postCode.errors.maxlength || f2.postCode.errors.minlength">Posta kodu 5 haneli olmalıdır</div>
-                      <div *ngIf="f2.postCode.errors.pattern">Posta kodu sadece sayılardan oluşmalıdır</div>
+                    <label class="form-control-label" for="ilk-kayit-posta-kodu"
+                      >Posta Kodu*</label
+                    >
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      type="text"
+                      pattern="\d*"
+                      formControlName="postCode"
+                      class="form-control"
+                      placeholder="Posta kodunu giriniz 06540"
+                      maxlength="5"
+                      minlength="5"
+                      [ngClass]="{
+                        'is-invalid': submitted2 && f2.postCode.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted2 && f2.postCode.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f2.postCode.errors.required">
+                        Posta kodunu lütfen giriniz
+                      </div>
+                      <div
+                        *ngIf="
+                          f2.postCode.errors.maxlength ||
+                          f2.postCode.errors.minlength
+                        "
+                      >
+                        Posta kodu 5 haneli olmalıdır
+                      </div>
+                      <div *ngIf="f2.postCode.errors.pattern">
+                        Posta kodu sadece sayılardan oluşmalıdır
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="ilk-kayit-telefon">Telefon*</label>
-                    <input style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" type="tel" formControlName="telephone" class="form-control" placeholder="Telefon giriniz 0555 555 55 55" maxlength="11" [ngClass]="{ 'is-invalid': submitted2 && f2.telephone.errors }">
-                    <div *ngIf="submitted2 && f2.telephone.errors" class="invalid-feedback">
-                      <div *ngIf="f2.telephone.errors.required">Telefonu lütfen giriniz</div>
-                      <div *ngIf="f2.telephone.errors.pattern">Telefonu şu formatta giriniz : 05555555555</div>
-                      <div *ngIf="f2.telephone.errors.maxlength">Telefon numarası 11 haneyi aşamaz</div>
+                    <label class="form-control-label" for="ilk-kayit-telefon"
+                      >Telefon*</label
+                    >
+                    <input
+                      style="
+                        border-color: rgb(202 209 215) !important;
+                        border-top-color: rgb(202 209 215) !important ;
+                      "
+                      type="tel"
+                      formControlName="telephone"
+                      class="form-control"
+                      placeholder="Telefon giriniz 0555 555 55 55"
+                      maxlength="11"
+                      [ngClass]="{
+                        'is-invalid': submitted2 && f2.telephone.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted2 && f2.telephone.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f2.telephone.errors.required">
+                        Telefonu lütfen giriniz
+                      </div>
+                      <div *ngIf="f2.telephone.errors.pattern">
+                        Telefonu şu formatta giriniz : 05555555555
+                      </div>
+                      <div *ngIf="f2.telephone.errors.maxlength">
+                        Telefon numarası 11 haneyi aşamaz
+                      </div>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
             <!-- Buttons -->
             <div id="first-form-buttons">
-              <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
-                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+              <button
+                *ngIf="step != 1"
+                class="btn btn-icon btn-3 btn-primary float-left"
+                type="button"
+                (click)="geri()"
+              >
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bold-left"></i
+                ></span>
                 <span class="btn-inner--text">Geri</span>
               </button>
-              <button *ngIf="step != 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+              <button
+                *ngIf="step != 4"
+                class="btn btn-icon btn-3 btn-primary float-right"
+                type="submit"
+              >
                 <span class="btn-inner--text">İleri</span>
-                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bold-right"></i
+                ></span>
               </button>
-              <button *ngIf="step == 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
-                <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+              <button
+                *ngIf="step == 4"
+                class="btn btn-icon btn-3 btn-primary float-right"
+                type="submit"
+              >
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bag-17"></i
+                ></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>
             </div>
           </form>
-          <form (ngSubmit)="submit()" [formGroup]="multiStep3" *ngIf="step == 3">
+          <form
+            (ngSubmit)="submit()"
+            [formGroup]="multiStep3"
+            *ngIf="step == 3"
+          >
             <!-- Hakkımda -->
-            <h6 *ngIf="step == 3" class="heading-small text-muted mb-4">Hakkımda (Adım 3)</h6>
+            <h6 *ngIf="step == 3" class="heading-small text-muted mb-4">
+              Hakkımda (Adım 3)
+            </h6>
             <div *ngIf="step == 3" class="pl-lg-4">
               <div class="form-group">
-                <label class="form-control-label" for="ilk-kayit-hakkimda">Hakkımda</label>
-                <textarea style="border-color:rgb(202 209 215) !important;border-top-color:rgb(202 209 215) !important ;" name="ilk-kayit-hakkimda" formControlName="aboutMeText" rows="4" class="form-control" placeholder="Bize kendinizden bahsedin"></textarea>
+                <label class="form-control-label" for="ilk-kayit-hakkimda"
+                  >Hakkımda</label
+                >
+                <textarea
+                  style="
+                    border-color: rgb(202 209 215) !important;
+                    border-top-color: rgb(202 209 215) !important ;
+                  "
+                  name="ilk-kayit-hakkimda"
+                  formControlName="aboutMeText"
+                  rows="4"
+                  class="form-control"
+                  placeholder="Bize kendinizden bahsedin"
+                ></textarea>
               </div>
             </div>
             <!-- Buttons -->
             <div id="first-form-buttons">
-              <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
-                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+              <button
+                *ngIf="step != 1"
+                class="btn btn-icon btn-3 btn-primary float-left"
+                type="button"
+                (click)="geri()"
+              >
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bold-left"></i
+                ></span>
                 <span class="btn-inner--text">Geri</span>
               </button>
-              <button *ngIf="step != 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+              <button
+                *ngIf="step != 4"
+                class="btn btn-icon btn-3 btn-primary float-right"
+                type="submit"
+              >
                 <span class="btn-inner--text">İleri</span>
-                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bold-right"></i
+                ></span>
               </button>
-              <button *ngIf="step == 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
-                <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+              <button
+                *ngIf="step == 4"
+                class="btn btn-icon btn-3 btn-primary float-right"
+                type="submit"
+              >
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bag-17"></i
+                ></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>
             </div>
           </form>
-          <form (ngSubmit)="submit()" [formGroup]="multiStep4" *ngIf="step == 4">
+          <form
+            (ngSubmit)="submit()"
+            [formGroup]="multiStep4"
+            *ngIf="step == 4"
+          >
             <!-- Anket -->
-            <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">Anket (Adım 4)</h6>
-            <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">Lütfen aşağıdakileri okuyun ve çocuğunuzun hareket kabiliyetlerini en iyi temsil eden açıklamanın yanındaki kutuyu
-              işaretleyin</h6>
-            <hr *ngIf="step == 4"/>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18)" class="row">
-              <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-6">
+            <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">
+              Anket (Adım 4)
+            </h6>
+            <h6 *ngIf="step == 4" class="heading-small text-muted mb-4">
+              Lütfen aşağıdakileri okuyun ve çocuğunuzun hareket kabiliyetlerini
+              en iyi temsil eden açıklamanın yanındaki kutuyu işaretleyin
+            </h6>
+            <hr *ngIf="step == 4" />
+            <div *ngIf="step == 4 && yas >= 12 && yas < 18" class="row">
+              <div
+                style="
+                  justify-content: center;
+                  align-items: center;
+                  display: flex;
+                "
+                class="col-lg-6"
+              >
                 <div>Anketi kim dolduruyor ?</div>
               </div>
-              <div style="justify-content: center; align-items: center;" class="col-lg-6">
-                <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5" *ngFor="let cozen of anket_cozenler;let index=index">
-                  <input name="ilk_kayit_cozen" formControlName="solver" class="custom-control-input" id="{{index}}" [checked]="cozen.isSelected" type="radio" [value]="cozen.cozen" (change)="onCozenChange(cozen.cozen)">
-                  <label class="custom-control-label" for="{{index}}"> {{cozen.cozen}}</label>
+              <div
+                style="justify-content: center; align-items: center"
+                class="col-lg-6"
+              >
+                <div
+                  class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  *ngFor="let cozen of anket_cozenler; let index = index"
+                >
+                  <input
+                    name="ilk_kayit_cozen"
+                    formControlName="solver"
+                    class="custom-control-input"
+                    id="{{ index }}"
+                    [checked]="cozen.isSelected"
+                    type="radio"
+                    [value]="cozen.cozen"
+                    (change)="onCozenChange(cozen.cozen)"
+                  />
+                  <label class="custom-control-label" for="{{ index }}">
+                    {{ cozen.cozen }}</label
+                  >
                 </div>
               </div>
             </div>
-            <hr *ngIf="(step == 4) && (yas >= 12) && (yas < 18)"/>
-            <div *ngIf="(step == 4) && (yas >= 0) && (yas < 2)" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <hr *ngIf="step == 4 && yas >= 12 && yas < 18" />
+            <div
+              *ngIf="step == 4 && yas >= 0 && yas < 2"
+              class="pl-lg-4 pb-lg-4 pr-lg-4"
+            >
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>1</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte zorlanır <b>ve</b> rahatça oturmak için özel olarak uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek için başka bir kişi tarafından kaldırılmalıdır</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte
+                    zorlanır <b>ve</b> rahatça oturmak için özel olarak
+                    uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek
+                    için başka bir kişi tarafından kaldırılmalıdır</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" class="custom-control-input" id="ilk-kayit-soru-1-0" value="Evet" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-0"
+                      value="Evet"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" class="custom-control-input" id="ilk-kayit-soru-1-1" value="Hayır" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-1"
+                      value="Hayır"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>2</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte zorlanır <b>ve</b> rahatça oturmak için özel olarak uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek için başka bir kişi tarafından kaldırılmalıdır</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte
+                    zorlanır <b>ve</b> rahatça oturmak için özel olarak
+                    uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek
+                    için başka bir kişi tarafından kaldırılmalıdır</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>3</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte zorlanır <b>ve</b> rahatça oturmak için özel olarak uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek için başka bir kişi tarafından kaldırılmalıdır</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte
+                    zorlanır <b>ve</b> rahatça oturmak için özel olarak
+                    uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek
+                    için başka bir kişi tarafından kaldırılmalıdır</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>4</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte zorlanır <b>ve</b> rahatça oturmak için özel olarak uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek için başka bir kişi tarafından kaldırılmalıdır</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte
+                    zorlanır <b>ve</b> rahatça oturmak için özel olarak
+                    uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek
+                    için başka bir kişi tarafından kaldırılmalıdır</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>5</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte zorlanır <b>ve</b> rahatça oturmak için özel olarak uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek için başka bir kişi tarafından kaldırılmalıdır</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte
+                    zorlanır <b>ve</b> rahatça oturmak için özel olarak
+                    uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek
+                    için başka bir kişi tarafından kaldırılmalıdır</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 2) && (yas < 4)" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div
+              *ngIf="step == 4 && yas >= 2 && yas < 4"
+              class="pl-lg-4 pb-lg-4 pr-lg-4"
+            >
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>1</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte zorlanır <b>ve</b> rahatça oturmak için özel olarak uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek için başka bir kişi tarafından kaldırılmalıdır</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Çoğu pozisyonda baş ve gövde duruşunu kontrol etmekte
+                    zorlanır <b>ve</b> rahatça oturmak için özel olarak
+                    uyarlanmış oturma düzeneği kullanır <b>ve</b> hareket etmek
+                    için başka bir kişi tarafından kaldırılmalıdır</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>2</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yere yerleştirildiğinde kendi başına oturabilir ve bir oda içinde hareket edebilir <b>ve</b> oturma dengesini korumak için ellerinden destek alır <b>ve</b> oturmak ve ayakta durmak için genellikle uyarlanmış donanım kullanır <b>ve</b> dönerek, karnının üstünde sürünerek veya emekleyerek hareket eder</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Yere yerleştirildiğinde kendi başına oturabilir ve bir oda
+                    içinde hareket edebilir <b>ve</b> oturma dengesini korumak
+                    için ellerinden destek alır <b>ve</b> oturmak ve ayakta
+                    durmak için genellikle uyarlanmış donanım kullanır
+                    <b>ve</b> dönerek, karnının üstünde sürünerek veya
+                    emekleyerek hareket eder</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>3</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturabilir ve bir yürüme yardımcısı ile kısa mesafe yürüyebilir (örneğin bir yürüteç, tekerlekli yürüteç, koltuk değneği, kanadiyen vs.) <b>ve</b> yardımla yürürken yön değiştirmek ve dönmek için bir yetişkinin yardımına ihtiyaç duyabilir <b>ve</b> genellikle “W-oturma” pozisyonunda oturur ve oturması pozisyonuna gelmesi için bir yetişkinin yardımına ihtiyacı olabilir <b>ve</b> ayağa kalkabilir ve kısa mesafe yol alabilir <b>ve</b> sürünerek ve emekleyerek hareket etmeyi tercih eder</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturabilir ve bir yürüme yardımcısı ile kısa
+                    mesafe yürüyebilir (örneğin bir yürüteç, tekerlekli yürüteç,
+                    koltuk değneği, kanadiyen vs.) <b>ve</b> yardımla yürürken
+                    yön değiştirmek ve dönmek için bir yetişkinin yardımına
+                    ihtiyaç duyabilir <b>ve</b> genellikle “W-oturma”
+                    pozisyonunda oturur ve oturması pozisyonuna gelmesi için bir
+                    yetişkinin yardımına ihtiyacı olabilir <b>ve</b> ayağa
+                    kalkabilir ve kısa mesafe yol alabilir <b>ve</b> sürünerek
+                    ve emekleyerek hareket etmeyi tercih eder</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>4</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturabilir ve genellikle bir yürüme yardımcısıyla yürüyerek hareket eder <b>ve</b> iki elini kullanırken oturma dengesi ile ilgili zorluk yaşayabilir <b>ve</b> kendi kendine oturma pozisyonlarına girip çıkabilir <b>ve</b> ayağa kalkabilir ve mobilya üzerine tutunarak yol alabilir <b>ve</b> emekleyebilir, ancak yürüyerek hareket etmeyi tercih eder</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturabilir ve genellikle bir yürüme
+                    yardımcısıyla yürüyerek hareket eder <b>ve</b> iki elini
+                    kullanırken oturma dengesi ile ilgili zorluk yaşayabilir
+                    <b>ve</b> kendi kendine oturma pozisyonlarına girip
+                    çıkabilir <b>ve</b> ayağa kalkabilir ve mobilya üzerine
+                    tutunarak yol alabilir <b>ve</b> emekleyebilir, ancak
+                    yürüyerek hareket etmeyi tercih eder</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>5</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturabilir ve yürüme yardımcısı olmadan yürüyebilir <b>ve</b> oynamak için iki elini kullanırken, oturma sırasında dengeli olabilir <b>ve</b> bir yetişkinin yardımı olmadan oturma ve ayakta durma pozisyonlarına girip çıkabilir <b>ve</b> hareket için yürümeyi tercih eder</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturabilir ve yürüme yardımcısı olmadan
+                    yürüyebilir <b>ve</b> oynamak için iki elini kullanırken,
+                    oturma sırasında dengeli olabilir <b>ve</b> bir yetişkinin
+                    yardımı olmadan oturma ve ayakta durma pozisyonlarına girip
+                    çıkabilir <b>ve</b> hareket için yürümeyi tercih eder</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 4) && (yas < 6)" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div
+              *ngIf="step == 4 && yas >= 4 && yas < 6"
+              class="pl-lg-4 pb-lg-4 pr-lg-4"
+            >
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>1</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut duruşlarını kontrol etmekte zorlanır <b>ve</b> herhangi bir istemli hareketi kontrol etmekte zorlanır <b>ve</b> rahatça oturması için özel olarak uyarlanmış destekli bir sandalyeye ihtiyaç duyar <b>ve</b> hareket etmek için başka bir kişi tarafından kaldırılmalı veya çekilmelidir</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut
+                    duruşlarını kontrol etmekte zorlanır <b>ve</b> herhangi bir
+                    istemli hareketi kontrol etmekte zorlanır <b>ve</b> rahatça
+                    oturması için özel olarak uyarlanmış destekli bir sandalyeye
+                    ihtiyaç duyar <b>ve</b> hareket etmek için başka bir kişi
+                    tarafından kaldırılmalı veya çekilmelidir</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>2</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturabilir, ancak önemli destek ve yetişkin gözetimi olmadan ayakta duramaz veya yürüyemez <b>ve</b> kol ve el fonksiyonunu geliştirmek için daha fazla vücut / gövde desteğine ihtiyaç duyabilir <b>ve</b> genellikle bir sandalyeye çıkıp inmek için yetişkin yardımı gerekir <b>ve</b> kendi kendine akülü sandalye kullanarak hareket edebilir veya topluluk içinde taşınır</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturabilir, ancak önemli destek ve yetişkin
+                    gözetimi olmadan ayakta duramaz veya yürüyemez <b>ve</b> kol
+                    ve el fonksiyonunu geliştirmek için daha fazla vücut / gövde
+                    desteğine ihtiyaç duyabilir <b>ve</b> genellikle bir
+                    sandalyeye çıkıp inmek için yetişkin yardımı gerekir
+                    <b>ve</b> kendi kendine akülü sandalye kullanarak hareket
+                    edebilir veya topluluk içinde taşınır</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>3</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Bir yürüme yardımcısı kullanarak kendi kendine yürüyebilir (örneğin bir yürüteç, tekerlekli yürüteç, koltuk değneği, kanadiyen vs.) <b>ve</b> genellikle yetişkinden yardım almadan bir sandalyeye çıkıp inebilir <b>ve</b> uzun mesafe veya dışarıda gezerken tekerlekli sandalye kullanabilir <b>ve</b> merdivenleri tırmanmayı ya da büyük bir yardım olmadan düz olmayan bir yüzey üzerinde yürümeyi zor bulur</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Bir yürüme yardımcısı kullanarak kendi kendine yürüyebilir
+                    (örneğin bir yürüteç, tekerlekli yürüteç, koltuk değneği,
+                    kanadiyen vs.) <b>ve</b> genellikle yetişkinden yardım
+                    almadan bir sandalyeye çıkıp inebilir <b>ve</b> uzun mesafe
+                    veya dışarıda gezerken tekerlekli sandalye kullanabilir
+                    <b>ve</b> merdivenleri tırmanmayı ya da büyük bir yardım
+                    olmadan düz olmayan bir yüzey üzerinde yürümeyi zor
+                    bulur</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>4</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Bir yürüme yardımcısı kullanmadan kendi başına yürüyebilir, ancak uzun mesafeler veya düz olmayan yüzeylerde yürürken zorluk çekebilir. <b>ve</b>  normal bir yetişkin sandalyesine oturabilir ve her iki eli serbestçe kullanabilir <b>ve</b> yetişkin yardımı olmadan zeminden ayağa kalkabilir <b>ve</b> merdivenlerden yukarı çıkarken veya aşağı doğru inerken tırabzanı tutması gerekir <b>ve</b> henüz koşup atlayamaz</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Bir yürüme yardımcısı kullanmadan kendi başına yürüyebilir,
+                    ancak uzun mesafeler veya düz olmayan yüzeylerde yürürken
+                    zorluk çekebilir. <b>ve</b> normal bir yetişkin sandalyesine
+                    oturabilir ve her iki eli serbestçe kullanabilir
+                    <b>ve</b> yetişkin yardımı olmadan zeminden ayağa kalkabilir
+                    <b>ve</b> merdivenlerden yukarı çıkarken veya aşağı doğru
+                    inerken tırabzanı tutması gerekir <b>ve</b> henüz koşup
+                    atlayamaz</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>5</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Oldukça uzun mesafeler, açık havada ve pürüzlü yüzeyler de dahil olmak üzere, bir yürüyüş yardımcısı kullanmadan kendi başına yürüyebilir <b>ve</b> destek için ellerini kullanmadan zeminden veya bir sandalyeden ayağa kalkabilir <b>ve</b> tırabzandan tutmaya gerek olmaksızın merdivenlerden yukarı çıkıp aşağı inebilir  <b>ve</b> koşmaya ve zıplamaya başlar</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Oldukça uzun mesafeler, açık havada ve pürüzlü yüzeyler de
+                    dahil olmak üzere, bir yürüyüş yardımcısı kullanmadan kendi
+                    başına yürüyebilir <b>ve</b> destek için ellerini
+                    kullanmadan zeminden veya bir sandalyeden ayağa kalkabilir
+                    <b>ve</b> tırabzandan tutmaya gerek olmaksızın
+                    merdivenlerden yukarı çıkıp aşağı inebilir <b>ve</b> koşmaya
+                    ve zıplamaya başlar</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 6) && (yas < 12)" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div
+              *ngIf="step == 4 && yas >= 6 && yas < 12"
+              class="pl-lg-4 pb-lg-4 pr-lg-4"
+            >
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>1</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut duruşlarını kontrol etmekte zorlanır <b>ve</b> herhangi bir istemli hareketi kontrol etmekte zorlanır <b>ve</b> rahatça oturması için özel destekli bir sandalyeye ihtiyaç duyar <b>ve</b>  hareket etmek için başka bir kişi tarafından kaldırılmalı veya çekilmelidir</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut
+                    duruşlarını kontrol etmekte zorlanır <b>ve</b> herhangi bir
+                    istemli hareketi kontrol etmekte zorlanır <b>ve</b> rahatça
+                    oturması için özel destekli bir sandalyeye ihtiyaç duyar
+                    <b>ve</b> hareket etmek için başka bir kişi tarafından
+                    kaldırılmalı veya çekilmelidir</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>2</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturabilir, ancak önemli destek olmadan ayakta duramaz veya yürüyemez <b>ve</b> bu nedenle çoğunlukla evde, okulda ve toplumda tekerlekli sandalyeye güvenir <b>ve</b> genellikle kol ve el fonksiyonunu geliştirmek için ekstra vücut / gövde desteğine ihtiyaç duyar <b>ve</b> akülü sandalye kullanarak kendi kendine hareket edebilir</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturabilir, ancak önemli destek olmadan ayakta
+                    duramaz veya yürüyemez <b>ve</b> bu nedenle çoğunlukla evde,
+                    okulda ve toplumda tekerlekli sandalyeye güvenir
+                    <b>ve</b> genellikle kol ve el fonksiyonunu geliştirmek için
+                    ekstra vücut / gövde desteğine ihtiyaç duyar <b>ve</b> akülü
+                    sandalye kullanarak kendi kendine hareket edebilir</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>3</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başlarına ayakta durabilir ve sadece bir yürüyüş yardımcısı kullanarak yürüyebilir (örneğin bir yürüteç, tekerlekli yürüteç, koltuk değneği, kanadiyen vs.) <b>ve</b>  merdivenlere tırmanmayı ya da düz olmayan yüzeylerde yürümeyi zor bulur <b>ve</b> uzun mesafelerde veya kalabalık içinde gezerken tekerlekli sandalye kullanabilir </label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başlarına ayakta durabilir ve sadece bir yürüyüş
+                    yardımcısı kullanarak yürüyebilir (örneğin bir yürüteç,
+                    tekerlekli yürüteç, koltuk değneği, kanadiyen vs.)
+                    <b>ve</b> merdivenlere tırmanmayı ya da düz olmayan
+                    yüzeylerde yürümeyi zor bulur <b>ve</b> uzun mesafelerde
+                    veya kalabalık içinde gezerken tekerlekli sandalye
+                    kullanabilir
+                  </label>
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>4</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüme yardımcıları kullanmadan kendi başına yürüyebilir, ancak merdivenlerden yukarı çıkarken veya aşağı inerken tırabzandan tutmalıdır <b>ve</b> genellikle düz olmayan yüzeylerde, eğimli yerlerde veya kalabalıkta yürümeyi zor bulur</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Yürüme yardımcıları kullanmadan kendi başına yürüyebilir,
+                    ancak merdivenlerden yukarı çıkarken veya aşağı inerken
+                    tırabzandan tutmalıdır <b>ve</b> genellikle düz olmayan
+                    yüzeylerde, eğimli yerlerde veya kalabalıkta yürümeyi zor
+                    bulur</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>5</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüyüş yardımcılarını kullanmadan kendi başına yürüyebilir ve tırabzan tutmaya gerek kalmadan merdivenlerden yukarı çıkabilir veya aşağı inebilir <b>ve</b> nereye gitmek isterse yürür (düzensiz yüzeyler, eğimler veya kalabalıklar dahil) <b>ve</b> hızı, dengesi ve koordinasyonu biraz sınırlı olmasına rağmen koşabilir ve atlayabilir</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Yürüyüş yardımcılarını kullanmadan kendi başına yürüyebilir
+                    ve tırabzan tutmaya gerek kalmadan merdivenlerden yukarı
+                    çıkabilir veya aşağı inebilir <b>ve</b> nereye gitmek
+                    isterse yürür (düzensiz yüzeyler, eğimler veya kalabalıklar
+                    dahil) <b>ve</b> hızı, dengesi ve koordinasyonu biraz
+                    sınırlı olmasına rağmen koşabilir ve atlayabilir</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Çocuk')" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div
+              *ngIf="
+                step == 4 &&
+                yas >= 12 &&
+                yas < 18 &&
+                findCozenSelected() == 'Çocuk'
+              "
+              class="pl-lg-4 pb-lg-4 pr-lg-4"
+            >
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>1</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut duruşlarını kontrol etmekte zorlanırım <b>ve</b> herhangi bir istemli hareketi kontrol etmekte zorlanırım <b>ve</b> rahatça oturmak ve her yere taşınmak için özel olarak uyarlanmış bir sandalyeye ihtiyaç duyarım <b>ve</b> hareket etmek için başka bir kişi veya özel uyarlanmış donanım tarafından kaldırılmalı veya çekilmeliyim</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut
+                    duruşlarını kontrol etmekte zorlanırım <b>ve</b> herhangi
+                    bir istemli hareketi kontrol etmekte zorlanırım
+                    <b>ve</b> rahatça oturmak ve her yere taşınmak için özel
+                    olarak uyarlanmış bir sandalyeye ihtiyaç duyarım
+                    <b>ve</b> hareket etmek için başka bir kişi veya özel
+                    uyarlanmış donanım tarafından kaldırılmalı veya
+                    çekilmeliyim</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>2</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Biraz kalça ve gövde desteği ile oturabilir, ancak önemli destek olmadan ayakta duramam veya yürüyemem <b>ve</b> bu nedenle dışarıda her zaman tekerlekli sandalyeye güvenirim <b>ve</b> akülü sandalye kullanarak kendi kendine hareket edebilirim <b>ve</b>  içeride dolaşmak için sınırlı ölçüde emekleyebilirim veya dönebilirim</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Biraz kalça ve gövde desteği ile oturabilir, ancak önemli
+                    destek olmadan ayakta duramam veya yürüyemem <b>ve</b> bu
+                    nedenle dışarıda her zaman tekerlekli sandalyeye güvenirim
+                    <b>ve</b> akülü sandalye kullanarak kendi kendine hareket
+                    edebilirim <b>ve</b> içeride dolaşmak için sınırlı ölçüde
+                    emekleyebilirim veya dönebilirim</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>3</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başıma oturabilirim ve bir yürüme yardımcısı ile kısa mesafe yürüyebilirim (örneğin bir yürüteç, tekerlekli yürüteç, koltuk değneği, kanadiyen vs.) <b>ve</b> merdivenlere tırmanmayı ya da düz olmayan yüzeylerde destek olmadan yürümeyi zor bulurum <b>ve</b> koşullara bağlı olarak hareket etmek için çeşitli araçlar kullanırım <b>ve</b> hızlı bir şekilde veya daha uzun mesafelerde gezebilmek için tekerlekli sandalyeyi kullanmayı tercih ederim</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başıma oturabilirim ve bir yürüme yardımcısı ile kısa
+                    mesafe yürüyebilirim (örneğin bir yürüteç, tekerlekli
+                    yürüteç, koltuk değneği, kanadiyen vs.)
+                    <b>ve</b> merdivenlere tırmanmayı ya da düz olmayan
+                    yüzeylerde destek olmadan yürümeyi zor bulurum
+                    <b>ve</b> koşullara bağlı olarak hareket etmek için çeşitli
+                    araçlar kullanırım <b>ve</b> hızlı bir şekilde veya daha
+                    uzun mesafelerde gezebilmek için tekerlekli sandalyeyi
+                    kullanmayı tercih ederim</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>4</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüme yardımcıları kullanmadan kendi başıma yürüyebilirim, ancak merdivenlerden yukarı çıkarken veya aşağı inerken tırabzandan tutmalıyım <b>ve</b> bu nedenle çoğu ayarda yürürüm <b>ve</b> genellikle düz olmayan yüzeylerde, eğimli yerlerde veya kalabalıkta yürümeyi zor bulurum <b>ve</b> bazen bir yürüyüş yardımcısını (örneğin kanadiyen ya da koltuk değneği gibi) ya da tekerlekli bir sandalyeyi hızlı bir şekilde ya da daha uzun mesafelerde gezmek için kullanmayı tercih edebilirim</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Yürüme yardımcıları kullanmadan kendi başıma yürüyebilirim,
+                    ancak merdivenlerden yukarı çıkarken veya aşağı inerken
+                    tırabzandan tutmalıyım <b>ve</b> bu nedenle çoğu ayarda
+                    yürürüm <b>ve</b> genellikle düz olmayan yüzeylerde, eğimli
+                    yerlerde veya kalabalıkta yürümeyi zor bulurum
+                    <b>ve</b> bazen bir yürüyüş yardımcısını (örneğin kanadiyen
+                    ya da koltuk değneği gibi) ya da tekerlekli bir sandalyeyi
+                    hızlı bir şekilde ya da daha uzun mesafelerde gezmek için
+                    kullanmayı tercih edebilirim</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="fourthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="fourthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>5</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüyüş yardımcılarını kullanmadan kendi başıma yürüyebilirim ve tırabzandan tutmaya gerek kalmadan merdivenlerden yukarı çıkabilirim veya aşağı inebilirim <b>ve</b> nereye gitmek istersem yürürüm (düzensiz yüzeyler, eğimler veya kalabalıklar dahil) <b>ve</b> hız, denge ve koordinasyonum sınırlı olmasına rağmen koşabilirim ve atlayabilirim</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Yürüyüş yardımcılarını kullanmadan kendi başıma
+                    yürüyebilirim ve tırabzandan tutmaya gerek kalmadan
+                    merdivenlerden yukarı çıkabilirim veya aşağı inebilirim
+                    <b>ve</b> nereye gitmek istersem yürürüm (düzensiz yüzeyler,
+                    eğimler veya kalabalıklar dahil) <b>ve</b> hız, denge ve
+                    koordinasyonum sınırlı olmasına rağmen koşabilirim ve
+                    atlayabilirim</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="(step == 4) && (yas >= 12) && (yas < 18) && (findCozenSelected()=='Evebeyn')" class="pl-lg-4 pb-lg-4 pr-lg-4">
+            <div
+              *ngIf="
+                step == 4 &&
+                yas >= 12 &&
+                yas < 18 &&
+                findCozenSelected() == 'Evebeyn'
+              "
+              class="pl-lg-4 pb-lg-4 pr-lg-4"
+            >
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>1</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut duruşlarını kontrol etmekte zorlanır <b>ve</b> herhangi bir istemli hareketi kontrol etmekte zorlanır <b>ve</b> rahatça oturmak ve her yere taşınmak için özel olarak uyarlanmış bir sandalyeye ihtiyaç duyar <b>ve</b> hareket etmek için başka bir kişi veya özel uyarlanmış donanım tarafından kaldırılmalı veya çekilmelidir</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturmakta ve çoğu pozisyonda baş ve vücut
+                    duruşlarını kontrol etmekte zorlanır <b>ve</b> herhangi bir
+                    istemli hareketi kontrol etmekte zorlanır <b>ve</b> rahatça
+                    oturmak ve her yere taşınmak için özel olarak uyarlanmış bir
+                    sandalyeye ihtiyaç duyar <b>ve</b> hareket etmek için başka
+                    bir kişi veya özel uyarlanmış donanım tarafından
+                    kaldırılmalı veya çekilmelidir</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-1-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-1" formControlName="firstQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-1-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-1"
+                      formControlName="firstQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-1-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>2</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Biraz kalça ve gövde desteği ile oturabilir, ancak önemli destek olmadan ayakta duramaz veya yürüyemez <b>ve</b> bu nedenle dışarıda her zaman tekerlekli sandalyeye güvenir <b>ve</b> akülü sandalye kullanarak kendi kendine hareket edebilir <b>ve</b>  içeride dolaşmak için sınırlı ölçüde emekleyebilir veya dönebilir</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Biraz kalça ve gövde desteği ile oturabilir, ancak önemli
+                    destek olmadan ayakta duramaz veya yürüyemez <b>ve</b> bu
+                    nedenle dışarıda her zaman tekerlekli sandalyeye güvenir
+                    <b>ve</b> akülü sandalye kullanarak kendi kendine hareket
+                    edebilir <b>ve</b> içeride dolaşmak için sınırlı ölçüde
+                    emekleyebilir veya dönebilir</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-2-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-2" formControlName="secondQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-2-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-2"
+                      formControlName="secondQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-2-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>3</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Kendi başına oturabilir ve bir yürüme yardımcısı ile kısa mesafe yürüyebilir (örneğin bir yürüteç, tekerlekli yürüteç, koltuk değneği, kanadiyen vs.) <b>ve</b> merdivenlere tırmanmayı ya da düz olmayan yüzeylerde destek olmadan yürümeyi zor bulur <b>ve</b> koşullara bağlı olarak hareket etmek için çeşitli araçlar kullanır <b>ve</b> hızlı bir şekilde veya daha uzun mesafelerde gezebilmek için tekerlekli sandalyeyi kullanmayı tercih eder</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Kendi başına oturabilir ve bir yürüme yardımcısı ile kısa
+                    mesafe yürüyebilir (örneğin bir yürüteç, tekerlekli yürüteç,
+                    koltuk değneği, kanadiyen vs.) <b>ve</b> merdivenlere
+                    tırmanmayı ya da düz olmayan yüzeylerde destek olmadan
+                    yürümeyi zor bulur <b>ve</b> koşullara bağlı olarak hareket
+                    etmek için çeşitli araçlar kullanır <b>ve</b> hızlı bir
+                    şekilde veya daha uzun mesafelerde gezebilmek için
+                    tekerlekli sandalyeyi kullanmayı tercih eder</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-3-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-3" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-3-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-3"
+                      formControlName="thirdQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-3-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>4</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüme yardımcıları kullanmadan kendi başına yürüyebilir, ancak merdivenlerden yukarı çıkarken veya aşağı inerken tırabzandan tutmalıdır <b>ve</b> bu nedenle çoğu ayarda yürür <b>ve</b> genellikle düz olmayan yüzeylerde, eğimli yerlerde veya kalabalıkta yürümeyi zor bulur <b>ve</b> bazen bir yürüyüş yardımcısını (örneğin kanadiyen ya da koltuk değneği gibi) ya da tekerlekli bir sandalyeyi hızlı bir şekilde ya da daha uzun mesafelerde gezmek için kullanmayı tercih edebilir</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Yürüme yardımcıları kullanmadan kendi başına yürüyebilir,
+                    ancak merdivenlerden yukarı çıkarken veya aşağı inerken
+                    tırabzandan tutmalıdır <b>ve</b> bu nedenle çoğu ayarda
+                    yürür <b>ve</b> genellikle düz olmayan yüzeylerde, eğimli
+                    yerlerde veya kalabalıkta yürümeyi zor bulur <b>ve</b> bazen
+                    bir yürüyüş yardımcısını (örneğin kanadiyen ya da koltuk
+                    değneği gibi) ya da tekerlekli bir sandalyeyi hızlı bir
+                    şekilde ya da daha uzun mesafelerde gezmek için kullanmayı
+                    tercih edebilir</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="thirdQuestion" value="Evet" formControlName="thirdQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-4-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="thirdQuestion"
+                      value="Evet"
+                      formControlName="thirdQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-4" formControlName="thirdQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-4-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-4"
+                      formControlName="thirdQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-4-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
-              <hr/>
+              <hr />
               <div class="row">
-                <div style="justify-content: center; align-items: center; display: flex;" class="col-lg-1">
+                <div
+                  style="
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                  "
+                  class="col-lg-1"
+                >
                   <div>5</div>
                 </div>
-                <div style=" align-items: center; display: flex;" class="col-lg-8">
-                  <label style="margin-top: 0.5rem;" class="form-control-label">Yürüyüş yardımcılarını kullanmadan kendi başına yürüyebilir ve tırabzandan tutmaya gerek kalmadan merdivenlerden yukarı çıkabilir veya aşağı inebilir <b>ve</b> nereye gitmek isterse yürür (düzensiz yüzeyler, eğimler veya kalabalıklar dahil) <b>ve</b> hızı, dengesi ve koordinasyonu sınırlı olmasına rağmen koşabilir ve atlayabilir</label>
+                <div
+                  style="align-items: center; display: flex"
+                  class="col-lg-8"
+                >
+                  <label style="margin-top: 0.5rem" class="form-control-label"
+                    >Yürüyüş yardımcılarını kullanmadan kendi başına yürüyebilir
+                    ve tırabzandan tutmaya gerek kalmadan merdivenlerden yukarı
+                    çıkabilir veya aşağı inebilir <b>ve</b> nereye gitmek
+                    isterse yürür (düzensiz yüzeyler, eğimler veya kalabalıklar
+                    dahil) <b>ve</b> hızı, dengesi ve koordinasyonu sınırlı
+                    olmasına rağmen koşabilir ve atlayabilir</label
+                  >
                 </div>
-                <div style="justify-content: center; align-items: center;" class="col-lg-3">
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Evet" class="custom-control-input" id="ilk-kayit-soru-5-0" type="radio" checked="true">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0">Evet</label>
+                <div
+                  style="justify-content: center; align-items: center"
+                  class="col-lg-3"
+                >
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Evet"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-0"
+                      type="radio"
+                      checked="true"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
+                      >Evet</label
+                    >
                   </div>
-                  <div class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5">
-                    <input name="ilk-kayit-soru-5" formControlName="fifthQuestion" value="Hayır" class="custom-control-input" id="ilk-kayit-soru-5-1" type="radio">
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1">Hayır</label>
+                  <div
+                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
+                  >
+                    <input
+                      name="ilk-kayit-soru-5"
+                      formControlName="fifthQuestion"
+                      value="Hayır"
+                      class="custom-control-input"
+                      id="ilk-kayit-soru-5-1"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
+                      >Hayır</label
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            <hr *ngIf="step == 4"/>
+            <hr *ngIf="step == 4" />
             <!-- Buttons -->
             <div id="first-form-buttons">
-              <button *ngIf="step != 1" class="btn btn-icon btn-3 btn-primary float-left" type="button" (click)="geri()">
-                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+              <button
+                *ngIf="step != 1"
+                class="btn btn-icon btn-3 btn-primary float-left"
+                type="button"
+                (click)="geri()"
+              >
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bold-left"></i
+                ></span>
                 <span class="btn-inner--text">Geri</span>
               </button>
-              <button *ngIf="step != 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
+              <button
+                *ngIf="step != 4"
+                class="btn btn-icon btn-3 btn-primary float-right"
+                type="submit"
+              >
                 <span class="btn-inner--text">İleri</span>
-                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bold-right"></i
+                ></span>
               </button>
-              <button *ngIf="step == 4" class="btn btn-icon btn-3 btn-primary float-right" type="submit">
-                <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+              <button
+                *ngIf="step == 4"
+                class="btn btn-icon btn-3 btn-primary float-right"
+                type="submit"
+              >
+                <span class="btn-inner--icon"
+                  ><i class="ni ni-bag-17"></i
+                ></span>
                 <span class="btn-inner--text">Gönder</span>
               </button>
             </div>

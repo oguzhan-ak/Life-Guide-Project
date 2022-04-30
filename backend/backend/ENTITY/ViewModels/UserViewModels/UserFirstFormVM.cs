@@ -2,6 +2,7 @@
 {
     public class UserFirstFormVM
     {
+        public int id { get; set; }
         public string firstName { get; set; }
         public string secondName { get; set; }
         public string lastName { get; set; }

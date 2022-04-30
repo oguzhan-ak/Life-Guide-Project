@@ -7,12 +7,15 @@ namespace LifeGuideProject.API.ENTITY.Entities
     [Table("FirstForm", Schema = "public")]
     public class FirstForm
     {
-        public FirstForm(string firstName, string secondName, string lastName, string birthDateYear, string birthDateMonth, string birthDateDay, string weight, string height, string gender, string address, string city, string country, string postCode, string telephone, string aboutMeText, string solver, string firstQuestion, string secondQuestion, string thirdQuestion, string fourthQuestion, string fifthQuestion, string userEmail)
+        public FirstForm(string firstName, string secondName, string lastName, string birthDateYear, string birthDateMonth,
+            string birthDateDay, string weight, string height, string gender, string address, string city, string country,
+            string postCode, string telephone, string aboutMeText, string solver, string firstQuestion, string secondQuestion,
+            string thirdQuestion, string fourthQuestion, string fifthQuestion, string userEmail, DateTime createdTime)
         {
             this.firstName = firstName;
             this.secondName = secondName;
             this.lastName = lastName;
-            this.birthDateYear = Convert.ToInt32(birthDateDay);
+            this.birthDateYear = Convert.ToInt32(birthDateYear);
             this.birthDateMonth = Convert.ToInt32(birthDateMonth);
             this.birthDateDay = Convert.ToInt32(birthDateDay);
             this.weight = Convert.ToDouble(weight);
@@ -31,6 +34,7 @@ namespace LifeGuideProject.API.ENTITY.Entities
             this.fourthQuestion = fourthQuestion;
             this.fifthQuestion = fifthQuestion;
             this.userEmail = userEmail;
+            this.createdTime = createdTime;
         }
         public FirstForm()
         {
@@ -60,5 +64,6 @@ namespace LifeGuideProject.API.ENTITY.Entities
         public string fourthQuestion { get; set; }
         public string fifthQuestion { get; set; }
         public string userEmail { get; set; }
+        public DateTime createdTime { get; set; }
     }
 }

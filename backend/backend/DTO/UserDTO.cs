@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace LifeGuideProject.API.DTO
+﻿namespace LifeGuideProject.API.DTO
 {
     public class UserDTO
     {
-        public UserDTO(string fullName, string email, string userName, string role,bool isFormDone)
+        public UserDTO(string fullName, string email, string userName, string role, bool isFormDone)
         {
             FullName = fullName;
             Email = email;
@@ -15,14 +10,14 @@ namespace LifeGuideProject.API.DTO
             Role = role;
             IsFormDone = isFormDone;
         }
-        public UserDTO(string fullName, string email, string userName, string role, bool isFormDone,string token)
+        public UserDTO(string fullName, string email, string userName, string role, bool isFormDone, string token)
         {
             FullName = fullName;
             Email = email;
             UserName = userName;
             Role = role;
             IsFormDone = isFormDone;
-            Token = token; 
+            Token = token;
         }
         public string FullName { get; set; }
         public string Email { get; set; }

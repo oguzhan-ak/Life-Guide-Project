@@ -107,6 +107,7 @@ export class UserFirstLoginFormComponent implements OnInit {
           return;
         }else{
           this.yas=this.calculateAge();
+          console.log(this.yas)
           this.step= this.step+1;
         }
       }else if(this.step==2){

@@ -15,6 +15,7 @@ import { ComponentsModule } from './components/components.module';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogTextComponent } from './pages/blog/blog-text/blog-text.component';
 import { UserFirstLoginFormComponent } from './pages/user-first-login-form/user-first-login-form.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -45,7 +46,8 @@ export function tokenGetter(){
     AuthLayoutComponent,
     BlogComponent,
     BlogTextComponent,
-    UserFirstLoginFormComponent
+    UserFirstLoginFormComponent,
+    UserProfileComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

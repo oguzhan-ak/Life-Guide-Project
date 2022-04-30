@@ -5,7 +5,6 @@ C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\LifeGuideProject.API.runtimeconfig.json
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\LifeGuideProject.API.runtimeconfig.dev.json
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\LifeGuideProject.API.dll
-C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\ref\LifeGuideProject.API.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\LifeGuideProject.API.pdb
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Humanizer.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
@@ -42,3 +41,4 @@ C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Ninject.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.csproj.AssemblyReference.cache
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\refint\LifeGuideProject.API.dll
