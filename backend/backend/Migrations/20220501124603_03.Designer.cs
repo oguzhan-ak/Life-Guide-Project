@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LifeGuideProject.API.Migrations
 {
     [DbContext(typeof(LifeGuideDbContext))]
-    [Migration("20220430132015_03")]
+    [Migration("20220501124603_03")]
     partial class _03
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,8 +112,8 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<string>("dislikedCount")
-                        .HasColumnType("text");
+                    b.Property<int>("dislikedCount")
+                        .HasColumnType("integer");
 
                     b.Property<int>("likedCount")
                         .HasColumnType("integer");
@@ -122,6 +122,9 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("videoLink")
+                        .HasColumnType("text");
+
+                    b.Property<string>("videoTitle")
                         .HasColumnType("text");
 
                     b.HasKey("id");

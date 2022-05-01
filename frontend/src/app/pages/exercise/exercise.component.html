@@ -1,41 +1,33 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-      <div class="header-body">
-        <div class="container-fluid align-items-center">
-            <div class="row">
-              <div class="col-lg-12 col-md-12">
-                <h1 style="text-align: center;" class="text-white">Merhaba Oğuzhan</h1>
-                <p style="text-align: center;" class="text-white mt-0 mb-5">Egzersizlerini düzenli ve tam olarak yapmalısın !</p>
-              </div>
-            </div>
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="container-fluid align-items-center">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <h1 style="text-align: center" class="text-white">
+              Merhaba Oğuzhan
+            </h1>
+            <p style="text-align: center" class="text-white mt-0 mb-5">
+              Egzersizlerini düzenli ve tam olarak yapmalısın !
+            </p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 </div>
 <div class="container-fluid mt--11">
-    <div class="row justify-content-center m-3">
-        <div class="col-xl-4 col-lg-6"> 
-            <app-video-card liked="true" disliked="false" videoTitle="A" likeCount="22" dislikeCount="23" videoLink="https://www.youtube.com/embed/M7lc1UVf-VE?modestbranding=1&start=1" state="izlendi"></app-video-card>
-        </div> 
-        <div class="col-xl-4 col-lg-6"> 
-            <app-video-card liked="false" disliked="true"  videoTitle="A" likeCount="22" dislikeCount="23" videoLink="https://www.youtube.com/embed/M7lc1UVf-VE?modestbranding=1&start=1" state="yeni"></app-video-card>
-        </div>
-        <div class="col-xl-4 col-lg-6">             
-            <app-video-card liked="true" disliked="false"  videoTitle="A" likeCount="22" dislikeCount="23" videoLink="https://www.youtube.com/embed/M7lc1UVf-VE?modestbranding=1&start=1" state="yeni"></app-video-card>
-        </div>
-    </div>
-    <div class="row justify-content-center m-3">
-        <div class="col-xl-4 col-lg-6"> 
-            <app-video-card liked="true" disliked="false"  videoTitle="A" likeCount="22" dislikeCount="23" videoLink="https://www.youtube.com/embed/M7lc1UVf-VE?modestbranding=1&start=1" state="izlendi"></app-video-card>
-        </div> 
-        <div class="col-xl-4 col-lg-6"> 
-            <app-video-card liked="true" disliked="false"  videoTitle="A" likeCount="22" dislikeCount="23" videoLink="https://www.youtube.com/embed/M7lc1UVf-VE?modestbranding=1&start=1" state="yeni"></app-video-card>
-        </div>
-        <div class="col-xl-4 col-lg-6"> 
-            <app-video-card liked="true" disliked="false"  videoTitle="A" likeCount="22" dislikeCount="23" videoLink="https://www.youtube.com/embed/M7lc1UVf-VE?modestbranding=1&start=1" state="yeni"></app-video-card>
-        </div>
-    </div>
+  <div class="grid justify-content-center m-3">
+    <ng-container *ngFor="let exercise of exerciseList">
+      <app-video-card
+        id="{{ exercise.id }}"
+        style="margin-left: 2rem; margin-right: 2rem"
+        videoTitle="{{ exercise.videoTitle }}"
+        likedCount="{{ exercise.likedCount }}"
+        dislikedCount="{{ exercise.dislikedCount }}"
+        videoLink="{{ exercise.videoLink }}"
+        [userExercises]="userExerciseList"
+      ></app-video-card>
+    </ng-container>
+  </div>
 </div>
-
-
-  

@@ -1,5 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer,SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Constants } from 'src/app/Helper/constants';
+import { User } from 'src/app/Models/user';
+import { UserExercise } from 'src/app/Models/userExercise';
+import { SharedService } from 'src/app/shared/shared.service';
+
 
 @Component({
   selector: 'app-video-card',
@@ -8,53 +15,33 @@ import { DomSanitizer,SafeUrl } from '@angular/platform-browser';
 })
 export class VideoCardComponent implements OnInit {
 
-  constructor(private sanitizer : DomSanitizer) { }
-  @Input() videoId:string;
+  constructor(private sanitizer : DomSanitizer, private shared:SharedService,private toastrService : ToastrService,private router : Router) { }
+  @Input() id:string;
   @Input() videoTitle:string;
-  @Input() likeCount:string;
-  @Input() dislikeCount:string;
+  @Input() likedCount:string;
+  @Input() dislikedCount:string;
   @Input() videoLink:string;
-  @Input() state:string 
-  @Input() liked:string
-  @Input() disliked:string
+  @Input() userExercises : UserExercise[];
+  public state:string ="yeni"
+  public liked:string = "true"
+  public disliked:string = "false"
   ngOnInit(): void {
     this.videoLink= this.sanitizer.bypassSecurityTrustResourceUrl(this.videoLink) as string;
+    this.assignValues();
   }
-  begen(){
-    let newCount= parseInt(this.likeCount)+1;
-    this.likeCount= newCount.toString();
-    if(this.liked=="true" && this.disliked=="false"){
-      let a= parseInt(this.likeCount)-1;
-      this.likeCount= a.toString();
-      this.liked="false";
-    }else if(this.liked=="false" && this.disliked=="false"){
-      let b= parseInt(this.likeCount)+1;
-      this.likeCount= b.toString();
-      this.liked="true";
-    }else if(this.liked=="false" && this.disliked=="true"){
-      this.liked="true";
-      this.disliked="false";
-      let c= parseInt(this.likeCount)+1;
-      this.likeCount= c.toString();
-      let d= parseInt(this.likeCount)-1;
-      this.dislikeCount= d.toString();
-    }else{
-      return
-    }
-    //// shareda video tablosunu güncellemek için istek at
+  action(action : string, exerciseId : string) {
+    let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+    this.shared.ApplyActionToExercises(userInfo.email, parseInt(exerciseId), action).subscribe(res => {
+      this.reloadComponent()
+    });
   }
-  begenme(){
-    let newCount= parseInt(this.dislikeCount)-1;
-    this.dislikeCount= newCount.toString();
-    //// shareda video tablosunu güncellemek için istek at
-
+  reloadComponent() {
+    let currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
   }
-  setState(status:any){
-    if(status == "izlendi"){
-      this.state= "yeni";
-    }else{
-      this.state="izlendi";
-    }
-    /// shareda istek at video-user tablosunu güncellemek için
+  assignValues(){
+    // burada gelen userExercises listesini filtreleyerek state, liked,disliked gigi değişkenleri değiştir
   }
 }

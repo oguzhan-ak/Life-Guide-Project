@@ -12,5 +12,11 @@ namespace LifeGuideProject.API.ENTITY.Entities
         public int exerciseId { get; set; }
         public string action { get; set; }
 
+        public UserExercise(string userEmail, int exerciseId, string action)
+        {
+            this.userEmail = userEmail;
+            this.exerciseId = exerciseId;
+            this.action = action;
+        }
     }
 }

@@ -16,8 +16,9 @@ namespace LifeGuideProject.API.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     videoLink = table.Column<string>(type: "text", nullable: true),
                     likedCount = table.Column<int>(type: "integer", nullable: false),
-                    dislikedCount = table.Column<string>(type: "text", nullable: true),
-                    videoDegree = table.Column<int>(type: "integer", nullable: false)
+                    dislikedCount = table.Column<int>(type: "integer", nullable: false),
+                    videoDegree = table.Column<int>(type: "integer", nullable: false),
+                    videoTitle = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

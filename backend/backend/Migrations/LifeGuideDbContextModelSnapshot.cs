@@ -110,8 +110,8 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<string>("dislikedCount")
-                        .HasColumnType("text");
+                    b.Property<int>("dislikedCount")
+                        .HasColumnType("integer");
 
                     b.Property<int>("likedCount")
                         .HasColumnType("integer");
@@ -120,6 +120,9 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("videoLink")
+                        .HasColumnType("text");
+
+                    b.Property<string>("videoTitle")
                         .HasColumnType("text");
 
                     b.HasKey("id");

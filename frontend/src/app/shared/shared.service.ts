@@ -4,6 +4,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { map, Observable } from 'rxjs';
 import { ResponseCode } from '../Enums/responseCode';
 import { Constants } from '../Helper/constants';
+import { Exercise } from '../Models/exercise';
+import { UserExercise } from '../Models/userExercise';
 import { ResponseModel } from '../Models/responseModel';
 import { Role } from '../Models/role';
 import { User } from '../Models/user';
@@ -18,6 +20,49 @@ export class SharedService {
    
   private readonly apiUrl : string = "http://localhost:5001/api/";
   
+  public getAllExercises(degree: number){
+    const body= {
+      degree:degree
+    };
+    return this.http.post<ResponseModel>(this.apiUrl+'Exercise/GetExercises',body).pipe(map(res => {
+      if(res.responseCode==ResponseCode.OK){
+        let exerciseList= new Array<Exercise>();
+        if(res.dateSet){
+          res.dateSet.map((x:Exercise) =>{
+            exerciseList.push(new Exercise(x.id,x.videoLink,x.likedCount,x.dislikedCount,x.videoDegree, x.videoTitle));
+          });
+        }
+        return exerciseList;
+      }
+    }));
+  }
+  public getAllUserExercises(){
+    let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+    const body= {
+      userEmail:userInfo.email
+    };
+    return this.http.post<ResponseModel>(this.apiUrl+'Exercise/UserActions',body).pipe(map(res => {
+      if(res.responseCode==ResponseCode.OK){
+        let userExerciseList= new Array<UserExercise>();
+        if(res.dateSet){
+          res.dateSet.map((x:UserExercise) =>{
+            userExerciseList.push(new UserExercise(x.id,x.userEmail,x.exerciseId,x.action));
+          });
+        }
+        return userExerciseList;
+      }
+    }));
+  }
+  public ApplyActionToExercises(userEmail : string, exerciseId : number, action : string){
+    console.log(userEmail + "  " + exerciseId+ "  " + action);
+    const body= {
+      userEmail : userEmail,
+      exerciseId : exerciseId,
+      action : action
+    };
+    return this.http.post<ResponseModel>(this.apiUrl+'Exercise/Action',body);
+  }
+
   public Login(email:string,password:string){
     const body= {
       Email:email,

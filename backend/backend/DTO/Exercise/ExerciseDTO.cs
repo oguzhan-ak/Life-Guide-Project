@@ -1,12 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace LifeGuideProject.API.ENTITY.Entities
+﻿namespace LifeGuideProject.API.DTO
 {
-    [Table("Exercise", Schema = "public")]
-    public class Exercise
+    public class ExerciseDTO
     {
-        [Key]
         public int id { get; set; }
         public string videoLink { get; set; }
         public int likedCount { get; set; }
