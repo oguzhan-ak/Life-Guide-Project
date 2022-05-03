@@ -19,11 +19,7 @@
         public string telephone { get; set; }
         public string aboutMeText { get; set; }
         public string solver { get; set; }
-        public string firstQuestion { get; set; }
-        public string secondQuestion { get; set; }
-        public string thirdQuestion { get; set; }
-        public string fourthQuestion { get; set; }
-        public string fifthQuestion { get; set; }
+        public int degree { get; set; }
         public string userEmail { get; set; }
     }
 }

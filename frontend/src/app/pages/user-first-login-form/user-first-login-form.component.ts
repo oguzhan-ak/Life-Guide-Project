@@ -9,6 +9,7 @@ import Validation from 'src/app/utils/validation';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/Helper/constants';
 import { User } from 'src/app/Models/user';
+import { Degree } from 'src/app/Models/degree';
 @Component({
   selector: 'app-user-first-login-form',
   templateUrl: './user-first-login-form.component.html',
@@ -24,8 +25,9 @@ export class UserFirstLoginFormComponent implements OnInit {
   submitted2=false;
   submitted3=false;
   submitted4=false;
+  degreeIndex = 0;
   step : any = 1;
-  yas:number;
+  yas:number ;
   multiStep1= this.formBuilder.group({
       firstName : ['',Validators.required],
       secondName : [''],
@@ -51,11 +53,7 @@ export class UserFirstLoginFormComponent implements OnInit {
   })
   multiStep4= this.formBuilder.group({
     solver : ['Çocuk'],
-    firstQuestion : ['Evet'],
-    secondQuestion : ['Evet'],
-    thirdQuestion : ['Evet'],
-    fourthQuestion : ['Evet'],
-    fifthQuestion : ['Evet']
+    degree : ["1"]
   })
 
   get f1(): { [key: string]: AbstractControl } {
@@ -87,6 +85,28 @@ export class UserFirstLoginFormComponent implements OnInit {
     },
     {
       cozen:"Evebeyn",
+      isSelected:false
+    }
+  ]
+  public degrees: Degree[]=[
+    {
+      degree:"1",
+      isSelected:true
+    },
+    {
+      degree:"2",
+      isSelected:false
+    },
+    {
+      degree:"3",
+      isSelected:false
+    },
+    {
+      degree:"4",
+      isSelected:false
+    },
+    {
+      degree:"5",
       isSelected:false
     }
   ]
@@ -150,6 +170,16 @@ export class UserFirstLoginFormComponent implements OnInit {
     if(this.step!=1){
       this.step= this.step-1;
     }
+  }
+  onDegreeChange(degree : string)
+  {
+    this.degrees.forEach(x=> {
+      if(x.degree == degree){
+        x.isSelected=true;
+      }else{
+        x.isSelected=false;
+      }
+    })
   }
   onCinsiyetChange(cinsiyet : string)
   {

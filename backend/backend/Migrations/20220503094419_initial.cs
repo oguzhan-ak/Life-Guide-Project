@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LifeGuideProject.API.Migrations
 {
-    public partial class MyFirstMigration : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,6 +56,24 @@ namespace LifeGuideProject.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Exercise",
+                schema: "public",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    videoLink = table.Column<string>(type: "text", nullable: true),
+                    likedCount = table.Column<int>(type: "integer", nullable: false),
+                    dislikedCount = table.Column<int>(type: "integer", nullable: false),
+                    videoDegree = table.Column<int>(type: "integer", nullable: false),
+                    videoTitle = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exercise", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FirstForm",
                 schema: "public",
                 columns: table => new
@@ -78,16 +96,29 @@ namespace LifeGuideProject.API.Migrations
                     telephone = table.Column<string>(type: "text", nullable: true),
                     aboutMeText = table.Column<string>(type: "text", nullable: true),
                     solver = table.Column<string>(type: "text", nullable: true),
-                    firstQuestion = table.Column<string>(type: "text", nullable: true),
-                    secondQuestion = table.Column<string>(type: "text", nullable: true),
-                    thirdQuestion = table.Column<string>(type: "text", nullable: true),
-                    fourthQuestion = table.Column<string>(type: "text", nullable: true),
-                    fifthQuestion = table.Column<string>(type: "text", nullable: true),
-                    userEmail = table.Column<string>(type: "text", nullable: true)
+                    degree = table.Column<int>(type: "integer", nullable: false),
+                    userEmail = table.Column<string>(type: "text", nullable: true),
+                    createdTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FirstForm", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserExercise",
+                schema: "public",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    userEmail = table.Column<string>(type: "text", nullable: true),
+                    exerciseId = table.Column<int>(type: "integer", nullable: false),
+                    action = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserExercise", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -252,7 +283,15 @@ namespace LifeGuideProject.API.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Exercise",
+                schema: "public");
+
+            migrationBuilder.DropTable(
                 name: "FirstForm",
+                schema: "public");
+
+            migrationBuilder.DropTable(
+                name: "UserExercise",
                 schema: "public");
 
             migrationBuilder.DropTable(

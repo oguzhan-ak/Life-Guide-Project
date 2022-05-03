@@ -138,11 +138,7 @@ export class SharedService {
       telephone : part2.get('telephone').value,
       aboutMeText : part3.get('aboutMeText').value,
       solver : part4.get('solver').value,
-      firstQuestion : part4.get('firstQuestion').value,
-      secondQuestion : part4.get('secondQuestion').value,
-      thirdQuestion : part4.get('thirdQuestion').value,
-      fourthQuestion : part4.get('fourthQuestion').value,
-      fifthQuestion : part4.get('fifthQuestion').value,
+      degree : parseInt(part4.get('degree').value),
       userEmail : user.email
     };
     console.log("first formda : "+ JSON.stringify(body))

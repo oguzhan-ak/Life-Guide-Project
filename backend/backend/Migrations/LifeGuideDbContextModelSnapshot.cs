@@ -161,16 +161,10 @@ namespace LifeGuideProject.API.Migrations
                     b.Property<DateTime>("createdTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("fifthQuestion")
-                        .HasColumnType("text");
+                    b.Property<int>("degree")
+                        .HasColumnType("integer");
 
                     b.Property<string>("firstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("firstQuestion")
-                        .HasColumnType("text");
-
-                    b.Property<string>("fourthQuestion")
                         .HasColumnType("text");
 
                     b.Property<string>("gender")
@@ -188,16 +182,10 @@ namespace LifeGuideProject.API.Migrations
                     b.Property<string>("secondName")
                         .HasColumnType("text");
 
-                    b.Property<string>("secondQuestion")
-                        .HasColumnType("text");
-
                     b.Property<string>("solver")
                         .HasColumnType("text");
 
                     b.Property<string>("telephone")
-                        .HasColumnType("text");
-
-                    b.Property<string>("thirdQuestion")
                         .HasColumnType("text");
 
                     b.Property<string>("userEmail")

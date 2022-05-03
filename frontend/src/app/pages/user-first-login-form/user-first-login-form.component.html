@@ -618,13 +618,13 @@
                     name="ilk_kayit_cozen"
                     formControlName="solver"
                     class="custom-control-input"
-                    id="{{ index }}"
+                    id="{{ index + 10 }}"
                     [checked]="cozen.isSelected"
                     type="radio"
                     [value]="cozen.cozen"
                     (change)="onCozenChange(cozen.cozen)"
                   />
-                  <label class="custom-control-label" for="{{ index }}">
+                  <label class="custom-control-label" for="{{ index + 10 }}">
                     {{ cozen.cozen }}</label
                   >
                 </div>
@@ -665,32 +665,18 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-1-0"
-                      value="Evet"
+                      id="{{ degreeIndex }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-1-1"
-                      value="Hayır"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
-                      >Hayır</label
-                    >
+                    <label class="custom-control-label" for="{{ degreeIndex }}"
+                      >{{ degrees[degreeIndex].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -725,32 +711,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 1].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-2-0"
+                      id="{{ degreeIndex + 1 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 1].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 1].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-2-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 1 }}"
+                      >{{ degrees[degreeIndex + 1].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -785,32 +759,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 2].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-3-0"
+                      id="{{ degreeIndex + 2 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 2].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 2].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-3-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 2 }}"
+                      >{{ degrees[degreeIndex + 2].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -845,32 +807,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 3].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-4-0"
+                      id="{{ degreeIndex + 3 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 3].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 3].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-4-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 3 }}"
+                      >{{ degrees[degreeIndex + 3].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -905,32 +855,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 4].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-5-0"
+                      id="{{ degreeIndex + 4 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 4].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 4].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-5-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 4 }}"
+                      >{{ degrees[degreeIndex + 4].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -969,32 +907,18 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-1-0"
+                      id="{{ degreeIndex }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-1-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
-                      >Hayır</label
-                    >
+                    <label class="custom-control-label" for="{{ degreeIndex }}"
+                      >{{ degrees[degreeIndex].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1031,32 +955,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 1].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-2-0"
+                      id="{{ degreeIndex + 1 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 1].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 1].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-2-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 1 }}"
+                      >{{ degrees[degreeIndex + 1].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1096,32 +1008,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 2].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-3-0"
+                      id="{{ degreeIndex + 2 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 2].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 2].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-3-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 2 }}"
+                      >{{ degrees[degreeIndex + 2].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1159,32 +1059,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 3].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-4-0"
+                      id="{{ degreeIndex + 3 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 3].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 3].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-4-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 3 }}"
+                      >{{ degrees[degreeIndex + 3].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1220,32 +1108,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 4].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-5-0"
+                      id="{{ degreeIndex + 4 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 4].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 4].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-5-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 4 }}"
+                      >{{ degrees[degreeIndex + 4].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1286,32 +1162,18 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-1-0"
+                      id="{{ degreeIndex }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-1-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
-                      >Hayır</label
-                    >
+                    <label class="custom-control-label" for="{{ degreeIndex }}"
+                      >{{ degrees[degreeIndex].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1349,32 +1211,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 1].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-2-0"
+                      id="{{ degreeIndex + 1 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 1].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 1].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-2-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 1 }}"
+                      >{{ degrees[degreeIndex + 1].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1413,32 +1263,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 2].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-3-0"
+                      id="{{ degreeIndex + 2 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 2].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 2].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-3-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 2 }}"
+                      >{{ degrees[degreeIndex + 2].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1477,32 +1315,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 3].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-4-0"
+                      id="{{ degreeIndex + 3 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 3].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 3].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-4-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 3 }}"
+                      >{{ degrees[degreeIndex + 3].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1540,32 +1366,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 4].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-5-0"
+                      id="{{ degreeIndex + 4 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 4].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 4].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-5-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 4 }}"
+                      >{{ degrees[degreeIndex + 4].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1606,32 +1420,18 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-1-0"
+                      id="{{ degreeIndex }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-1-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
-                      >Hayır</label
-                    >
+                    <label class="custom-control-label" for="{{ degreeIndex }}"
+                      >{{ degrees[degreeIndex].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1668,32 +1468,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 1].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-2-0"
+                      id="{{ degreeIndex + 1 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 1].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 1].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-2-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 1 }}"
+                      >{{ degrees[degreeIndex + 1].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1731,32 +1519,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 2].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-3-0"
+                      id="{{ degreeIndex + 2 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 2].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 2].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-3-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 2 }}"
+                      >{{ degrees[degreeIndex + 2].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1792,32 +1568,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 3].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-4-0"
+                      id="{{ degreeIndex + 3 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 3].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 3].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-4-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 3 }}"
+                      >{{ degrees[degreeIndex + 3].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1854,32 +1618,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 4].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-5-0"
+                      id="{{ degreeIndex + 4 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 4].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 4].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-5-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 4 }}"
+                      >{{ degrees[degreeIndex + 4].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1927,32 +1679,18 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-1-0"
+                      id="{{ degreeIndex }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-1-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
-                      >Hayır</label
-                    >
+                    <label class="custom-control-label" for="{{ degreeIndex }}"
+                      >{{ degrees[degreeIndex].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1989,32 +1727,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 1].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-2-0"
+                      id="{{ degreeIndex + 1 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 1].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 1].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-2-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 1 }}"
+                      >{{ degrees[degreeIndex + 1].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -2054,32 +1780,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 2].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-3-0"
+                      id="{{ degreeIndex + 2 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 2].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 2].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-3-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 2 }}"
+                      >{{ degrees[degreeIndex + 2].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -2119,32 +1833,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 3].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-4-0"
+                      id="{{ degreeIndex + 3 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 3].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 3].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="fourthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-4-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 3 }}"
+                      >{{ degrees[degreeIndex + 3].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -2182,32 +1884,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 4].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-5-0"
+                      id="{{ degreeIndex + 4 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 4].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 4].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-5-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 4 }}"
+                      >{{ degrees[degreeIndex + 4].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -2254,32 +1944,18 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-1-0"
+                      id="{{ degreeIndex }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-1"
-                      formControlName="firstQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-1-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-1-1"
-                      >Hayır</label
-                    >
+                    <label class="custom-control-label" for="{{ degreeIndex }}"
+                      >{{ degrees[degreeIndex].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -2316,32 +1992,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 1].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-2-0"
+                      id="{{ degreeIndex + 1 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 1].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 1].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-2"
-                      formControlName="secondQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-2-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-2-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 1 }}"
+                      >{{ degrees[degreeIndex + 1].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -2380,32 +2044,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 2].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-3-0"
+                      id="{{ degreeIndex + 2 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 2].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 2].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-3"
-                      formControlName="thirdQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-3-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-3-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 2 }}"
+                      >{{ degrees[degreeIndex + 2].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -2445,34 +2097,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="thirdQuestion"
-                      value="Evet"
-                      formControlName="thirdQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 3].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-4-0"
+                      id="{{ degreeIndex + 3 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 3].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 3].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-4"
-                      formControlName="thirdQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-4-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-4-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 3 }}"
+                      >{{ degrees[degreeIndex + 3].degree }}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -2509,32 +2147,20 @@
                     class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
                   >
                     <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Evet"
+                      name="degree"
+                      formControlName="degree"
+                      [value]="degrees[degreeIndex + 4].degree"
                       class="custom-control-input"
-                      id="ilk-kayit-soru-5-0"
+                      id="{{ degreeIndex + 4 }}"
                       type="radio"
-                      checked="true"
+                      [checked]="degrees[degreeIndex + 4].isSelected"
+                      (change)="onDegreeChange(degrees[degreeIndex + 4].degree)"
                     />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-0"
-                      >Evet</label
-                    >
-                  </div>
-                  <div
-                    class="custom-control custom-control-alternative custom-radio mb-3 mt-3 ml-7 mr-5"
-                  >
-                    <input
-                      name="ilk-kayit-soru-5"
-                      formControlName="fifthQuestion"
-                      value="Hayır"
-                      class="custom-control-input"
-                      id="ilk-kayit-soru-5-1"
-                      type="radio"
-                    />
-                    <label class="custom-control-label" for="ilk-kayit-soru-5-1"
-                      >Hayır</label
-                    >
+                    <label
+                      class="custom-control-label"
+                      for="{{ degreeIndex + 4 }}"
+                      >{{ degrees[degreeIndex + 4].degree }}
+                    </label>
                   </div>
                 </div>
               </div>

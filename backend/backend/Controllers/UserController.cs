@@ -263,8 +263,8 @@ namespace LifeGuideProject.API.Controllers
                     }
                     var firstForm = new FirstForm(pUserFirstFormVM.firstName, pUserFirstFormVM.secondName, pUserFirstFormVM.lastName, pUserFirstFormVM.birthDateYear, pUserFirstFormVM.birthDateMonth
                         , pUserFirstFormVM.birthDateDay, pUserFirstFormVM.weight, pUserFirstFormVM.height, pUserFirstFormVM.gender, pUserFirstFormVM.address, pUserFirstFormVM.city
-                        , pUserFirstFormVM.country, pUserFirstFormVM.postCode, pUserFirstFormVM.telephone, pUserFirstFormVM.aboutMeText, pUserFirstFormVM.solver, pUserFirstFormVM.firstQuestion
-                        , pUserFirstFormVM.secondQuestion, pUserFirstFormVM.thirdQuestion, pUserFirstFormVM.fourthQuestion, pUserFirstFormVM.fifthQuestion, pUserFirstFormVM.userEmail, DateTime.Now);
+                        , pUserFirstFormVM.country, pUserFirstFormVM.postCode, pUserFirstFormVM.telephone, pUserFirstFormVM.aboutMeText, pUserFirstFormVM.solver, pUserFirstFormVM.degree
+                        , pUserFirstFormVM.userEmail, DateTime.Now);
                     var Formresult = new Object();
                     try
                     {
@@ -301,8 +301,8 @@ namespace LifeGuideProject.API.Controllers
                     }
                     var firstForm = new FirstForm(pUserFirstFormVM.firstName, pUserFirstFormVM.secondName, pUserFirstFormVM.lastName, pUserFirstFormVM.birthDateYear, pUserFirstFormVM.birthDateMonth
                         , pUserFirstFormVM.birthDateDay, pUserFirstFormVM.weight, pUserFirstFormVM.height, pUserFirstFormVM.gender, pUserFirstFormVM.address, pUserFirstFormVM.city
-                        , pUserFirstFormVM.country, pUserFirstFormVM.postCode, pUserFirstFormVM.telephone, pUserFirstFormVM.aboutMeText, pUserFirstFormVM.solver, pUserFirstFormVM.firstQuestion
-                        , pUserFirstFormVM.secondQuestion, pUserFirstFormVM.thirdQuestion, pUserFirstFormVM.fourthQuestion, pUserFirstFormVM.fifthQuestion, pUserFirstFormVM.userEmail, DateTime.Now);
+                        , pUserFirstFormVM.country, pUserFirstFormVM.postCode, pUserFirstFormVM.telephone, pUserFirstFormVM.aboutMeText, pUserFirstFormVM.solver, pUserFirstFormVM.degree
+                        , pUserFirstFormVM.userEmail, DateTime.Now);
                     var Formresult = new Object();
                     try
                     {
