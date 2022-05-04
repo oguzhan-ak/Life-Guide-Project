@@ -21,34 +21,6 @@ import { UserListComponent } from './component/user-list/user-list.component';
 import { ExerciseComponent } from './pages/exercise/exercise.component';
 
 const routes: Routes =[
-  // Admin Layout
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: LoginComponent,
-        pathMatch:'full',
-        canActivate:[Auth2GuardService]
-      },
-      {
-        path : 'login',
-        component:LoginComponent,
-        canActivate:[Auth2GuardService]
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-        canActivate:[Auth2GuardService]
-      },
-      {
-        path: 'users',
-        component: UserListComponent,
-        canActivate:[Auth1GuardService]
-      }
-    ]
-  }, 
   // Authorization Layout
   {
     path: '',
@@ -88,6 +60,33 @@ const routes: Routes =[
         path: 'first-form',
         component:UserFirstLoginFormComponent,
         canActivate:[FirstFormGuardGuard]
+      }
+    ]
+  },
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent,
+        pathMatch:'full',
+        canActivate:[Auth2GuardService]
+      },
+      {
+        path : 'login',
+        component:LoginComponent,
+        canActivate:[Auth2GuardService]
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        canActivate:[Auth2GuardService]
+      },
+      {
+        path: 'users',
+        component: UserListComponent,
+        canActivate:[Auth1GuardService]
       }
     ]
   },

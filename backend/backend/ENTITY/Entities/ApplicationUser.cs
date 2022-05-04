@@ -1,10 +1,6 @@
-﻿using LifeGuideProject.API.DATA.Entities;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LifeGuideProject.API.ENTITY.Entities
 {
@@ -20,5 +16,7 @@ namespace LifeGuideProject.API.ENTITY.Entities
         public bool IsActive { get; set; } = true;
         [Column("IsFormDone")]
         public bool IsFormDone { get; set; }
+        [Column("Degree")]
+        public int Degree { get; set; }
     }
 }

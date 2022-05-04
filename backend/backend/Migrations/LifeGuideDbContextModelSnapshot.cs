@@ -35,6 +35,10 @@ namespace LifeGuideProject.API.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("CreatedTime");
 
+                    b.Property<int>("Degree")
+                        .HasColumnType("integer")
+                        .HasColumnName("Degree");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");

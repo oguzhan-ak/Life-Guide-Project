@@ -4,12 +4,14 @@ export class User{
     public role:string="";
     public isFormDone : boolean=false;
     public token : string="";
+    public degree : number;
 
-    constructor(email:string,userName:string,role:string,isFormDone:boolean,token:string){
+    constructor(email:string,userName:string,role:string,isFormDone:boolean,token:string, degree:number){
         this.email=email;
         this.userName=userName;
         this.role=role;
         this.isFormDone=isFormDone;
         this.token=token;
+        this.degree = degree;
     }
 }

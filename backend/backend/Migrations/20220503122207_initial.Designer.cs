@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LifeGuideProject.API.Migrations
 {
     [DbContext(typeof(LifeGuideDbContext))]
-    [Migration("20220503094419_initial")]
+    [Migration("20220503122207_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,10 @@ namespace LifeGuideProject.API.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("CreatedTime");
+
+                    b.Property<int>("Degree")
+                        .HasColumnType("integer")
+                        .HasColumnName("Degree");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)

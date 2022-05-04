@@ -27,6 +27,7 @@
         dislikedCount="{{ exercise.dislikedCount }}"
         videoLink="{{ exercise.videoLink }}"
         [userExercises]="userExerciseList"
+        (buttonClicked)="parentEventHandlerFunction($event)"
       ></app-video-card>
     </ng-container>
   </div>

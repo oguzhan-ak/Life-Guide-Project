@@ -50,7 +50,6 @@ export class UserProfileComponent implements OnInit {
         response.dateSet.secondQuestion, response.dateSet.thirdQuestion, response.dateSet.fourthQuestion, response.dateSet.fifthQuestion,
         response.dateSet.userEmail, response.dateSet.createedTime, response.dateSet.id);
         this.updateUserModel = model
-        console.log(response.dateSet)
     });
   }
 
@@ -75,11 +74,9 @@ export class UserProfileComponent implements OnInit {
           this.router.navigate(["dashboard"]);
         }else{
           this.toastrService.error(data.responseMessage);
-          console.log(data.responseMessage)
         }
       },error =>{
         this.toastrService.error(error);
-        console.log(error);
       });
     }
   }

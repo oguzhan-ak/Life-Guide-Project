@@ -55,7 +55,7 @@ namespace LifeGuideProject.API.Controllers
                 var existingDislike = db.userExercises.Where(x => x.action == "begenme" && x.exerciseId == userExerciseVM.exerciseId && x.userEmail == userExerciseVM.userEmail).FirstOrDefault();
                 var existingLike = db.userExercises.Where(x => x.action == "begen" && x.exerciseId == userExerciseVM.exerciseId && x.userEmail == userExerciseVM.userEmail).FirstOrDefault();
                 var existingIzledim = db.userExercises.Where(x => x.action == "izledim" && x.exerciseId == userExerciseVM.exerciseId && x.userEmail == userExerciseVM.userEmail).FirstOrDefault();
-                var existingDevamet = db.userExercises.Where(x => x.action == "devamet" && x.exerciseId == userExerciseVM.exerciseId && x.userEmail == userExerciseVM.userEmail).FirstOrDefault();
+                var existingDevamet = db.userExercises.Where(x => x.action == "izlemedim" && x.exerciseId == userExerciseVM.exerciseId && x.userEmail == userExerciseVM.userEmail).FirstOrDefault();
                 if (userExerciseVM.action.Equals("begen"))
                 {
                     if (existingDislike != null) // önceden dislike etmiş
@@ -138,16 +138,16 @@ namespace LifeGuideProject.API.Controllers
                 }
                 else if (userExerciseVM.action.Equals("izledim"))
                 {
-                    if (existingIzledim != null)
-                    {
-                        db.userExercises.Remove(existingIzledim);
-                        db.userExercises.Add(new UserExercise(userExerciseVM.userEmail, userExerciseVM.exerciseId, "izlemedim"));
-                        db.SaveChanges();
-                    }
-                    else if (existingDevamet != null)
+                    if (existingDevamet != null)
                     {
                         db.userExercises.Remove(existingDevamet);
                         db.userExercises.Add(new UserExercise(userExerciseVM.userEmail, userExerciseVM.exerciseId, "izledim"));
+                        db.SaveChanges();
+                    }
+                    else if (existingIzledim != null)
+                    {
+                        db.userExercises.Remove(existingIzledim);
+                        db.userExercises.Add(new UserExercise(userExerciseVM.userEmail, userExerciseVM.exerciseId, "izlemedim"));
                         db.SaveChanges();
                     }
                     else

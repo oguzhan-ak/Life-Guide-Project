@@ -52,7 +52,7 @@ namespace LifeGuideProject.API.Controllers
                 foreach (var user in users)
                 {
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
-                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone));
+                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone, user.Degree));
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", allUserDTO));
 
@@ -93,7 +93,7 @@ namespace LifeGuideProject.API.Controllers
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
                     if (role == "Patient" || role == "Doctor")
                     {
-                        allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone));
+                        allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone, user.Degree));
                     }
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", allUserDTO));
@@ -159,7 +159,13 @@ namespace LifeGuideProject.API.Controllers
                     {
                         var appUser = await _userManager.FindByEmailAsync(pUserLoginVM.Email);
                         var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
-                        var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone);
+
+                        var degree = 0;
+                        if (appUser.IsFormDone)
+                        {
+                            degree = db.firstForms.Where(x => x.userEmail.Equals(pUserLoginVM.Email)).FirstOrDefault().degree;
+                        }
+                        var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, degree);
                         user.Token = GenerateToken(appUser, role);
                         return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla giriş yaptınız.", user));
                     }
@@ -253,13 +259,14 @@ namespace LifeGuideProject.API.Controllers
                         return await Task.FromResult(new ResponseModel(ResponseCode.Error, "Lütfen tekrar deneyiniz!", null));
                     }
                     user.IsFormDone = true;
+                    user.Degree = pUserFirstFormVM.degree;
                     var userResult = await _userManager.UpdateAsync(user);
                     UserDTO returnUser = null;
                     if (userResult.Succeeded)
                     {
                         var appUser = await _userManager.FindByEmailAsync(pUserFirstFormVM.userEmail);
                         var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
-                        returnUser = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, "");
+                        returnUser = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, pUserFirstFormVM.degree, "");
                     }
                     var firstForm = new FirstForm(pUserFirstFormVM.firstName, pUserFirstFormVM.secondName, pUserFirstFormVM.lastName, pUserFirstFormVM.birthDateYear, pUserFirstFormVM.birthDateMonth
                         , pUserFirstFormVM.birthDateDay, pUserFirstFormVM.weight, pUserFirstFormVM.height, pUserFirstFormVM.gender, pUserFirstFormVM.address, pUserFirstFormVM.city

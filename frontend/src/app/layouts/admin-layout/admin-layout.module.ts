@@ -11,7 +11,7 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StatCardComponent } from 'src/app/component/stat-card/stat-card.component';
-import { VideoCardComponent } from 'src/app/component/video-card/video-card.component';
+import { VideoCardComponent } from 'src/app/pages/exercise/video-card/video-card.component';
 import { UserListComponent } from 'src/app/component/user-list/user-list.component';
 import { ExerciseComponent } from 'src/app/pages/exercise/exercise.component';
 // import { ToastrModule } from 'ngx-toastr';

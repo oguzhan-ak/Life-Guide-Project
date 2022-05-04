@@ -20,9 +20,10 @@ export class SharedService {
    
   private readonly apiUrl : string = "http://localhost:5001/api/";
   
-  public getAllExercises(degree: number){
+  public getAllExercises(){
+    let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
     const body= {
-      degree:degree
+      degree:userInfo.degree
     };
     return this.http.post<ResponseModel>(this.apiUrl+'Exercise/GetExercises',body).pipe(map(res => {
       if(res.responseCode==ResponseCode.OK){
@@ -54,7 +55,6 @@ export class SharedService {
     }));
   }
   public ApplyActionToExercises(userEmail : string, exerciseId : number, action : string){
-    console.log(userEmail + "  " + exerciseId+ "  " + action);
     const body= {
       userEmail : userEmail,
       exerciseId : exerciseId,
@@ -89,7 +89,7 @@ export class SharedService {
         let userList= new Array<User>();
         if(res.dateSet){
           res.dateSet.map((x:User) =>{
-            userList.push(new User(x.email,x.userName,x.role,x.isFormDone,""));
+            userList.push(new User(x.email,x.userName,x.role,x.isFormDone,"",x.degree));
           });
         }
         return userList;
@@ -141,12 +141,10 @@ export class SharedService {
       degree : parseInt(part4.get('degree').value),
       userEmail : user.email
     };
-    console.log("first formda : "+ JSON.stringify(body))
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/FirstForm',body);
   }
   public updateUser(form:any, userInfos: any){
     const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
-    console.log("update userda user infos" + JSON.stringify(userInfos));
     const body= {
       firstName:form.get('firstName').value,
       secondName:form.get('secondName').value,
@@ -172,8 +170,6 @@ export class SharedService {
       userEmail : user.email,
       id : userInfos.id
     };
-    
-    console.log("update userda" + JSON.stringify(body))
     return this.http.post<ResponseModel>(this.apiUrl+'Auth/UpdateUser',body);
   }
 }
