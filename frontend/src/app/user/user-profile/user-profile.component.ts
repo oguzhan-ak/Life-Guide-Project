@@ -8,6 +8,7 @@ import { Constants } from 'src/app/Helper/constants';
 import { User } from 'src/app/Models/user';
 import { UserUpdateDto } from 'src/app/Models/userUpdate';
 import Validation from 'src/app/utils/validation';
+import { UserExercise } from 'src/app/Models/userExercise';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,6 +21,10 @@ export class UserProfileComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private shared:SharedService,private toastrService : ToastrService,private router : Router) { }
   public updateUserModel  = new UserUpdateDto("","","",0,0,0,0,0,"","","","","","","","","","","","","","",new Date(),0);
 
+  public userExerciseList:UserExercise[] =[];
+  public likedCount : number = 0;
+  public watchedCount : number = 0;
+  public degree:number = 0 ;
   updateForm= this.formBuilder.group({
     firstName : ['',Validators.required],
     secondName : [''],
@@ -38,7 +43,15 @@ export class UserProfileComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.updateForm.controls;
   }
-
+  public GetUserExercises(){
+    this.shared.getAllUserExercises().subscribe((data : UserExercise[]) => {
+      this.userExerciseList=data;
+      console.log("girdi")
+    })
+  }
+  ngDoCheck(){
+    this.initialize()
+  }
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
     var userEmail = user.email
@@ -51,8 +64,25 @@ export class UserProfileComponent implements OnInit {
         response.dateSet.userEmail, response.dateSet.createedTime, response.dateSet.id);
         this.updateUserModel = model
     });
+    this.GetUserExercises();
   }
-
+  initialize(){
+    const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+    this.degree = user.degree
+    var liked =0;
+    var watched =0;
+    console.log(this.userExerciseList)
+    for (var i = 0; i<this.userExerciseList.length; i++){
+      if(this.userExerciseList[i].action == "begen"){
+        liked++
+      }
+      if(this.userExerciseList[i].action == "izledim"){
+        watched++
+      }
+    }
+    this.likedCount = liked
+    this.watchedCount = watched
+  }
   calculateAge(birthDateYear,birthDateMonth,birthDateDay){
     var today = new Date();
     var birthDate = new Date(birthDateYear.toString() + '-' + birthDateMonth.toString() + '-' + birthDateDay.toString())
