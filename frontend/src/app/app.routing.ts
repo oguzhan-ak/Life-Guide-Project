@@ -19,6 +19,7 @@ import { UserFirstLoginFormComponent } from './pages/user-first-login-form/user-
 import { FirstFormGuardGuard } from './guard/firstFormGuard/first-form-guard.guard';
 import { UserListComponent } from './component/user-list/user-list.component';
 import { ExerciseComponent } from './pages/exercise/exercise.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 const routes: Routes =[
   // Authorization Layout
@@ -26,6 +27,11 @@ const routes: Routes =[
     path: '',
     component: AdminLayoutComponent,
     children: [
+      {
+        path: '',
+        component:DashboardComponent,
+        canActivate:[Auth1GuardService]
+      },
       {
         path: 'dashboard',
         component:DashboardComponent,
@@ -60,6 +66,11 @@ const routes: Routes =[
         path: 'first-form',
         component:UserFirstLoginFormComponent,
         canActivate:[FirstFormGuardGuard]
+      },
+      {
+        path: 'chat',
+        component:ChatComponent,
+        canActivate:[Auth1GuardService]
       }
     ]
   },

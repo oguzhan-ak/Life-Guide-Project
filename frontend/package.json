@@ -22,7 +22,9 @@
     "@angular/platform-browser": "12.1.2",
     "@angular/platform-browser-dynamic": "12.1.2",
     "@angular/router": "^12.1.2",
+    "@aspnet/signalr": "^1.0.27",
     "@auth0/angular-jwt": "^5.0.2",
+    "@microsoft/signalr": "^6.0.4",
     "@ng-bootstrap/ng-bootstrap": "10.0.0",
     "bootstrap": "4.5.2",
     "bootstrap-icons": "^1.7.2",
@@ -34,6 +36,7 @@
     "ngx-toastr": "^14.0.0",
     "nouislider": "14.6.2",
     "rxjs": "^7.2.0",
+    "toastr": "^2.1.4",
     "zone.js": "0.11.4"
   },
   "devDependencies": {

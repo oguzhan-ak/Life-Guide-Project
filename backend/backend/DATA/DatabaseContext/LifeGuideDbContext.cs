@@ -14,6 +14,7 @@ namespace LifeGuideProject.API.DATA.DatabaseContext
         public DbSet<FirstForm> firstForms { get; set; }
         public DbSet<Exercise> exercises { get; set; }
         public DbSet<UserExercise> userExercises { get; set; }
+        public DbSet<Connection> connections { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseNpgsql("Host=localhost;port=5432;Database=LifeGuideDatabase;UserName=postgres;Password=postgres;");
 

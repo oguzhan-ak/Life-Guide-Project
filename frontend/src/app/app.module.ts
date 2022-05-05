@@ -16,6 +16,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { BlogTextComponent } from './pages/blog/blog-text/blog-text.component';
 import { UserFirstLoginFormComponent } from './pages/user-first-login-form/user-first-login-form.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -34,11 +35,16 @@ export function tokenGetter(){
     JwtModule.forRoot({
       config : {
         tokenGetter : tokenGetter,
-        allowedDomains : ["localhost:5001"],
+        allowedDomains : ["localhost:5003"],
         disallowedRoutes : []
       }
     }),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      enableHtml : true,
+      timeOut : 10000,
+      positionClass : 'toast-top-right',
+      preventDuplicates : false,
+    })
   ],
   declarations: [
     AppComponent,
@@ -47,7 +53,8 @@ export function tokenGetter(){
     BlogComponent,
     BlogTextComponent,
     UserFirstLoginFormComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ChatComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

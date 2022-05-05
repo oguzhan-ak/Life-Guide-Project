@@ -1,6 +1,6 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-export default class Validation {
+export default class Util {
   static checkDate(date: string): ValidatorFn {
     return (controls: AbstractControl) => {
       const givendateInput=controls.get(date);
@@ -54,4 +54,5 @@ export default class Validation {
       }
     };
   }
+  static delay = ms => new Promise(res => setTimeout(res, ms));
 }

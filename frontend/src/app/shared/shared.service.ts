@@ -18,7 +18,7 @@ export class SharedService {
   
   constructor( private http:HttpClient) { }
    
-  private readonly apiUrl : string = "http://localhost:5001/api/";
+  private readonly apiUrl : string = "http://localhost:5003/api/";
   
   public getAllExercises(){
     let userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;

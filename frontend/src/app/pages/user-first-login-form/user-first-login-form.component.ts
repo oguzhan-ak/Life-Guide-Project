@@ -5,11 +5,11 @@ import { CozenKisi } from 'src/app/Models/cozenkisi';
 import { DatePipe } from '@angular/common';
 import { SharedService } from 'src/app/shared/shared.service';
 import { ToastrService } from 'ngx-toastr';
-import Validation from 'src/app/utils/validation';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/Helper/constants';
 import { User } from 'src/app/Models/user';
 import { Degree } from 'src/app/Models/degree';
+import Util from 'src/app/utils/Util';
 @Component({
   selector: 'app-user-first-login-form',
   templateUrl: './user-first-login-form.component.html',
@@ -38,7 +38,7 @@ export class UserFirstLoginFormComponent implements OnInit {
       gender : ['Erkek']
     },
     {
-      validators: [Validation.checkDate('birthDate'),Validation.checkDateBigger('birthDate')]
+      validators: [Util.checkDate('birthDate'),Util.checkDateBigger('birthDate')]
     }
   )
   multiStep2= this.formBuilder.group({

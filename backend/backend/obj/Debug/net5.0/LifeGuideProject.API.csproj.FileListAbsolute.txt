@@ -42,3 +42,5 @@ C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Ninject.dll
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\LifeGuideProject.API.csproj.AssemblyReference.cache
 C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\obj\Debug\net5.0\refint\LifeGuideProject.API.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\oguzhan.ak\Desktop\Life-Guide-Project\backend\backend\bin\Debug\net5.0\System.Net.WebSockets.WebSocketProtocol.dll

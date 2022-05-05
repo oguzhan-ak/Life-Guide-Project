@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { Constants } from 'src/app/Helper/constants';
 import { User } from 'src/app/Models/user';
 import { UserUpdateDto } from 'src/app/Models/userUpdate';
-import Validation from 'src/app/utils/validation';
 import { UserExercise } from 'src/app/Models/userExercise';
 
 @Component({
@@ -46,7 +45,6 @@ export class UserProfileComponent implements OnInit {
   public GetUserExercises(){
     this.shared.getAllUserExercises().subscribe((data : UserExercise[]) => {
       this.userExerciseList=data;
-      console.log("girdi")
     })
   }
   ngDoCheck(){
@@ -71,7 +69,6 @@ export class UserProfileComponent implements OnInit {
     this.degree = user.degree
     var liked =0;
     var watched =0;
-    console.log(this.userExerciseList)
     for (var i = 0; i<this.userExerciseList.length; i++){
       if(this.userExerciseList[i].action == "begen"){
         liked++
