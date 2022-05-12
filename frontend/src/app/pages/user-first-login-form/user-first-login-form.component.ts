@@ -154,6 +154,9 @@ export class UserFirstLoginFormComponent implements OnInit {
             this.toastrService.success(data.responseMessage);
             const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
             user.isFormDone=true;
+            user.degree = data.dateSet.degree;
+            user.name = data.dateSet.name;
+            user.gender = data.dateSet.gender;
             localStorage.setItem(Constants.USER_KEY,JSON.stringify(user));
             this.router.navigate(["dashboard"]);
           }else{

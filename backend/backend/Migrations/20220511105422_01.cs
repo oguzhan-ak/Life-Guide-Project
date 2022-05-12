@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LifeGuideProject.API.Migrations
 {
-    public partial class initial : Migration
+    public partial class _01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -104,6 +104,24 @@ namespace LifeGuideProject.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FirstForm", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Message",
+                schema: "public",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    senderUserEmail = table.Column<string>(type: "text", nullable: true),
+                    receiverUserEmail = table.Column<string>(type: "text", nullable: true),
+                    message = table.Column<string>(type: "text", nullable: true),
+                    connectionId = table.Column<string>(type: "text", nullable: true),
+                    timeStamp = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Message", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -289,6 +307,10 @@ namespace LifeGuideProject.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "FirstForm",
+                schema: "public");
+
+            migrationBuilder.DropTable(
+                name: "Message",
                 schema: "public");
 
             migrationBuilder.DropTable(

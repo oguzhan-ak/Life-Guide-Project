@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LifeGuideProject.API.Migrations
 {
     [DbContext(typeof(LifeGuideDbContext))]
-    [Migration("20220505092718_01")]
+    [Migration("20220511105422_01")]
     partial class _01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,27 +109,6 @@ namespace LifeGuideProject.API.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("LifeGuideProject.API.ENTITY.Entities.Connection", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<DateTime>("TimeStamp")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("signalrId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("userEmail")
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Connection", "public");
-                });
-
             modelBuilder.Entity("LifeGuideProject.API.ENTITY.Entities.Exercise", b =>
                 {
                     b.Property<int>("id")
@@ -224,6 +203,33 @@ namespace LifeGuideProject.API.Migrations
                     b.HasKey("id");
 
                     b.ToTable("FirstForm", "public");
+                });
+
+            modelBuilder.Entity("LifeGuideProject.API.ENTITY.Entities.Message", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("connectionId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("message")
+                        .HasColumnType("text");
+
+                    b.Property<string>("receiverUserEmail")
+                        .HasColumnType("text");
+
+                    b.Property<string>("senderUserEmail")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("timeStamp")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Message", "public");
                 });
 
             modelBuilder.Entity("LifeGuideProject.API.ENTITY.Entities.UserExercise", b =>

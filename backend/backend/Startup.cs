@@ -102,7 +102,7 @@ namespace backend
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<MyHub>("toastr");
+                endpoints.MapHub<ChatHub>("chatsocket");
             });
 
 

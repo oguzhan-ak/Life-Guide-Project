@@ -1,53 +1,78 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Constants } from 'src/app/Helper/constants';
+import { getMessageDTO } from 'src/app/Models/getMessageDTO';
+import { MessageDTO } from 'src/app/Models/MessageDTO';
 import { User } from 'src/app/Models/user';
-import { SignalrService } from 'src/app/signalr/signalr.service';
+import { SharedService } from 'src/app/shared/shared.service';
+import { ChatService } from 'src/app/signalr/chat.service';
 import Util from 'src/app/utils/Util';
-
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnDestroy {
-  public userEmail : string;
+export class ChatComponent implements OnInit {
+  constructor(private shared:SharedService,private chat:ChatService,private toastrService : ToastrService) { }
 
-  constructor(public signalrService: SignalrService) { }
+  messageDto: MessageDTO = new MessageDTO(0,"","",new Date(),"","");
+  msgInboxArray: MessageDTO[] = [];
+  message : string = '';
+  senderUserEmail: string = '';
+  userInfo=JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+  selectedReceiverUser = new User("","","",true,"",0,"","");
+  public userList:User[] =[];
+
   async ngOnInit() {
-    await Util.delay(500)
-    this.authMe();
-    this.authMeListenerSuccess();
-    this.authMeListenerFail();
+    await this.getAllUser();
+    Util.delay(500);
+    this.chat.retrieveMappedObject().subscribe( (receivedObj: MessageDTO) => 
+    { 
+      this.addToInbox(receivedObj);
+    });  // calls the service method to get the new messages sent
+  }
+  send(): void {
+    this.messageDto.message = this.message;
+    this.messageDto.receiverUserEmail = this.selectedReceiverUser.email;
+    this.messageDto.senderUserEmail = this.userInfo.email;
+    this.messageDto.timeStamp = new Date();
+    if(this.message.length == 0 || this.messageDto.senderUserEmail.length == 0 || this.messageDto.receiverUserEmail.length == 0) {
+      this.toastrService.success("Boş metin gönderemezsiniz !")
+      return;
+    }else {
+      this.chat.broadcastMessage(this.messageDto);                   // Send the message via a service
+    }
+    this.message = ''
+  }
+
+  addToInbox(obj: MessageDTO) {
+    let newObj = new MessageDTO(0,"","",new Date(),"","");
+    newObj.senderUserEmail = obj.senderUserEmail;
+    newObj.message = obj.message;
+    newObj.receiverUserEmail = obj.receiverUserEmail;
+    newObj.timeStamp = obj.timeStamp;
+    newObj.connectionId = obj.connectionId;
+    this.msgInboxArray.push(newObj);
     
   }
-  ngOnDestroy(){
-    this.signalrService.hubConnection.off("authMeResponseSuccess");
-    this.signalrService.hubConnection.off("authMeResponseFail");
-  }
-  async authMe() {
-    const user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
-    let personInfo = {userEmail: user.email};
 
-    await this.signalrService.hubConnection.invoke("authMe", personInfo)
-    .then(() => {
-      this.signalrService.toastrService.info("Connection is starting ...")
+  getAllUser()
+  {
+    this.shared.getAllUser().subscribe((data : User[]) => {
+      this.userList=data;
     })
-    .catch(err => console.error(err));
+  }
+  getMessages(){
+    var getMessageDto = new getMessageDTO(this.userInfo.email,this.selectedReceiverUser.email );
+    this.chat.getMessagesBetweenUsers(getMessageDto).subscribe((data : MessageDTO[]) => {
+      this.msgInboxArray = data;
+    })
   }
 
-
-
-  private authMeListenerSuccess() {
-    this.signalrService.hubConnection.on("authMeResponseSuccess", (personInfo: any) => {
-        this.userEmail = personInfo.Email;
-        this.signalrService.toastrService.success("Connection Created Successfully");
-    });
-  }
-
-
-  private authMeListenerFail() {
-    this.signalrService.hubConnection.on("authMeResponseFail", () => {
-      this.signalrService.toastrService.error("Bağlantı kurulamadı!");
-    });
+  async changeReceiverUser(user : User){
+    this.selectedReceiverUser = await user
+    Util.delay(500);
+    await this.getMessages();
+    
   }
 }

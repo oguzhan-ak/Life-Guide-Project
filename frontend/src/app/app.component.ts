@@ -1,25 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SignalrService } from './signalr/signalr.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   title = 'argon-dashboard-angular';
-  constructor( 
-    public signalrService: SignalrService
-  ) 
-  {}
+  constructor() {}
 
-  async ngOnInit(){
-    await this.signalrService.startConnection();
+  ngOnInit(){
   }
 
-  ngOnDestroy(){
-    this.signalrService.hubConnection.off("askServerResponse");
-  }
+
 }
-
-

@@ -4,7 +4,6 @@ import { SharedService } from 'src/app/shared/shared.service';
 import { Constants } from 'src/app/Helper/constants';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user';
-import { SignalrService } from 'src/app/signalr/signalr.service';
 
 @Component({
   selector: 'app-login',

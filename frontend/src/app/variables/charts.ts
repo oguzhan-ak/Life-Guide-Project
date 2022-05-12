@@ -247,9 +247,7 @@ export function chartOptions() {
       beginAtZero: true,
       padding: 10,
       callback: function(value) {
-        if (!(value % 10)) {
-          return value
-        }
+        return value
       }
     }
   });
@@ -294,19 +292,18 @@ export const chartExample1 = {
         },
         ticks: {
           callback: function(value) {
-            if (!(value % 10)) {
-              return '$' + value + 'k';
-            }
+            return value
+            
           }
         }
       }]
     }
   },
   data: {
-    labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: ['Jan', 'Feb','Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
     datasets: [{
       label: 'Performance',
-      data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+      data: [0, 20, 10, 25, 20, 30, 22, 33]
     }]
   }
 }
@@ -319,7 +316,7 @@ export const chartExample2 = {
           ticks: {
             callback: function(value) {
               if (!(value % 10)) {
-                return '$' + value + 'k'
+                return value
               }
             }
           }
@@ -342,11 +339,11 @@ export const chartExample2 = {
     }
   },
   data: {
-    labels: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
     datasets: [
       {
         label: "Sales",
-        data: [25, 20, 30, 22, 17, 29],
+        data: [25, 20, 30, 22, 17, 33],
         maxBarThickness: 15
       }
     ]

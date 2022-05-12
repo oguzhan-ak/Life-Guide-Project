@@ -52,7 +52,8 @@ namespace LifeGuideProject.API.Controllers
                 foreach (var user in users)
                 {
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
-                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone, user.Degree));
+                    var firstForm = db.firstForms.Where(x => x.userEmail == user.Email).FirstOrDefault();
+                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone, user.Degree, firstForm.firstName, firstForm.gender));
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", allUserDTO));
 
@@ -91,9 +92,10 @@ namespace LifeGuideProject.API.Controllers
                 foreach (var user in users)
                 {
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+                    var firstForm = db.firstForms.Where(x => x.userEmail == user.Email).FirstOrDefault();
                     if (role == "Patient" || role == "Doctor")
                     {
-                        allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone, user.Degree));
+                        allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone, user.Degree, firstForm.firstName, firstForm.gender));
                     }
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", allUserDTO));
@@ -159,13 +161,17 @@ namespace LifeGuideProject.API.Controllers
                     {
                         var appUser = await _userManager.FindByEmailAsync(pUserLoginVM.Email);
                         var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
-
+                        var user = new UserDTO();
                         var degree = 0;
                         if (appUser.IsFormDone)
                         {
-                            degree = db.firstForms.Where(x => x.userEmail.Equals(pUserLoginVM.Email)).FirstOrDefault().degree;
+                            var firstForm = db.firstForms.Where(x => x.userEmail.Equals(pUserLoginVM.Email)).FirstOrDefault();
+                            user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, firstForm.degree, firstForm.firstName, firstForm.gender);
                         }
-                        var user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, degree);
+                        else
+                        {
+                            user = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, degree);
+                        }
                         user.Token = GenerateToken(appUser, role);
                         return await Task.FromResult(new ResponseModel(ResponseCode.OK, "Başarıyla giriş yaptınız.", user));
                     }
@@ -266,7 +272,7 @@ namespace LifeGuideProject.API.Controllers
                     {
                         var appUser = await _userManager.FindByEmailAsync(pUserFirstFormVM.userEmail);
                         var role = (await _userManager.GetRolesAsync(appUser)).FirstOrDefault();
-                        returnUser = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, pUserFirstFormVM.degree, "");
+                        returnUser = new UserDTO(appUser.FullName, appUser.Email, appUser.UserName, role, appUser.IsFormDone, pUserFirstFormVM.degree, pUserFirstFormVM.firstName, pUserFirstFormVM.gender, "");
                     }
                     var firstForm = new FirstForm(pUserFirstFormVM.firstName, pUserFirstFormVM.secondName, pUserFirstFormVM.lastName, pUserFirstFormVM.birthDateYear, pUserFirstFormVM.birthDateMonth
                         , pUserFirstFormVM.birthDateDay, pUserFirstFormVM.weight, pUserFirstFormVM.height, pUserFirstFormVM.gender, pUserFirstFormVM.address, pUserFirstFormVM.city

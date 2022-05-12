@@ -89,7 +89,7 @@ export class SharedService {
         let userList= new Array<User>();
         if(res.dateSet){
           res.dateSet.map((x:User) =>{
-            userList.push(new User(x.email,x.userName,x.role,x.isFormDone,"",x.degree));
+            userList.push(new User(x.email,x.userName,x.role,x.isFormDone,"",x.degree, x.name, x.gender));
           });
         }
         return userList;
