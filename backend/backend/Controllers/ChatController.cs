@@ -32,8 +32,9 @@ namespace LifeGuideProject.API.Controllers
         [HttpPost]
         public IActionResult SendRequest([FromBody] MessageDTO msg)
         {
-            _hubContext.Clients.All.SendAsync("ReceiveOne", msg.senderUserEmail, msg.message, msg.receiverUserEmail, msg.timeStamp, msg.connectionId);
-            var message = new Message(msg.senderUserEmail, msg.receiverUserEmail, msg.message, msg.connectionId, msg.timeStamp);
+            var now = DateTime.Now;
+            _hubContext.Clients.All.SendAsync("ReceiveOne", msg.senderUserEmail, msg.message, msg.receiverUserEmail, now, msg.connectionId, now.Year, now.Month, now.Day, now.Hour, now.Minute);
+            var message = new Message(msg.senderUserEmail, msg.receiverUserEmail, msg.message, msg.connectionId, now, now.Year, now.Month, now.Day, now.Hour, now.Minute);
             db.messages.Add(message);
             db.SaveChanges();
             return Ok();

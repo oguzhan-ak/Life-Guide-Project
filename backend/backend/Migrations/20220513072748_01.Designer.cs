@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LifeGuideProject.API.Migrations
 {
     [DbContext(typeof(LifeGuideDbContext))]
-    [Migration("20220511105422_01")]
+    [Migration("20220513072748_01")]
     partial class _01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -217,6 +217,21 @@ namespace LifeGuideProject.API.Migrations
 
                     b.Property<string>("message")
                         .HasColumnType("text");
+
+                    b.Property<int>("messageDay")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("messageHour")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("messageMinute")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("messageMonth")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("messageYear")
+                        .HasColumnType("integer");
 
                     b.Property<string>("receiverUserEmail")
                         .HasColumnType("text");

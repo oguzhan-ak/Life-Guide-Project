@@ -216,6 +216,21 @@ namespace LifeGuideProject.API.Migrations
                     b.Property<string>("message")
                         .HasColumnType("text");
 
+                    b.Property<int>("messageDay")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("messageHour")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("messageMinute")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("messageMonth")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("messageYear")
+                        .HasColumnType("integer");
+
                     b.Property<string>("receiverUserEmail")
                         .HasColumnType("text");
 

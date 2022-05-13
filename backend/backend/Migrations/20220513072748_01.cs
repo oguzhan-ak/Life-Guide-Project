@@ -117,7 +117,12 @@ namespace LifeGuideProject.API.Migrations
                     receiverUserEmail = table.Column<string>(type: "text", nullable: true),
                     message = table.Column<string>(type: "text", nullable: true),
                     connectionId = table.Column<string>(type: "text", nullable: true),
-                    timeStamp = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    timeStamp = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    messageYear = table.Column<int>(type: "integer", nullable: false),
+                    messageMonth = table.Column<int>(type: "integer", nullable: false),
+                    messageDay = table.Column<int>(type: "integer", nullable: false),
+                    messageHour = table.Column<int>(type: "integer", nullable: false),
+                    messageMinute = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

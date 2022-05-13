@@ -99,16 +99,25 @@
               </div>
             </div>
           </div>
-          <div class="chat-history">
+          <div
+            #scrollMe
+            [scrollTop]="scrollMe.scrollHeight"
+            id="messageHistory"
+            class="chat-history DivWithScroll"
+            [ngClass]="{ DivWithScroll: selectedReceiverUser.email != '' }"
+          >
             <ul *ngFor="let message of msgInboxArray" class="m-b-0">
               <li
                 *ngIf="userInfo.email == message.senderUserEmail"
                 class="clearfix"
               >
                 <div class="message-data text-right">
-                  <span class="message-data-time">{{
-                    message.timeStamp.getHours
-                  }}</span>
+                  <span class="message-data-time"
+                    >{{ message.messageYear }}/{{ message.messageMonth }}/{{
+                      message.messageDay
+                    }}
+                    {{ message.messageHour }}:{{ message.messageMinute }}</span
+                  >
                   <img src="assets/img/theme/oguzhan.jpg" alt="avatar" />
                 </div>
                 <div class="message other-message float-right">
@@ -120,7 +129,12 @@
                 class="clearfix"
               >
                 <div class="message-data">
-                  <span class="message-data-time">{{ message.timeStamp }}</span>
+                  <span class="message-data-time"
+                    >{{ message.messageYear }}/{{ message.messageMonth }}/{{
+                      message.messageDay
+                    }}
+                    {{ message.messageHour }}:{{ message.messageMinute }}</span
+                  >
                   <img src="assets/img/theme/oguzhan.jpg" alt="avatar" />
                 </div>
                 <div class="message other-message">

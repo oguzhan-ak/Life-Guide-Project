@@ -41,7 +41,6 @@ namespace LifeGuideProject.API.Controllers
             this.db = db;
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpGet, Route("GetUsers")]
         public async Task<object> GetUsers()
         {
@@ -81,7 +80,6 @@ namespace LifeGuideProject.API.Controllers
 
         }
 
-        [Authorize(Roles = "Patient")]
         [HttpGet, Route("GetUserList")]
         public async Task<object> GetUserList()
         {

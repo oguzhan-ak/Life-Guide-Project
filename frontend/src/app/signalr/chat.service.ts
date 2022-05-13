@@ -18,7 +18,7 @@ export class ChatService {
   .build();
   readonly POST_URL = "http://localhost:5003/api/chat/"
 
-  private receivedMessageObject: MessageDTO = new MessageDTO(0,"","",new Date(),"","");
+  private receivedMessageObject: MessageDTO = new MessageDTO(0,"","",new Date(),"","",0,0,0,0,0);
   private sharedObj = new Subject<MessageDTO>();
 
 
@@ -26,9 +26,9 @@ export class ChatService {
     this.connection.onclose(async () => {
       await this.start();
     });
-   this.connection.on("ReceiveOne", (senderUserEmail, message, receiverUserEmail, timeStamp, connectionId) => 
+   this.connection.on("ReceiveOne", (senderUserEmail, message, receiverUserEmail, timeStamp, connectionId, messageYear, messageMonth, messageDay, messageHour, messageMinute) => 
     { 
-     this.mapReceivedMessage(senderUserEmail, message,receiverUserEmail,timeStamp,connectionId); 
+     this.mapReceivedMessage(senderUserEmail, message,receiverUserEmail,timeStamp,connectionId, messageYear, messageMonth, messageDay, messageHour , messageMinute); 
     });
    this.start(); 
   }
@@ -42,12 +42,18 @@ export class ChatService {
     } 
   }
 
-  private mapReceivedMessage(senderUserEmail: string, message: string, receiverUserEmail:string, timeStamp: Date, connectionId: string ): void {
+  private mapReceivedMessage(senderUserEmail: string, message: string, receiverUserEmail:string, timeStamp: Date, connectionId: string 
+    , messageYear:number , messageMonth : number, messageDay:number, messageHour:number, messageMinute:number): void {
     this.receivedMessageObject.senderUserEmail = senderUserEmail;
     this.receivedMessageObject.message = message;
     this.receivedMessageObject.receiverUserEmail = receiverUserEmail;
     this.receivedMessageObject.timeStamp = timeStamp;
     this.receivedMessageObject.connectionId = connectionId;
+    this.receivedMessageObject.messageYear = messageYear;
+    this.receivedMessageObject.messageMonth = messageMonth;
+    this.receivedMessageObject.messageDay = messageDay;
+    this.receivedMessageObject.messageHour = messageHour;
+    this.receivedMessageObject.messageMinute = messageMinute;
     this.sharedObj.next(this.receivedMessageObject);
  }
 
@@ -64,7 +70,7 @@ export class ChatService {
         let messageList= new Array<MessageDTO>();
         if(res.dateSet){
           res.dateSet.map((x:MessageDTO) =>{
-            messageList.push(new MessageDTO(x.id,x.senderUserEmail,x.message,x.timeStamp,x.connectionId, x.receiverUserEmail));
+            messageList.push(new MessageDTO(x.id,x.senderUserEmail,x.message,x.timeStamp,x.connectionId, x.receiverUserEmail, x.messageYear, x.messageMonth, x.messageDay, x.messageHour, x.messageMinute));
           });
         }
         return messageList;

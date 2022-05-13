@@ -15,7 +15,7 @@ import Util from 'src/app/utils/Util';
 export class ChatComponent implements OnInit {
   constructor(private shared:SharedService,private chat:ChatService,private toastrService : ToastrService) { }
 
-  messageDto: MessageDTO = new MessageDTO(0,"","",new Date(),"","");
+  messageDto: MessageDTO = new MessageDTO(0,"","",new Date(),"","",0,0,0,0,0);
   msgInboxArray: MessageDTO[] = [];
   message : string = '';
   senderUserEmail: string = '';
@@ -23,6 +23,7 @@ export class ChatComponent implements OnInit {
   selectedReceiverUser = new User("","","",true,"",0,"","");
   public userList:User[] =[];
 
+  
   async ngOnInit() {
     await this.getAllUser();
     Util.delay(500);
@@ -46,7 +47,7 @@ export class ChatComponent implements OnInit {
   }
 
   addToInbox(obj: MessageDTO) {
-    let newObj = new MessageDTO(0,"","",new Date(),"","");
+    let newObj = new MessageDTO(0,"","",new Date(),"","",0,0,0,0,0);
     newObj.senderUserEmail = obj.senderUserEmail;
     newObj.message = obj.message;
     newObj.receiverUserEmail = obj.receiverUserEmail;
@@ -69,10 +70,9 @@ export class ChatComponent implements OnInit {
     })
   }
 
-  async changeReceiverUser(user : User){
-    this.selectedReceiverUser = await user
-    Util.delay(500);
-    await this.getMessages();
-    
+  changeReceiverUser(user : User){
+    this.selectedReceiverUser = user
+    this.getMessages();
+
   }
 }
