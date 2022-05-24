@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/Helper/constants';
 import { Exercise } from 'src/app/Models/exercise';
+import { User } from 'src/app/Models/user';
 import { UserExercise } from 'src/app/Models/userExercise';
 import { SharedService } from 'src/app/shared/shared.service';
 @Component({
@@ -10,8 +11,10 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./exercise.component.scss']
 })
 export class ExerciseComponent implements OnInit {
-
-  constructor(private shared:SharedService,private router : Router) { }
+  public user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
+  constructor(private shared:SharedService,private router : Router) { 
+    
+  }
   public valueEmittedFromChildComponent : number;
   public exerciseList =[];
   public userExerciseList:UserExercise[] =[];

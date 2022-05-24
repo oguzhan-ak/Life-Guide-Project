@@ -52,7 +52,10 @@ namespace LifeGuideProject.API.Controllers
                 {
                     var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
                     var firstForm = db.firstForms.Where(x => x.userEmail == user.Email).FirstOrDefault();
-                    allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone, user.Degree, firstForm.firstName, firstForm.gender));
+                    if (firstForm != null)
+                    {
+                        allUserDTO.Add(new UserDTO(user.FullName, user.Email, user.UserName, role, user.IsFormDone, user.Degree, firstForm.firstName, firstForm.gender));
+                    }
                 }
                 return await Task.FromResult(new ResponseModel(ResponseCode.OK, "", allUserDTO));
 
@@ -250,7 +253,7 @@ namespace LifeGuideProject.API.Controllers
             }
         }
 
-        [HttpPost, Route("FirstForm")]
+        [HttpPost, Route("FirstForm"), DisableRequestSizeLimit]
         public async Task<object> FirstForm(UserFirstFormVM pUserFirstFormVM)
         {
             try

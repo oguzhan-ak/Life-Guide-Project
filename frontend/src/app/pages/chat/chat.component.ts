@@ -53,6 +53,11 @@ export class ChatComponent implements OnInit {
     newObj.receiverUserEmail = obj.receiverUserEmail;
     newObj.timeStamp = obj.timeStamp;
     newObj.connectionId = obj.connectionId;
+    newObj.messageYear = obj.messageYear;
+    newObj.messageMonth = obj.messageMonth;
+    newObj.messageDay = obj.messageDay;
+    newObj.messageHour = obj.messageHour;
+    newObj.messageMinute = obj.messageMinute;
     this.msgInboxArray.push(newObj);
     
   }

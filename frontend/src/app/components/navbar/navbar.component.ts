@@ -4,12 +4,14 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
 import { Constants } from 'src/app/Helper/constants';
+import { User } from 'src/app/Models/user';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
@@ -17,7 +19,7 @@ export class NavbarComponent implements OnInit {
   constructor(location: Location,  private element: ElementRef, private router: Router, private shared : SharedService) {
     this.location = location;
   }
-
+  public user = JSON.parse(localStorage.getItem(Constants.USER_KEY)) as User;
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
   }
